@@ -1,103 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+	<!-- BEGIN HEAD -->
 	<head>
-		<meta charset="utf-8">
-
-		<title>Error 500 - Internal Server Error</title>
-
-		<style>
-			@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-
-			body {
-				background: #eee;
-				color: #6d6d6d;
-				font: normal normal normal 14px/1.253 Ubuntu, sans-serif;
-				margin: 0 0 25px 0;
-				min-width: 800px;
-				padding: 0;
-			}
-
-			#main {
-				background-clip: padding-box;
-				background-color: #fff;
-				border:1px solid #ccc;
-				border-radius: 5px;
-				box-shadow: 0 0 10px #cdcdcd;
-				margin: 25px auto 0;
-				padding: 30px;
-				width: 700px;
-				position: relative;
-			}
-
-			#main h1 {
-				font-family: 'Ubuntu';
-				font-size: 38px;
-				letter-spacing: 2px;
-				margin: 0 0 10px 0;
-				padding: 0;
-			}
-
-			#main h2 {
-				color: #999;
-				font-size: 18px;
-				letter-spacing: 3px;
-				margin: 0 0 25px 0;
-				padding: 0 0 0 0;
-			}
-
-			#main h3 {
-				color: #999;
-				margin-top: 24px;
-				padding: 0 0 0 0;
-			}
-
-			#main h3 {
-				font-size: 18px;
-			}
-
-			#main p {
-				line-height: 25px;
-				margin: 10px 0;
-			}
-
-			#main pre {
-				background-color: #333;
-				border-left: 1px solid #d8d8d8;
-				border-top: 1px solid #d8d8d8;
-				border-radius: 5px;
-				color: #eee;
-				padding: 10px;
-			}
-
-			#main ul {
-				margin: 10px 0;
-				padding: 0 30px;
-			}
-
-			#main li {
-				margin: 5px 0;
-			}
-		</style>
+		<title>Chatapp | Server Error (500)</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="" />
+		<!-- BEGIN SCRIPTS -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/prettify.js"></script>                                   <!-- PRETTIFY -->
+		<script type="text/javascript" src="/js/kickstart.js"></script>                                  <!-- KICKSTART -->
+		<!-- END SCRIPTS -->
+		<!-- BEGIN STYLES -->
+		<link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />                          <!-- CUSTOM STYLES -->
+		<!-- END STYLES -->
 	</head>
+	<!-- END HEAD -->
+	<!-- BEGIN BODY -->
 	<body>
-		<div id="main">
-			<?php $messages = array('Ouch.', 'Oh no!', 'Whoops!'); ?>
-
-			<h1><?php echo $messages[mt_rand(0, 2)]; ?></h1>
-
-			<h2>Server Error: 500 (Internal Server Error)</h2>
-
-			<h3>What does this mean?</h3>
-
-			<p>
-				Something went wrong on our servers while we were processing your request.
-				We're really sorry about this, and will work hard to get this resolved as
-				soon as possible.
-			</p>
-
-			<p>
-				Perhaps you would like to go to our <?php echo HTML::link('/', 'home page'); ?>?
-			</p>
+		<a id="top-of-page"></a>
+		<!-- BEGIN PAGEWRAP -->
+		<div id="wrap" class="clearfix">
+			<!-- BEGIN HEADER AREA-->
+			<div class="col_12" id="header_area">
+				<div class="col_8">
+					<a href="/"><img src="/img/jscore_logo.png" alt="JScore Logo"></a>
+				</div>
+				<div class="col_4">
+					This is for development use only for internal testing. If you're seeing this and you don't know us, you're not suppossed to be here.
+				</div>
+			</div>
+			<!-- END HEADER AREA -->
+			<div class=clear></div>
+	 		<!-- BEGIN BODY AREA -->
+			<div class="col_12" id="body_area">
+				<!-- BEGIN CONTENT AREA -->
+				<div class="col_12" id="content_area">
+					<h3>Server Error</h3>
+					<p>Oops! We have encountered an error. Our admins have been notified of the problem.</p>
+					<p>Error details:<br/><?php echo($error) ?></p>
+				</div>
+				<!-- END CONTENT AREA -->
+			</div>
+			<!-- END BODY AREA -->
+			<div class="clear"></div>
+			<!-- BEGIN FOOTER -->
+			<div id="footer">
+				&copy; Copyright Priyadarshi Lahiri 2011–2012 All Rights Reserved.
+				<a id="link-top" href="#top-of-page">Top</a>
+			</div>
+			<!-- END FOOTER -->
 		</div>
+		<!-- END PAGEWRAP -->
 	</body>
+	<!-- END BODY -->
 </html>
