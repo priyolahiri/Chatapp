@@ -25,7 +25,7 @@
 			<!-- BEGIN HEADER AREA-->
 			<div class="col_12" id="header_area">
 				<div class="col_8">
-					<a href="/"><img src="/img/jscore_logo.png" alt="JScore Logo"></a>
+					<h1>Chatapp</h1>
 				</div>
 				<div class="col_4">
 					This is for development use only for internal testing. If you're seeing this and you don't know us, you're not suppossed to be here.
