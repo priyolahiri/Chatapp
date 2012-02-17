@@ -12,6 +12,10 @@
 // Tick... Tock... Tick... Tock...
 // --------------------------------------------------------------
 define('LARAVEL_START', microtime(true));
+define('DOCROOT', __DIR__);
+define('APPROOT', "/var/www/Chatapp");
+define('LIBRARIES', DOCROOT.'/../application/libraries');
+define ('HYBRID_CONFIG', APPROOT."/public/hybridauth/config.php");
 
 // --------------------------------------------------------------
 // The path to the application directory.
