@@ -67,7 +67,7 @@
 						echo Form::label('chatid', 'Chat Name');
 						echo '<br/>';
 						echo Form::text('chatid');
-						echo '<br/>';
+						echo '<br/><br/>';
 						echo Form::label('chatscore', 'Do you want score for chat?');
 						echo '<br/>';
 						echo Form::radio('chatscore', 'yes'); echo 'Yes &nbsp;&nbsp;'; echo Form::radio('chatscore', 'no'); echo 'No';
