@@ -39,8 +39,10 @@
 				<li><a href="">Connect Account</a></li>
 				<li><a href="/chats"><span class="icon" data-icon="R"></span>Chats</a>
 					<ul>
-						<li><a href=""><span class="icon" data-icon="G"></span>Active</a></li>
-						<li><a href=""><span class="icon" data-icon="A"></span>Finsihed</a></li>
+						<li><a href=""><span class="icon" data-icon="G"></span>Create</a></li>
+						<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
+						<li><a href=""><span class="icon" data-icon="G"></span>Active Chats</a></li>
+						<li><a href=""><span class="icon" data-icon="A"></span>Finished Chats</a></li>
 					</ul>
 				</li>
 				<li><a href="/logout">Logout</a></li>
