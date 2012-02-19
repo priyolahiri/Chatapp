@@ -2,7 +2,7 @@
 <html>
 	<!-- BEGIN HEAD -->
 	<head>
-		<title>Chatapp | Dashboard</title>
+		<title>Chatapp | Create A Chat</title>
 		<meta charset="UTF-8">
 		<meta name="description" content="" />
 		<!-- BEGIN SCRIPTS -->
@@ -53,15 +53,7 @@
 			<div class="col_12" id="body_area">
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_12" id="content_area">
-					<h3>Dashboard</h3>
-					<?php
-						$imgurl = ($socialauth->facebook_profile->photoURL == "NA") ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
-						$name = !$socialauth->twitter_profile->lastName ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twiiter_profile->firstName
-					?>
-					<p>
-						<img src="<?php echo($imgurl) ?>">Hi, <?php echo($name) ?>. 
-					</p>
-					<p>Create your chat:</p>
+					<h3>Create A Chat</h3>
 					<?php
 						echo Form::open('/chats/add', 'POST');
 						echo Form::label('chatid', 'Chat Name');
@@ -70,7 +62,9 @@
 						echo '<br/><br/>';
 						echo Form::label('chatscore', 'Do you want score for chat?');
 						echo '<br/>';
-						echo Form::radio('chatscore', 'yes'); echo 'Yes &nbsp;&nbsp;'; echo Form::radio('chatscore', 'no'); echo 'No';
+						echo Form::radio('chatscore', 'yes'); echo 'Yes &nbsp;&nbsp;'; echo Form::radio('chatscore', 'no'); echo 'No<br/>';
+						echo '<br/>';
+						echo Form::button('Create Now!', array('class' => 'btn medium blue', 'type' => 'submit'));
 						echo Form::close();
 					?>
 				</div>
