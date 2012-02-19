@@ -46,7 +46,7 @@ Class Socialauth {
 		$profile_var = $provider.'_profile';
 		try {
 			$adapter = $this->hybridauth->authenticate($provider);
-			$this->$profile_var = $adapter->getUserProfile();
+			$this->__construct();
 		} catch (Exception $e) {
 			$this->errorhandle($e);
 		}

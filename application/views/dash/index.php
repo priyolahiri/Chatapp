@@ -2,7 +2,7 @@
 <html>
 	<!-- BEGIN HEAD -->
 	<head>
-		<title>Chatapp | Home</title>
+		<title>Chatapp | Dashboard</title>
 		<meta charset="UTF-8">
 		<meta name="description" content="" />
 		<!-- BEGIN SCRIPTS -->
@@ -59,7 +59,7 @@
 			<div class="col_12" id="body_area">
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_8" id="content_area">
-					<h3>Home</h3>
+					<h3>Dashboard</h3>
 					<?php var_dump($socialauth); ?>
 				</div>
 				<!-- END CONTENT AREA -->

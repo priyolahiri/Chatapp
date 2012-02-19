@@ -9,13 +9,10 @@ class Login_Controller extends Controller {
 		if ($socialauth->error) {
 			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
 		}
-		$query_column = $service.'_id';
-		$profile_query = $service.'_profile';
-		$profile = $socialauth->$profile_query;
-		$userquery = User::where($query_column, '=', $profile->identifier)->first();
-		if (!$userquery) {
-			return View::make('login.socialregister')->with('profile', $profile);
+		if ($socialauth->twiiter_status or $socialauth->facebook_status) {
+			return Redirect::to('/dash')->with('socialauth', $socialauth);
+		} else {
+			return Redirect::to('/')->with('error', 'authentication failed');
 		}
-		return View::make('dash.index')->with('socialauth', $socialauth);
 	}
 }
