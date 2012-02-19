@@ -9,7 +9,7 @@ class Login_Controller extends Controller {
 		if ($socialauth->error) {
 			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
 		}
-		if ($socialauth->twiiter_status or $socialauth->facebook_status) {
+		if ($socialauth->user_id) {
 			return Redirect::to('/dash')->with('socialauth', $socialauth);
 		} else {
 			return Redirect::to('/')->with('error', 'authentication failed');

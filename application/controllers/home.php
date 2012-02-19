@@ -5,7 +5,11 @@ class Home_Controller extends Controller {
 	{
 		$socialauth= new Socialauth();
 		$error = Session::get('error');
-		return View::make('home.index')->with('socialauth', $socialauth)->with('error', $error);
+		if ($socialauth->user_id) {
+			return Redirect::to('/dash')->with('socialauth', $socialauth);
+		} else {
+			return View::make('home.index')->with('socialauth', $socialauth)->with('error', $error);
+		}	
 	}
 
 }
