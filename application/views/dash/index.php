@@ -52,7 +52,11 @@
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_12" id="content_area">
 					<h3>Dashboard</h3>
-					<?php var_dump($socialauth); ?>
+					<?php
+						$imgurl = ($socialauth->facebook_profile->photoURL != "NA") ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+						$name = !$socialauth->twitter_profile->lastName ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->firstName : $socialauth->twiiter_profile->firstName
+					?>
+					<img src="<?php echo($imgurl) ?>">Hi, <?php echo($name) ?>. Welcome to your dashboard. Use the menu on the top to access your options. 
 				</div>
 				<!-- END CONTENT AREA -->
 			</div>
