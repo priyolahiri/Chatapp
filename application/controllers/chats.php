@@ -1,5 +1,5 @@
 <?php
-Class ChatsController extends Controller {
+Class Chats_Controller extends Controller {
 	public function action_index() {
 		$error = Session::get('error');
 		$socialauth= new Socialauth();
