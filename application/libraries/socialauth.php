@@ -15,6 +15,7 @@ Class Socialauth {
 			if ($this->$status_var) {
 				try {
 					$adapter = $this->hybridauth->authenticate($provider);
+					$this->$status_var = true;
 					$this->$profile_var = $adapter->getUserProfile();
 					$this->$identifier_var = $this->$profile_var->identifier;
 					$this->$displayname_var = $this->$profile_var->displayName;
@@ -22,7 +23,32 @@ Class Socialauth {
 				} catch (Exception $e) {
 					$this->errorhandle($e);
 				}
+			} else {
+				$this->$status_var = false;
+				$this->$profile_var = 'NA';
+				$this->$identifier_var = 'NA';
+				$this->$displayname_var = 'NA';
+				$this->$photourl_var = 'NA';
 			}
+		}
+		if ($this->facebook_status or $this->twitter_status) {
+				$user = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id);
+				if ($user) {
+					$this->user_id = $user->id;
+				} else {
+					$usercreate = new User();
+					if  ($this->facebook_status) {
+						$usercreate->facebook_id = $this->facebook_id;
+					}
+					if  ($this->twitter_status) {
+						$usercreate->twitter_id = $this->twitter_id;
+					}
+					$usercreate->save();
+					$userquery = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id);
+					if ($userquery) {
+						$this->user_id = $userquery->id;
+					}
+				}
 		}
 	}
 	public function authenticate($provider) {
