@@ -25,18 +25,20 @@ Class Socialauth {
 			}
 		}
 		if ($this->facebook_status or $this->twitter_status) {
-			$this->user = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id);
-			if ($this->user) {
+			$user = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id);
+			if ($user) {
 				$this->authenticated = true;
+				$this->userdetail = $user;
 			} else {
-				$this->user = new User();
+				$usercreate = new User();
 				if ($this->facebook_status) {
-				$this->user->facobook_id = $this->facebook_id;
+				$usercreate->facobook_id = $this->facebook_id;
 				}
 				if ($this->twitter_status) {
-				$this->user->twitter_id = $this->twitter_id;
+				$usercreate->twitter_id = $this->twitter_id;
 				}
-				$this->user->save();
+				$usercreate->save();
+				$this->userdetail = $usecreate;
 			}
 		} else {
 			$this->authenticated = false;
