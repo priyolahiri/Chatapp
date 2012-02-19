@@ -70,7 +70,7 @@
 						echo '<br/>';
 						echo Form::label('chatscore', 'Do you want score for chat?');
 						echo '<br/>';
-						echo Form::radio('chatscore', 'yes'); echo Form::radio('chatscore', 'no');
+						echo Form::radio('chatscore', 'yes'); echo 'Yes'; echo Form::radio('chatscore', 'no'); echo 'No';
 						echo Form::close();
 					?>
 				</div>
