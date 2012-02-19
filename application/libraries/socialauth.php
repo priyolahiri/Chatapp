@@ -24,7 +24,6 @@ Class Socialauth {
 				}
 			}
 		}
-		
 	}
 	public function authenticate($provider) {
 		$profile_var = $provider.'_profile';
