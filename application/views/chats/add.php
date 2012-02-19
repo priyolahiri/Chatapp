@@ -35,11 +35,11 @@
 			<div class=clear></div>
 			<!-- BEGIN MENU -->
 			<ul class="menu">
-				<li class="current"><a href="/dash"><span class="icon" data-icon="4"></span>Dash</a></li>
+				<li><a href="/dash"><span class="icon" data-icon="4"></span>Dash</a></li>
 				<li><a href="/connect"><span class="icon" data-icon="H"></span>Connect Account</a></li>
-				<li><a href="/chats"><span class="icon" data-icon="F"></span>Chats</a>
+				<li class="current"><a href="/chats"><span class="icon" data-icon="F"></span>Chats</a>
 					<ul>
-						<li><a href="/chats/add"><span class="icon" data-icon="+"></span>Create</a></li>
+						<li class="current"><a href="/chats/add"><span class="icon" data-icon="+"></span>Create</a></li>
 						<li class="divider"></li>
 						<li><a href="/chats/active"><span class="icon" data-icon="A"></span>Active Chats</a></li>
 						<li><a href="/chats/finished"><span class="icon" data-icon="C"></span>Finished Chats</a></li>
