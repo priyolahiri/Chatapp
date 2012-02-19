@@ -40,7 +40,7 @@
 				<li><a href="/chats"><span class="icon" data-icon="F"></span>Chats</a>
 					<ul>
 						<li><a href=""><span class="icon" data-icon="+"></span>Create</a></li>
-						<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
+						<li class="divider"></li>
 						<li><a href=""><span class="icon" data-icon="A"></span>Active Chats</a></li>
 						<li><a href=""><span class="icon" data-icon="C"></span>Finished Chats</a></li>
 					</ul>
