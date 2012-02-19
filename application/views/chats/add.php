@@ -58,7 +58,21 @@
 						$imgurl = ($socialauth->facebook_profile->photoURL == "NA") ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 						$name = !$socialauth->twitter_profile->lastName ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twiiter_profile->firstName
 					?>
-					<img src="<?php echo($imgurl) ?>">Hi, <?php echo($name) ?>. Welcome to your dashboard. Use the menu on the top to access your options. 
+					<p>
+						<img src="<?php echo($imgurl) ?>">Hi, <?php echo($name) ?>. 
+					</p>
+					<p>Create your chat:</p>
+					<?php
+						echo Form::open('/chats/add', 'POST');
+						echo Form::label('chatid', 'Chat Name');
+						echo '<br/>';
+						echo Form::text('chatid');
+						echo '<br/>';
+						echo Form::label('chatscore', 'Do you want score for chat?');
+						echo '<br/>';
+						echo Form::radio('chatscore', 'yes'); echo Form::radio('chatscore', 'no');
+						echo Form::close();
+					?>
 				</div>
 				<!-- END CONTENT AREA -->
 			</div>
