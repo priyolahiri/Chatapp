@@ -35,7 +35,7 @@
 			<div class=clear></div>
 			<!-- BEGIN MENU -->
 			<ul class="menu">
-				<li class="current"><span class="icon" data-icon="4"></span><a href="">Dash</a></li>
+				<li class="current"><a href="/dash"><span class="icon" data-icon="4"></span>Dash</a></li>
 				<li><a href=""><span class="icon" data-icon="H"></span>Connect Account</a></li>
 				<li><a href="/chats"><span class="icon" data-icon="F"></span>Chats</a>
 					<ul>
