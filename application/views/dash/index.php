@@ -35,50 +35,26 @@
 			<div class=clear></div>
 			<!-- BEGIN MENU -->
 			<ul class="menu">
-				<li class="current"><a href="">Item 1</a></li>
-				<li><a href="">Item 2</a></li>
-				<li><a href=""><span class="icon" data-icon="R"></span>Item 3</a>
+				<li class="current"><a href="">Dash</a></li>
+				<li><a href="">Connect Account</a></li>
+				<li><a href="/chats"><span class="icon" data-icon="R"></span>Chats</a>
 					<ul>
-						<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
-						<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
-							<ul>
-								<li><a href=""><span class="icon" data-icon="Z"></span>Sub Item</a></li>
-								<li><a href=""><span class="icon" data-icon="k"></span>Sub Item</a></li>
-								<li><a href=""><span class="icon" data-icon="J"></span>Sub Item</a></li>
-								<li><a href=""><span class="icon" data-icon="="></span>Sub Item</a></li>
-							</ul>
-						</li>
-						<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
+						<li><a href=""><span class="icon" data-icon="G"></span>Active</a></li>
+						<li><a href=""><span class="icon" data-icon="A"></span>Finsihed</a></li>
 					</ul>
 				</li>
-				<li><a href="">Item 4</a></li>
+				<li><a href="/logout">Logout</a></li>
 			</ul>	
 	 		<!-- END MENU -->
 	 		<div class="clear"></div>
 	 		<!-- BEGIN BODY AREA -->
 			<div class="col_12" id="body_area">
 				<!-- BEGIN CONTENT AREA -->
-				<div class="col_8" id="content_area">
+				<div class="col_12" id="content_area">
 					<h3>Dashboard</h3>
 					<?php var_dump($socialauth); ?>
 				</div>
 				<!-- END CONTENT AREA -->
-				<!-- BEGIN SIDEBAR AREA -->
-				<div class="col_4" id="sidebar_area">
-					<div class="sidebar_wrap">
-						<div class="sidebar_head">
-							<h5>Login</h6>
-						</div>
-						<div class="sidebar_body">
-							<p align="center" class="zerom">
-								Login using <br/><br/>
-								<a href="/login/social/facebook"><span class="icon social x-large blue" data-icon="F"></span></a>	
-								<a href="/login/social/twitter"><span class="icon social x-large blue" data-icon="t"></span></a><hr/>
-							</p>
-						</div>
-					</div>
-				</div>
-				<!-- END SIDEBAR AREA -->
 			</div>
 			<!-- END BODY AREA -->
 			<div class="clear"></div>
