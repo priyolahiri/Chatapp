@@ -35,6 +35,7 @@ Class Socialauth {
 				$user = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id)->first();
 				if ($user) {
 					$this->user_id = $user->id;
+					$this->user_role = $user->role;
 				} else {
 					$usercreate = new User();
 					if  ($this->facebook_status) {
@@ -47,6 +48,7 @@ Class Socialauth {
 					$userquery = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id)->first();
 					if ($userquery) {
 						$this->user_id = $userquery->id;
+						$this->user_role = $userquery->role;
 					}
 				}
 		}
