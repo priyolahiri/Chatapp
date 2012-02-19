@@ -34,9 +34,9 @@ return array(
 	|
 	*/
 
-	'GET /' => function()
-	{
-		return View::make('home.index');
-	},
+	//'GET /' => function()
+	//{
+	//	return View::make('home.index');
+	//},
 
 );

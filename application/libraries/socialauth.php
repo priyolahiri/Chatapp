@@ -3,20 +3,43 @@ Class Socialauth {
 	public function __construct() {
 		require_once(APPROOT. "/public/hybridauth/Hybrid/Auth.php" );
 		$this->hybridauth = new Hybrid_Auth(HYBRID_CONFIG);
-		$this->providers = array('facebook','google','twitter','linkedin');
+		$this->providers = array('facebook','twitter');
 		$this->userprofile=array();
 		foreach ($this->providers as $provider) {
 			$status_var = $provider.'_status';
 			$profile_var = $provider.'_profile';
+			$identifier_var = $provider.'_id';
+			$displayname_var = $provider.'_displayName';
+			$photourl_var = $provider.'_photoURL';
 			$this->$status_var = $this->hybridauth->isConnectedWith($provider);
 			if ($this->$status_var) {
 				try {
 					$adapter = $this->hybridauth->authenticate($provider);
 					$this->$profile_var = $adapter->getUserProfile();
+					$this->$identifier_var = $this->$profile_var->identifier;
+					$this->$displayname_var = $this->$profile_var->displayName;
+					$this->$photourl_var = $this->$profile_var->photoURL;
 				} catch (Exception $e) {
 					$this->errorhandle($e);
 				}
 			}
+		}
+		if ($this->facebook_status or $this->twitter_status) {
+			$this->user = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id);
+			if ($this->user) {
+				$this->authenticated = true;
+			} else {
+				$this->user = new User();
+				if ($this->facebook_status) {
+				$this->user->facobook_id = $this->facebook_id;
+				}
+				if ($this->twitter_status) {
+				$this->user->twitter_id = $this->twitter_id;
+				}
+				$this->user->save();
+			}
+		} else {
+			$this->authenticated = false;
 		}
 	}
 	public function authenticate($provider) {
