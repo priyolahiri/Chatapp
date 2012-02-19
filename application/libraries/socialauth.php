@@ -24,25 +24,7 @@ Class Socialauth {
 				}
 			}
 		}
-		if ($this->facebook_status or $this->twitter_status) {
-			$user = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id);
-			if ($user) {
-				$this->authenticated = true;
-				//$this->userdetail = $user;
-			} else {
-				$usercreate = new User();
-				if ($this->facebook_status) {
-				$usercreate->facobook_id = $this->facebook_id;
-				}
-				if ($this->twitter_status) {
-				$usercreate->twitter_id = $this->twitter_id;
-				}
-				$usercreate->save();
-				//$this->userdetail = $usecreate;
-			}
-		} else {
-			$this->authenticated = false;
-		}
+		
 	}
 	public function authenticate($provider) {
 		$profile_var = $provider.'_profile';
