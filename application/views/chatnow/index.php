@@ -37,7 +37,7 @@
 						dataType: 'json',
 						success: function(data) {
 							console.log(data);
-							_.each(data.oldhistory, function(oldmsg) {
+							_.each(data, function(oldmsg) {
 								console.log(oldmsg);
 								var chattime = oldmsg.timenow;
 								var chatmsg = oldmsg.msg;
