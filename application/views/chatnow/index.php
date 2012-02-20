@@ -43,9 +43,20 @@
     					//console.log(member);
     					var name = member.info.name;
     					var img = member.info.imgURL;
-    					var memberinsert = '<li class="contact_element">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
     					$("#contact_list").append(memberinsert);
  				});
+			});
+			channel.bind('pusher:member_added', function(member) {
+  			// for example:
+  				var name = member.info.name;
+    				var img = member.info.imgURL;
+    				var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    				$("#contact_list").append(memberinsert);
+			});
+			channel.bind('pusher:member_removed', function(member) {
+  				var id = '#member_' + member.id;
+  				$(id).remove();
 			});
 		</script>
 	</head>
