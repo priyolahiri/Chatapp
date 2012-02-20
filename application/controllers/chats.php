@@ -24,6 +24,10 @@ Class Chats_Controller extends Controller {
 						if (strlen($chat_name)<4 and strlen($chatname) > 50) {
 							return Redirect::to('/chats/add')->with('error', 'Chat name needs to be more than 3 chars and less than 51 chars.');
 						}
+						$checkname = Chat::where('chatname', '=', $chat_name)->or_where('chatslug', '=', $chat_slug);
+						if ($checkname) {
+							return Redirect::to('/chats/add')->with('error', 'Chat name already taken. Please choose another.');
+						}
 						$newchat = new Chat();
 						$newchat->chatname = $chat_name;
 						$newchat->chatslug = $chat_slug;
