@@ -42,8 +42,9 @@
 						dataType: 'json',
 						success: function(data) {
 							refreshmod();
-						});
-					);
+						}
+					});
+				);
 				});
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
