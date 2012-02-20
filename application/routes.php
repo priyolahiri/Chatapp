@@ -97,10 +97,10 @@ return array(
 			return json_encode(array('error' => 'Please enter something. You cannot send a blank chat'));
 		}
 		if (!$postimgsrc=="NA" and !$postimgcode) {
-			return json_encode(array('error' => 'Please enter valid image code.'));
+			return json_encode(array('msgerror' => 'Please enter valid image code.'));
 		}
 		if (!$postvidsrc=="NA" and !$postvidcode) {
-			return json_encode(array('error' => 'Please enter valid video code.'));
+			return json_encode(array('msgerror' => 'Please enter valid video code.'));
 		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
@@ -117,7 +117,7 @@ return array(
 			$msg.="<iframe width='320' height='240' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
 		$redischat->addMsg($msg);
-		return json_encode(array('success' => true));
+		return json_encode(array('msgsuccess' => true));
 	},
 	'GET /getchat/(:any)' => function($chatslug) {
 		$socialauth = new Socialauth();

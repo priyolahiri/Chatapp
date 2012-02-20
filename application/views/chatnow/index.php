@@ -46,14 +46,14 @@
 						data: postdata,
 						success: function(data) {
 							console.log(data);
-							console.log(data.success);
-							console.log(data.error);
-							if (data['success']) {
+							console.log(data.msgsuccess);
+							console.log(data.msgerror);
+							if (data.msgsuccess) {
 								$('#chatsuccess').html('');
 								$('#chaterror').html('');
 								$('#chatsuccess').html('Send Success!');
 							}
-							if (data['error']) {
+							if (data.msgerror) {
 								$('#chatsuccess').html('');
 								$('#chaterror').html('');
 								$('#chaterror').html(data.error);
