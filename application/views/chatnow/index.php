@@ -63,10 +63,10 @@
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var memid = oldobj.key;
-								var output = '<li class="modchat_element_'+c+'">At '+chattime+':</li>';
-								var output2 = '<li class="modchat_element_'+c+'">'+chatmsg+'</li>';
-								$('#chat_list')
-								$('#chat_list').append(output+output2);
+								var output = '<li class=" mod_other modchat_element_'+c+'">At '+chattime+':</li>';
+								var output2 = '<li class="mod_other modchat_element_'+c+'">'+chatmsg+'</li>';
+								$('#moderate_list').remove('li.mod_other');
+								$('#moderate_list').append(output+output2);
 							});
 						}
 				})
