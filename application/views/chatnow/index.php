@@ -101,7 +101,7 @@
 					<div class="col_8 chat_main" id="main_window">
 						<div class="elements">
              				<ul id="chat_list">
-               					<li class="window_block" id="member_count"></li>
+               					<li class="window_block">Chat</li>
                					<li><hr/></li>
              				</ul>
        					</div>
@@ -139,8 +139,9 @@
 					</div>
 					<div class="col_6 chat_main" id="moderate_window">
 						<div class="elements">
-             				<ul>
-               			
+             				<ul id="moderate_list">
+               					<li class="window_block">Moderation</li>
+               					<li><hr/></li>
              				</ul>
        					</div>
 					</div>
