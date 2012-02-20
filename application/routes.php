@@ -57,4 +57,17 @@ return array(
 		$redichat =new Redischat($chatsearch->chatslug, $chatsearch->score);
 		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redichat);
 	},
+	'POST /chatauth' => function() {
+		$socialauth = new Socialauth();
+		if (!$socialauth->user_id) {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		$user_id = $socialauth->user_id;
+		$role = $socialauth->user_role;
+		$imgurl = ($socialauth->facebook_profile->photoURL == "NA") ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+		$name = !$socialauth->twitter_profile->lastName ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twiiter_profile->firstName;
+		$presence_data = array('name' => $name, 'imgURL' => $imgurl);
+		echo $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $presence_data);
+	},
 );

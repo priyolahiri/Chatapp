@@ -31,9 +31,10 @@
 				$('#contact_window').wijsuperpanel();
 				$('#moderate_window').wijsuperpanel();
 			})
-			var pusher = new Pusher('bcc01e8ba13fef13ba43');
-			var presenceChannel = pusher.subscribe(presenceChannelName);
-		</script>		
+			var pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
+			Pusher.channel_auth_endpoint = '/chatauth';
+			var presenceChannel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
+		</script>
 	</head>
 	<!-- END HEAD -->
 	<!-- BEGIN BODY -->
