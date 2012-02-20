@@ -138,7 +138,7 @@
 								var output2 = '<li class="modchat_element" data-key="'+c+'">'+chatmsg+'</li>';
 								var output3 = '<li class="modchat_approve modchat_element"><span class="button small green app_comment" data-id="'+c+'">approve</span></li>';
 								$('#moderate_list').remove('li.modchat_element');
-								$('#moderate_list').append(output+output2);
+								$('#moderate_list').append(output+output2+output3);
 								var elem = document.getElementById('moderate_window');
   								elem.scrollTop = elem.scrollHeight;
 							});
