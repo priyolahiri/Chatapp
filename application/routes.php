@@ -119,7 +119,7 @@ return array(
 		$redischat->addMsg($msg);
 		return json_encode(array('success' => true));
 	},
-	'POST /getchat/(:any)' => function($chatslug) {
+	'GET /getchat/(:any)' => function($chatslug) {
 		$socialauth = new Socialauth();
 		if (!$socialauth->user_id) {
 			header('', true, 403);
