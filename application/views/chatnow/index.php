@@ -140,7 +140,6 @@
 				$('#chat_list').append(output+output2);
 				var elem = document.getElementById('main_window');
   				elem.scrollTop = elem.scrollHeight;
-  				$("div#chat_windows li:last").scrollintoview();
 			});
 			c = 0;
 		</script>
