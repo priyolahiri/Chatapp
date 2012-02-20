@@ -36,7 +36,7 @@
 				$('a.app_comment').on('click', function(e) {
 					e.preventDefault();
 					var msgid = $($this).attr('data-id');
-					console.log(msgid);
+					console.log('msg'+msgid);
 					$.ajax({
 						url: '/chatapprove/'+msgid,
 						type: 'GET',
