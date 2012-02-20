@@ -28,7 +28,10 @@
 		<!-- END STYLES -->
 		<script type="text/javascript">
 			$(function() {
-				$('#main_window').wijsuperpanel();
+				$('#main_window').wijsuperpanel({
+					vScroller.scrollBarVisibility : true,
+					hScroller.scrollBarVisibility : 'auto'
+				});
 				$('#contact_window').wijsuperpanel();
 				$('#moderate_window').wijsuperpanel();
 				$.ajax({
