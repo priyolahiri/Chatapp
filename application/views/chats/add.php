@@ -55,6 +55,13 @@
 				<div class="col_12" id="content_area">
 					<h3>Create A Chat</h3>
 					<?php
+					if ($error) {
+					?>
+						<div class="notice error"><?php echo($error) ?></div><div class="clear"></div>
+					<?php
+					}
+					?>
+					<?php
 						echo Form::open('/chats/add', 'POST');
 						echo Form::label('chatid', 'Chat Name');
 						echo '<br/>';
