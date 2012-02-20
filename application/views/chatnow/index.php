@@ -38,6 +38,7 @@
 						success: function(data) {
 							console.log(data);
 							_.each(data.oldhistory, function(oldmsg) {
+								console.log(oldmsg);
 								var chattime = oldmsg.timenow;
 								var chatmsg = oldmsg.msg;
 								var output = '<li class="chat_element">At '+chattime+':</li>';
