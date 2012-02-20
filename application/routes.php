@@ -33,10 +33,27 @@ return array(
 	|		}
 	|
 	*/
-
+	//9886023241
 	//'GET /' => function()
 	//{
 	//	return View::make('home.index');
 	//},
-
+	'GET /chatnow/(:any)' => function($slug)
+	{
+		$socialauth = new Socialauth();
+		if (!$socialauth->user_id) {
+			return Redirect::to('/');
+		}
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return Redirect::to('/');
+		}
+		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmin) {
+			$admin = true;
+		} else {
+			$admin = false;
+		}
+		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin);
+	},
 );
