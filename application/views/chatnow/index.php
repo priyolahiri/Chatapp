@@ -38,7 +38,7 @@
 				//console.log(members.count);
 				var onlinetext = members.count + ' user(s) online';
 				console.log(onlinetext);
-				$('#members_count').html(onlinetext);
+				$('#member_count').html(onlinetext);
 				members.each(function(member) {
     					console.log(member);
  				});
