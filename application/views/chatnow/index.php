@@ -46,17 +46,19 @@
 						data: postdata,
 						success: function(data) {
 							console.log(data);
-							console.log(data.msgsuccess);
-							console.log(data.msgerror);
-							if (data.msgsuccess) {
+							var msg = data;
+							console.log(msg);
+							console.log(msg.msgsuccess);
+							console.log(msg.msgerror);
+							if (msg.msgsuccess) {
 								$('#chatsuccess').html('');
 								$('#chaterror').html('');
 								$('#chatsuccess').html('Send Success!');
 							}
-							if (data.msgerror) {
+							if (msg.msgerror) {
 								$('#chatsuccess').html('');
 								$('#chaterror').html('');
-								$('#chaterror').html(data.error);
+								$('#chaterror').html(msg.msgerror);
 							}
 						}
 					})
