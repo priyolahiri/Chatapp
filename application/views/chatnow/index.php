@@ -28,18 +28,9 @@
 		<!-- END STYLES -->
 		<script type="text/javascript">
 			$(function() {
-				$('#main_window').wijsuperpanel({
-					'vScroller.scrollBarVisibility' : 'auto',
-					'hScroller.scrollBarVisibility' : 'auto'
-				});
-				$('#contact_window').wijsuperpanel({
-					'vScroller.scrollBarVisibility' : 'auto',
-					'hScroller.scrollBarVisibility' : 'auto'
-				});
-				$('#moderate_window').wijsuperpanel({
-					'vScroller.scrollBarVisibility' : 'auto',
-					'hScroller.scrollBarVisibility' : 'auto'
-				});
+				$('#main_window').wijsuperpanel();
+				$('#contact_window').wijsuperpanel();
+				$('#moderate_window').wijsuperpanel();
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
@@ -180,7 +171,7 @@
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_12" id="content_area">
 					<h3><?php echo ($chat->chatname) ?></h3>
-					<div class="col_8 chat_main" id="main_window">
+					<div class="col_8 chat_main" id="main_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true">
 						<div class="elements">
              				<ul id="chat_list">
                					<li class="window_block">Chat</li>
@@ -188,7 +179,7 @@
              				</ul>
        					</div>
 					</div>
-					<div class="col_3 chat_main" id="contact_window">
+					<div class="col_3 chat_main" id="contact_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true">
 						<div class="elements">
              				<ul id="contact_list">
                					<li class="window_block" id="member_count"></li>
@@ -222,7 +213,7 @@
 						<div class="notice success" id="chatsuccess"></div>
 						<div class="notice error" id="chaterror"></div>
 					</div>
-					<div class="col_6 chat_main" id="moderate_window">
+					<div class="col_6 chat_main" id="moderate_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true">
 						<div class="elements">
              				<ul id="moderate_list">
                					<li class="window_block">Moderation</li>
