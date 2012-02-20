@@ -31,6 +31,7 @@
 				//$('#main_window').wijsuperpanel();
 				//$('#contact_window').wijsuperpanel();
 				//$('#moderate_window').wijsuperpanel();
+				c=0;
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
@@ -39,7 +40,6 @@
 							console.log(data);
 							_.each(data, function(oldmsg) {
 								console.log(oldmsg);
-								c = c + 1;
 								var oldobj = jQuery.parseJSON(oldmsg);
 								console.log(oldobj);
 								var chattime = oldobj.timenow;
@@ -60,6 +60,7 @@
 								console.log(oldmsg);
 								var oldobj = jQuery.parseJSON(oldmsg);
 								console.log(oldobj);
+								c = c + 1;
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var memid = oldobj.key;
