@@ -28,9 +28,9 @@
 		<!-- END STYLES -->
 		<script type="text/javascript">
 			$(function() {
-				$('#main_window').wijsuperpanel();
-				$('#contact_window').wijsuperpanel();
-				$('#moderate_window').wijsuperpanel();
+				//$('#main_window').wijsuperpanel();
+				//$('#contact_window').wijsuperpanel();
+				//$('#moderate_window').wijsuperpanel();
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
