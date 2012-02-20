@@ -98,7 +98,7 @@ class Rediska_Autoloader
     public static function getRediskaPath()
     {
         if (!self::$_rediskaPath) {
-            self::$_rediskaPath = realpath(dirname(__FILE__) . '/..');
+            self::$_rediskaPath = LIBRARIES.'/Rediska';
         }
 
         return self::$_rediskaPath;
