@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/js/underscore.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
@@ -33,8 +34,16 @@
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
+						dataType: 'json',
 						success: function(data) {
 							console.log(data);
+							_.each(data, function(oldmsg) {
+								var chattime = oldmsg.timenow;
+								var chatmsg = oldmsg.msg;
+								var output = '<li class="chat_element">At '+chattime+':</li>';
+								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
+								$('#chat_list').append(output+output2);
+							});
 						}
 				})
 				$('#submit_chat').submit(function(e) {
@@ -48,9 +57,6 @@
 						success: function(data) {
 							console.log(data);
 							var msg = data;
-							console.log(msg);
-							console.log(msg.msgsuccess);
-							console.log(msg.msgerror);
 							if (msg.msgsuccess) {
 								$('#chatsuccess').html('');
 								$('#chaterror').html('');
