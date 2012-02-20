@@ -1,7 +1,7 @@
 <?php
 Class Redischat {
 	public function __construct($chatid, $score) {
-		//include '/Rediska.php';
+		include '/Rediska.php';
 		$this->rediska = new Rediska();
 		$this->pusher = new Pusher('bcc01e8ba13fef13ba43', '7d96c3c187a49ed7f0ee', '15575');
 		$this->pusherKey = 'bcc01e8ba13fef13ba43';
