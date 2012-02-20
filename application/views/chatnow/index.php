@@ -29,16 +29,16 @@
 		<script type="text/javascript">
 			$(function() {
 				$('#main_window').wijsuperpanel({
-					vScroller.scrollBarVisibility : 'auto',
-					hScroller.scrollBarVisibility : 'auto'
+					'vScroller.scrollBarVisibility' : 'auto',
+					'hScroller.scrollBarVisibility' : 'auto'
 				});
 				$('#contact_window').wijsuperpanel({
-					vScroller.scrollBarVisibility : 'auto',
-					hScroller.scrollBarVisibility : 'auto'
+					'vScroller.scrollBarVisibility' : 'auto',
+					'hScroller.scrollBarVisibility' : 'auto'
 				});
 				$('#moderate_window').wijsuperpanel({
-					vScroller.scrollBarVisibility : 'auto',
-					hScroller.scrollBarVisibility : 'auto'
+					'vScroller.scrollBarVisibility' : 'auto',
+					'hScroller.scrollBarVisibility' : 'auto'
 				});
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
