@@ -35,6 +35,7 @@
 					var postdata = $('#submit_chat').serialize();
 					$.ajax({
 						url: '/sendchat/<?php echo($chat->chatslug) ?>',
+						type: 'POST',
 						data: postdata,
 						success: function(data) {
 							if (data.success) {
