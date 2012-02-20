@@ -61,9 +61,11 @@
 					<?php
 					}
 					?>
-					<a class="button orange" href="/chats/add">Add Chat</a><br/>
-					<a class="button orange" href="/chats/active">Active Chats</a>
-					<a class="button orange" href="/chats/finished">Finished Chats</a>
+					<p><a class="button medium red" href="/chats/add">Add Chat</a><br/></p>
+					<p>
+						<a class="button medium green" href="/chats/active">Active Chats</a>
+						<a class="button medium orange" href="/chats/finished">Finished Chats</a>
+					</p>
 				</div>
 				<!-- END CONTENT AREA -->
 			</div>
