@@ -25,7 +25,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />                          <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
 		<script type="text/javascript">
-			$(funtion() {
+			$(function() {
 				$('#main_window').wijsuperpanel();
 				$('#contact_window').wijsuperpanel();
 			})
