@@ -1,7 +1,7 @@
 <?php
 
 // Register autoloader
-require_once dirname(__FILE__) . '/Rediska/Autoloader.php';
+require_once LIBRARIES.'/Rediska/Autoloader.php';
 Rediska_Autoloader::register();
 
 /**
