@@ -23,7 +23,7 @@ Class Redischat {
 		$timenow = date('d/m/Y H:i', time());
 		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));
 		$this->modchatset[] = $transport;
-		$this->pusher->trigger($this->pusherModChannel, 'chat', $transport, null, false, true);
+		//$this->pusher->trigger($this->pusherModChannel, 'chat', $transport, null, false, true);
 	}
 	public function addScore($score) {
 		$timestamp = time();
@@ -32,6 +32,9 @@ Class Redischat {
 	}
 	public function getChat() {
 		return $this->chatset->toArray(true);
+	}
+	public function getChatMod() {
+		return $this->modchatset->toArray(true);
 	}
 	public function getScore() {
 		return $this->chatscore->toArray(true);

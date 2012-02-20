@@ -37,14 +37,35 @@
 						dataType: 'json',
 						success: function(data) {
 							console.log(data);
-							_.each(data, function(oldmsg) {
+							_.each(data, function(oldmmsg, oldkey) {
 								console.log(oldmsg);
+								console.log(oldkey)
 								var oldobj = jQuery.parseJSON(oldmsg);
 								console.log(oldobj);
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var output = '<li class="chat_element">At '+chattime+':</li>';
 								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
+								$('#chat_list').append(output+output2);
+							});
+						}
+				})
+				$.ajax({
+						url: '/getchatmod/<?php echo($chat->chatslug) ?>',
+						type: 'GET',
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							_.each(data, function(oldmsg) {
+								console.log(oldmsg);
+								var oldobj = jQuery.parseJSON(oldmsg);
+								console.log(oldobj);
+								var chattime = oldobj.timenow;
+								var chatmsg = oldobj.msg;
+								var memid = oldobj.key;
+								var output = '<li class="modchat_element">At '+chattime+':</li>';
+								var output2 = '<li class="modchat_element">'+chatmsg+'</li>';
+								$('#chat_list')
 								$('#chat_list').append(output+output2);
 							});
 						}

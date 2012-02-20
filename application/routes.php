@@ -116,7 +116,11 @@ return array(
 		if ($postvidsrc=='youtube') {
 			$msg.="<iframe width='320' height='240' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
-		$redischat->addMsg($msg);
+		if ($socialauth->user_role == "normal") {
+			$redischat->addMsgMod($msg);
+		} else {
+			$redischat->addMsg($msg);
+		}
 		return json_encode(array('msgsuccess' => true));
 	},
 	'GET /getchat/(:any)' => function($chatslug) {
@@ -138,5 +142,25 @@ return array(
 		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		return json_encode($redischat->getChat());
-	} 
+	} ,
+	'GET /getchatmod/(:any)' => function($chatslug) {
+		$socialauth = new Socialauth();
+		if (!$socialauth->user_id) {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		$chatsearch = Chat::where('chatslug', '=', $chatslug)->first();
+		if (!$chatsearch) {
+			header('', true, 403);
+  			echo( "Chat not found" );
+		}
+		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmin) {
+			$admin = true;
+		} else {
+			$admin = false;
+		}
+		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+		return json_encode($redischat->getModChat());
+	} ,
 );
