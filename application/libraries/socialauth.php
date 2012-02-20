@@ -72,10 +72,10 @@ Class Socialauth {
 			case 5 : $msg = "Authentification failed. ". "The user has canceled the authentication or the provider refused the connection.";
 			break;
 			case 6 : $msg = "User profile request failed. Most likely the user is not connected ". "to the provider and he should authenticate again.";
-			$socialauth->logout();
+			$this->socialauth->logoutAllProviders();
 			break;
 			case 7 : $msg = "User not connected to the provider.";
-			$socialauth->logout();
+			$this->socialauth->logoutAllProviders();
 			break;
 			case 8 : $msg = "Provider does not support this feature."; break;
 		}
