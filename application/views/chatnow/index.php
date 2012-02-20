@@ -136,7 +136,7 @@
 								var memid = oldobj.key;
 								var output = '<li class="modchat_element" data-key="'+c+'">At '+chattime+':</li>';
 								var output2 = '<li class="modchat_element" data-key="'+c+'">'+chatmsg+'</li>';
-								var output3 = '<li class="modchat_approve"><span class="button small green app_comment" data-id="'+c+'">approve</span>
+								var output3 = '<li class="modchat_approve"><span class="button small green app_comment" data-id="'+c+'">approve</span></li>';
 								$('#moderate_list').remove('li.modchat_element');
 								$('#moderate_list').append(output+output2);
 								var elem = document.getElementById('moderate_window');
