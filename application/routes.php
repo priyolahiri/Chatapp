@@ -63,6 +63,7 @@ return array(
 			header('', true, 403);
   			echo( "Not authorized" );
 		}
+		$pusher = new Pusher('bcc01e8ba13fef13ba43', '7d96c3c187a49ed7f0ee', '15575');
 		$user_id = $socialauth->user_id;
 		$role = $socialauth->user_role;
 		$imgurl = ($socialauth->facebook_profile->photoURL == "NA") ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
