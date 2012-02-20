@@ -77,7 +77,7 @@ return array(
 			header('', true, 403);
   			echo( "Not authorized" );
 		}
-		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		$chatsearch = Chat::where('chatslug', '=', $chatslug)->first();
 		if (!$chatsearch) {
 			header('', true, 403);
   			echo( "Chat not found" );
