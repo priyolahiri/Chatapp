@@ -58,7 +58,6 @@
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
-							console.log(data);
 							_.each(data, function(oldmsg) {
 								console.log(oldmsg);
 								var oldobj = jQuery.parseJSON(oldmsg);
