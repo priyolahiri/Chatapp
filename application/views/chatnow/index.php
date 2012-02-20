@@ -28,6 +28,7 @@
 			$(function() {
 				$('#main_window').wijsuperpanel();
 				$('#contact_window').wijsuperpanel();
+				$('#moderate_window').wijsuperpanel();
 			})
 		</script>		
 	</head>
@@ -69,7 +70,7 @@
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_12" id="content_area">
 					<h3><?php echo ($chat->chatname) ?></h3>
-					<div class="col_9 chat_main" id="main_window">
+					<div class="col_8 chat_main" id="main_window">
 						<div class="elements">
              				<ul>
                			
@@ -84,7 +85,14 @@
        					</div>
 					</div>
 					<div class="clear"></div>
-					<div class="col_12"><input type="text" id="sendchat"><button class="small green">Send</button></div>
+					<div class="col_5"><input type="text" id="sendchat"><button class="small green">Send</button></div>
+					<div class="col_6 chat_main" id="moderate_window">
+						<div class="elements">
+             				<ul>
+               			
+             				</ul>
+       					</div>
+					</div>
 				</div>
 				<!-- END CONTENT AREA -->
 			</div>
