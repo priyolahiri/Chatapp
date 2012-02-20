@@ -32,7 +32,10 @@ Class Chats_Controller extends Controller {
 						$newchat->status = "active";
 						$newchat->score = Input::get('chatscore');
 						$newchat->save();
-						$success = "Created chat '$chat_name' with slug '$chat_slug' and id: ".$newchat->id;
+						$newadmin = new Chatadmin();
+						$newadmin->chat_id = $newchat->id;
+						$newadmin->user_id = $socialauth->user_id;
+						$success = "Created chat '$chat_name' with slug '$chat_slug' and id: ".$newchat->id.". You have been added as chat admin for the chat.";
  				}
 				return View::make('chats.add')->with('error', $error)->with('socialauth', $socialauth)->with('success', $success);
 			}
