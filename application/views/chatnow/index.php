@@ -74,6 +74,7 @@
     				$("#contact_list").append(memberinsert);
 			});
 			channel.bind('pusher:member_removed', function(member) {
+				console.log('member removed');
   				var id = '#member_' + member.id;
   				$(id).remove();
 			});
