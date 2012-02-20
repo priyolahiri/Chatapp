@@ -40,7 +40,7 @@
 						url: '/chatapprove/'+msgid,
 						type: 'GET',
 						dataType: 'json',
-						success: fuction($data) {
+						success: fuction(data) {
 							refreshmod();
 						}
 					})
