@@ -53,7 +53,7 @@
 							});
 						}
 				})
-				setInterval(refreshmod(),millisec);
+				setInterval(refreshmod(),5000);
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
