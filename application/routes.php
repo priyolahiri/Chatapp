@@ -54,8 +54,8 @@ return array(
 		} else {
 			$admin = false;
 		}
-		$redichat =new Redischat($chatsearch->chatslug, $chatsearch->score);
-		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redichat);
+		$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
+		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
 	'POST /chatauth' => function() {
 		$socialauth = new Socialauth();
@@ -102,7 +102,7 @@ return array(
 		if (!$postvidsrc=="NA" and !$postvidcode) {
 			return json_encode(array('error' => 'Please enter valid video code.'));
 		}
-		$redischat = Redischat($chatsearch->chatslug, $chatsearch->score);
+		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 		$msg = "<img src='$img' width='20' height='20' /> ".$name . " says :<br/>";
