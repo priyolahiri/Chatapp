@@ -32,35 +32,13 @@
 				</div>
 			</div>
 			<!-- END HEADER AREA -->
-			<div class=clear></div>
-			<!-- BEGIN MENU -->
-			<ul class="menu">
-				<li class="current"><a href="">Item 1</a></li>
-				<li><a href="">Item 2</a></li>
-				<li><a href=""><span class="icon" data-icon="R"></span>Item 3</a>
-					<ul>
-						<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
-						<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
-							<ul>
-								<li><a href=""><span class="icon" data-icon="Z"></span>Sub Item</a></li>
-								<li><a href=""><span class="icon" data-icon="k"></span>Sub Item</a></li>
-								<li><a href=""><span class="icon" data-icon="J"></span>Sub Item</a></li>
-								<li><a href=""><span class="icon" data-icon="="></span>Sub Item</a></li>
-							</ul>
-						</li>
-						<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
-					</ul>
-				</li>
-				<li><a href="">Item 4</a></li>
-			</ul>	
-	 		<!-- END MENU -->
 	 		<div class="clear"></div>
 	 		<!-- BEGIN BODY AREA -->
 			<div class="col_12" id="body_area">
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_8" id="content_area">
 					<h3>Home</h3>
-					<?php var_dump($socialauth); ?>
+					<p>Please login from the right bar</p>
 				</div>
 				<!-- END CONTENT AREA -->
 				<!-- BEGIN SIDEBAR AREA -->
@@ -71,7 +49,6 @@
 						</div>
 						<div class="sidebar_body">
 							<p align="center" class="zerom">
-								Login using <br/><br/>
 								<a href="/login/social/facebook"><span class="icon social x-large blue" data-icon="F"></span></a>	
 								<a href="/login/social/twitter"><span class="icon social x-large blue" data-icon="t"></span></a><hr/>
 							</p>
