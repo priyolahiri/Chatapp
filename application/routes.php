@@ -113,7 +113,7 @@ return array(
 		if ($postimgsrc=='yfrog') {
 			$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
 		}
-		if ($vidimgsrc=='youtube') {
+		if ($postvidsrc=='youtube') {
 			$msg.="<iframe width='560' height='315' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
 		$redischat->addMsg($msg);
