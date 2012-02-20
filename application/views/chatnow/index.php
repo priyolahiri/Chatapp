@@ -93,7 +93,7 @@
 					<div class="col_3 chat_main" id="contact_window">
 						<div class="elements">
              				<ul>
-               					<li class="window_block" id="member_count"></li>;
+               					<li class="window_block" id="member_count"></li>
              				</ul>
        					</div>
 					</div>

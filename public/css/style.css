@@ -131,3 +131,14 @@ left:0;
 	min-height: 250px;
 	max-height: 250px;
 }
+.elements ul {
+	padding: 0px;
+	margin: 0px;
+}
+.elements li {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	clear: both;
+	width: 100%;
+}
