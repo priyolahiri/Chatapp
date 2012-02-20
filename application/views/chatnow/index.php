@@ -35,9 +35,10 @@
 			Pusher.channel_auth_endpoint = '/chatauth';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 			channel.bind('pusher:subscription_succeeded', function(members) {
-				console.log(members.count);
+				//console.log(members.count);
 				var onlinetext = members.count + ' user(s) online';
-				$('#members_count').text(onlinetext);
+				console.log(onlinetext);
+				$('#members_count').html(onlinetext);
 				members.each(function(member) {
     					console.log(member);
  				});
