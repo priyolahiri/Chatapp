@@ -130,6 +130,7 @@ left:0;
 .chat_main {
 	min-height: 250px;
 	max-height: 250px;
+	overflow: scroll;
 }
 .elements ul {
 	padding: 0px;
