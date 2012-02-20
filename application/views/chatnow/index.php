@@ -44,7 +44,6 @@
 							refreshmod();
 						}
 					});
-				);
 				});
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
