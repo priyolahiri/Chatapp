@@ -30,6 +30,14 @@ Class Redischat {
 		$transport = json_encode(array($timestamp, $score, $userinfo));
 		$this->chatset[] = $transport;
 	}
+	public function approve($id) {
+		$transport = json_decode($this->chatsel[$id-1]);
+		$timenow = date('d/m/Y H:i', time());
+		$newtransport = json_encode(array('timenow' => $timenow, 'msg' => $transport['msg']));
+		$this->chatset[] = $newtransport;
+		$this->modchatset->remove($transport);
+		return json_encode(array("msgsuccess" => "approved!"));
+	}
 	public function getChat() {
 		return $this->chatset->toArray(true);
 	}

@@ -163,4 +163,26 @@ return array(
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		return json_encode($redischat->getModChat());
 	} ,
+	'GET /chatapprove/(:numeric)' => function($id) {
+		$socialauth = new Socialauth();
+		if (!$socialauth->user_id) {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		$chatsearch = Chat::where('chatslug', '=', $chatslug)->first();
+		if (!$chatsearch) {
+			header('', true, 403);
+  			echo( "Chat not found" );
+		}
+		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmin) {
+			$admin = true;
+			$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+			return $redischat->approve($id);
+		} else {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		
+	}
 );

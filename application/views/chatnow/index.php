@@ -33,6 +33,18 @@
 				//$('#contact_window').wijsuperpanel();
 				//$('#moderate_window').wijsuperpanel();
 				c=0;
+				$('a.app_comment').click(function(e) {
+					e.preventDefault();
+					var msgid = $($this).attr('data-id');
+					$.ajax({
+						url: '/chatapprove/'+msgid,
+						type: 'GET',
+						dataType: 'json',
+						success: fuction($data) {
+							refreshmod();
+						}
+					})
+				});
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
