@@ -137,6 +137,6 @@ return array(
 			$admin = false;
 		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
-		return json_encode($redischat->getChat());
+		return json_encode(array("oldhistory" => $redischat->getChat()));
 	} 
 );
