@@ -98,6 +98,7 @@
 						<div class="elements">
              				<ul id="contact_list">
                					<li class="window_block" id="member_count"></li>
+               					<li><hr/></li>
              				</ul>
        					</div>
 					</div>
