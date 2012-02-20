@@ -43,7 +43,7 @@
     					//console.log(member);
     					var name = member.info.name;
     					var img = member.info.imgURL;
-    					var memberinsert = '<li class="contact_element">'+'<img src="'+img+'"> '+name+'</li>';
+    					var memberinsert = '<li class="contact_element">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
     					$("#contact_list").append(memberinsert);
  				});
 			});

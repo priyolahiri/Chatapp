@@ -155,4 +155,9 @@ li.contact_element {
 	border: 1px solid #888888;
 	padding: 2px;
 	margin: 2px;
+	line-height: 0.5em;
+}
+li.contact_element img {
+	height: 20px;
+	width: 20px;
 }
