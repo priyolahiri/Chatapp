@@ -37,9 +37,9 @@
 						dataType: 'json',
 						success: function(data) {
 							console.log(data);
-							_.each(data, function(oldmmsg, oldkey) {
+							_.each(data, function(oldmmsg) {
 								console.log(oldmsg);
-								console.log(oldkey)
+								c = c + 1;
 								var oldobj = jQuery.parseJSON(oldmsg);
 								console.log(oldobj);
 								var chattime = oldobj.timenow;
@@ -63,8 +63,8 @@
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var memid = oldobj.key;
-								var output = '<li class="modchat_element">At '+chattime+':</li>';
-								var output2 = '<li class="modchat_element">'+chatmsg+'</li>';
+								var output = '<li class="modchat_element_'+c+'">At '+chattime+':</li>';
+								var output2 = '<li class="modchat_element_'+c+'">'+chatmsg+'</li>';
 								$('#chat_list')
 								$('#chat_list').append(output+output2);
 							});
@@ -130,6 +130,7 @@
 				var output2 = '<li class="chat_element">'+chatmsg+'</li>';
 				$('#chat_list').append(output+output2);
 			});
+			c = 0;
 		</script>
 	</head>
 	<!-- END HEAD -->
