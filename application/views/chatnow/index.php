@@ -154,7 +154,7 @@
 							<label for="vid_source">Video Source</label>
 							<select id="vid_source" name="vid_source">
 								<option value="NA">None</option>
-								<option value="twitpic">Youtube</option>
+								<option value="youtube">Youtube</option>
 							</select>
 							<label for="vid_code">Video Code</label>
 							<input type="text" id="vid_code" name="vid_code">
