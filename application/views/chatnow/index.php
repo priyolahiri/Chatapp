@@ -42,8 +42,8 @@
 				members.each(function(member) {
     					//console.log(member);
     					var name = member.info.name;
-    					var img = member.info.imgUrl;
-    					var memberinsert = '<li class="window_element">'+'<img src='+img+'"> '+name+'</li>';
+    					var img = member.info.imgURL;
+    					var memberinsert = '<li class="contact_element">'+'<img src='+img+'"> '+name+'</li>';
     					$("#contact_list").append(memberinsert);
  				});
 			});
