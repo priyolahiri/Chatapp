@@ -48,7 +48,7 @@
 								var output = '<li class="chat_element">At '+chattime+':</li>';
 								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
 								$('#chat_list').append(output+output2);
-								var elem = document.getElementById('chat_window');
+								var elem = document.getElementById('main_window');
   								elem.scrollTop = elem.scrollHeight;
 							});
 						}
