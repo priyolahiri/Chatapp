@@ -55,8 +55,8 @@
 				<div class="col_12" id="content_area">
 					<h3>Dashboard</h3>
 					<?php
-						$imgurl = $socialauth->facebook_profile == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
-						$name = !$socialauth->twitter_profile->lastName ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twiiter_profile->firstName;
+						$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+						$name =  !$socialauth->facebook_profile == "NA" ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 					?>
 					<img src="<?php echo($imgurl) ?>">Hi, <?php echo($name) ?>. Welcome to your dashboard. Use the menu on the top to access your options. <br/><br/><?php print_r($socialauth); ?>
 				</div>

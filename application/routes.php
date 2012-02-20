@@ -66,8 +66,8 @@ return array(
 		$pusher = new Pusher('bcc01e8ba13fef13ba43', '7d96c3c187a49ed7f0ee', '15575');
 		$user_id = $socialauth->user_id;
 		$role = $socialauth->user_role;
-		$imgurl = ($socialauth->facebook_profile->photoURL == "NA") ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
-		$name = !$socialauth->twitter_profile->lastName ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twiiter_profile->firstName;
+		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+		$name =  !$socialauth->facebook_profile == "NA" ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 		$presence_data = array('name' => $name, 'imgURL' => $imgurl);
 		echo $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $presence_data);
 	},
