@@ -33,7 +33,7 @@
 				//$('#contact_window').wijsuperpanel();
 				//$('#moderate_window').wijsuperpanel();
 				c=0;
-				$('a.app_comment').click(function(e) {
+				$('a.app_comment').on('click', function(e) {
 					e.preventDefault();
 					var msgid = $($this).attr('data-id');
 					$.ajax({
@@ -42,8 +42,8 @@
 						dataType: 'json',
 						success: function(data) {
 							refreshmod();
-						}
-					})
+						});
+					);
 				});
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
@@ -65,7 +65,7 @@
 							});
 						}
 				})
-				setInterval('refreshmod()',5000);
+				setInterval('refreshmod()',20000);
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
