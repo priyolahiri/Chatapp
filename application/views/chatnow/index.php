@@ -36,6 +36,8 @@
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 			channel.bind('pusher:subscription_succeeded', function(members) {
 				console.log(members.count);
+				var onlinetext = members.count + ' user(s) online';
+				$('#members_count').text(onlinetext);
 				members.each(function(member) {
     					console.log(member);
  				});
@@ -90,7 +92,7 @@
 					<div class="col_3 chat_main" id="contact_window">
 						<div class="elements">
              				<ul>
-               			
+               					<li class="window_block" id="member_count"></li>;
              				</ul>
        					</div>
 					</div>
