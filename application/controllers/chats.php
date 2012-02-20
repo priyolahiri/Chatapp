@@ -24,6 +24,15 @@ Class Chats_Controller extends Controller {
 						if (strlen($chat_name)<4 and strlen($chatname) > 50) {
 							return Redirect::to('/chats/add')->with('error', 'Chat name needs to be more than 3 chars and less than 51 chars.');
 						}
+						$newchat = new Chat();
+						$newchat->chatname = $chat_name;
+						$newchat->chatslug = $chat_slug;
+						$newchat->user_id = $socialauth->user_id;
+						$newchat->createdon = time();
+						$newchat->status = "active";
+						$newchat->score = Input::get('chatscore');
+						$newchat->save();
+						$success = "Created chat '$chat_name' with slug '$chat_slug' and id: ".$newchat->id;
  				}
 				return View::make('chats.add')->with('error', $error)->with('socialauth', $socialauth)->with('success', $success);
 			}

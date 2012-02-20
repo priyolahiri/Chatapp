@@ -62,6 +62,13 @@
 					}
 					?>
 					<?php
+					if ($success) {
+					?>
+						<div class="notice success"><?php echo($success) ?></div><div class="clear"></div>
+					<?php
+					}
+					?>
+					<?php
 						echo Form::open('/chats/add', 'POST');
 						echo Form::label('chatid', 'Chat Name');
 						echo '<br/>';
