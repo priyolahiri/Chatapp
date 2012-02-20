@@ -71,4 +71,29 @@ return array(
 		$presence_data = array('name' => $name, 'imgURL' => $imgurl);
 		echo $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $presence_data);
 	},
+	'POST /sendchat/(:any)' => function($chatslug) {
+		$socialauth = new Socialauth();
+		if (!$socialauth->user_id) {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmin) {
+			$admin = true;
+		} else {
+			$admin = false;
+		}
+		$redischat = Redischat($chatsearch->chatslug, $chatsearch->score);
+		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
+		$posttext = Input::get('chat_text');
+		$postimgsrc = Input::get('img_source');
+		$postimgcode = Input::get('img_code');
+		
+	} 
 );

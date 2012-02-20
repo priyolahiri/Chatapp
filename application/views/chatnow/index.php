@@ -100,8 +100,9 @@
 					<h3><?php echo ($chat->chatname) ?></h3>
 					<div class="col_8 chat_main" id="main_window">
 						<div class="elements">
-             				<ul>
-               			
+             				<ul id="chat_list">
+               					<li class="window_block" id="member_count"></li>
+               					<li><hr/></li>
              				</ul>
        					</div>
 					</div>
@@ -114,7 +115,28 @@
        					</div>
 					</div>
 					<div class="clear"></div>
-					<div class="col_5"><input type="text" id="sendchat"><button class="small green">Send</button></div>
+					<div class="col_5">
+						<form id="submit_chat" class="vertical">
+							<label for="chat_text">Text</label>
+							<input type="text" id="chat_text" name="chat_text">
+							<label for="img_source">Image Source</label>
+							<select id="img_source" name="img_source">
+								<option value="NA">None</option>
+								<option value="twitpic">Twitpic</option>
+								<option value="yfrog">YFrog</option>
+							</select>
+							<label for="img_code">Image Code</label>
+							<input type="text" id="img_code" name="img_code">
+							<label for="vid_source">Video Source</label>
+							<select id="vid_source" name="vid_source">
+								<option value="NA">None</option>
+								<option value="twitpic">Youtube</option>
+							</select>
+							<label for="vid_code">Video Code</label>
+							<input type="text" id="vid_code" name="vid_code">
+							<button class="small green">Send</button>
+						</form>
+					</div>
 					<div class="col_6 chat_main" id="moderate_window">
 						<div class="elements">
              				<ul>
