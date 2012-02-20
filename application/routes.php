@@ -88,12 +88,35 @@ return array(
 		} else {
 			$admin = false;
 		}
-		$redischat = Redischat($chatsearch->chatslug, $chatsearch->score);
-		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
-		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 		$posttext = Input::get('chat_text');
 		$postimgsrc = Input::get('img_source');
 		$postimgcode = Input::get('img_code');
-		
+		$postvidsrc = Input::get('vid_source');
+		$postvidcode = Input::get('vid_code');
+		if (!$posttext and !$postimgcode and !$postvidcode) {
+			return json_encode(array('error' => 'Please enter something. You cannot send a blank chat'));
+		}
+		if (!$postimgsrc=="NA" and !$postimgcode) {
+			return json_encode(array('error' => 'Please enter valid image code.'));
+		}
+		if (!$postvidsrc=="NA" and !$postvidcode) {
+			return json_encode(array('error' => 'Please enter valid video code.'));
+		}
+		$redischat = Redischat($chatsearch->chatslug, $chatsearch->score);
+		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
+		$msg = "<img src='$img' width='20' height='20' /> ".$name . " says :<br/>";
+		$msg .= $posttext ? $posttext.'<br/>' : '';
+		if ($postimgsrc=='twitpic') {
+			$msg.="<a href='http://twitpic.com/$postimgcode' target='_blank'><img src='http://twitpic.com/show/thumb/$postimgcode' /></a><br/>";
+		}
+		if ($postimgsrc=='yfrog') {
+			$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
+		}
+		if ($vidimgsrc=='youtube') {
+			$msg.="<iframe width='560' height='315' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
+		}
+		$redischat->addMsg($msg);
+		return json_encode(array('success' => true));
 	} 
 );

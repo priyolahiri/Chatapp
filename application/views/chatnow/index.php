@@ -30,6 +30,22 @@
 				$('#main_window').wijsuperpanel();
 				$('#contact_window').wijsuperpanel();
 				$('#moderate_window').wijsuperpanel();
+				$('#submit_chat').submit(function(e) {
+					e.preventDefault();
+					var postdata = $('#submit_chat').serialize();
+					$.ajax({
+						url: '/sendchat/<?php echo($chat->chatslug) ?>',
+						data: postdata,
+						success: function(data) {
+							if (data.success) {
+								alert ('success!');
+							}
+							if (data.error) {
+								alert ('error: ' + data.error);
+							}
+						}
+					})
+				})
 			})
 			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
 			Pusher.channel_auth_endpoint = '/chatauth';
@@ -57,6 +73,13 @@
 			channel.bind('pusher:member_removed', function(member) {
   				var id = '#member_' + member.id;
   				$(id).remove();
+			});
+			channel.bind('chat', function(data){
+				var chattime = data.timenow;
+				var chatmsg = data.msg;
+				var output = '<li class="chat_element">At '+chattime+':</li>';
+				var output2 = '<li class="chat_element">'+chatmsg+'</li>';
+				$('#chat_list').append(output+output2);
 			});
 		</script>
 	</head>
