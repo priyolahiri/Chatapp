@@ -39,8 +39,10 @@
 							console.log(data);
 							_.each(data, function(oldmsg) {
 								console.log(oldmsg);
-								var chattime = oldmsg.timenow;
-								var chatmsg = oldmsg.msg;
+								var oldobj = jQuery.parseJSON(oldmsg);
+								console.log(oldobj);
+								var chattime = oldobj.timenow;
+								var chatmsg = oldobj.msg;
 								var output = '<li class="chat_element">At '+chattime+':</li>';
 								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
 								$('#chat_list').append(output+output2);
