@@ -127,3 +127,7 @@ left:0;
 .zerop {
 	padding: 0px;
 }
+.chat_main {
+	min-height: 400px;
+	max-height: 400px;
+}

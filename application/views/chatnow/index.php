@@ -6,15 +6,30 @@
 		<meta charset="UTF-8">
 		<meta name="description" content="" />
 		<!-- BEGIN SCRIPTS -->
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="/js/jquery.wijmo-open.all.2.0.0.min.js"></script>
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script type="text/javascript" src="/js/prettify.js"></script>                                   <!-- PRETTIFY -->
 		<script type="text/javascript" src="/js/kickstart.js"></script>                                  <!-- KICKSTART -->
 		<!-- END SCRIPTS -->
 		<!-- BEGIN STYLES -->
 		<link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+		<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.wijmo-open.2.0.0.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/aristo/jquery-wijmo.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />                          <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
+		<script type="text/javascript">
+			$(funtion() {
+				$('#main_window').wijsuperpanel();
+				$('#contact_window').wijsuperpanel();
+			})
+		</script>		
 	</head>
 	<!-- END HEAD -->
 	<!-- BEGIN BODY -->
@@ -54,7 +69,22 @@
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_12" id="content_area">
 					<h3><?php echo ($chat->chatname) ?></h3>
-					
+					<div class="col_9 chat_main" id="main_window">
+						<div class="elements">
+             				<ul>
+               			
+             				</ul>
+       					</div>
+					</div>
+					<div class="col_3 chat_main" id="contact_window">
+						<div class="elements">
+             				<ul>
+               			
+             				</ul>
+       					</div>
+					</div>
+					<div class="clear"></div>
+					<div class="col_12"><input type="text" id="sendchat"><button class="small green">Send</button></div>
 				</div>
 				<!-- END CONTENT AREA -->
 			</div>
