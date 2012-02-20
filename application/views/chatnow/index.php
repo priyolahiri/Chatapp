@@ -50,26 +50,7 @@
 							});
 						}
 				})
-				$.ajax({
-						url: '/getchatmod/<?php echo($chat->chatslug) ?>',
-						type: 'GET',
-						dataType: 'json',
-						success: function(data) {
-							console.log(data);
-							_.each(data, function(oldmsg) {
-								console.log(oldmsg);
-								var oldobj = jQuery.parseJSON(oldmsg);
-								console.log(oldobj);
-								var chattime = oldobj.timenow;
-								var chatmsg = oldobj.msg;
-								var memid = oldobj.key;
-								var output = '<li class="modchat_element_'+c+'">At '+chattime+':</li>';
-								var output2 = '<li class="modchat_element_'+c+'">'+chatmsg+'</li>';
-								$('#chat_list')
-								$('#chat_list').append(output+output2);
-							});
-						}
-				})
+				
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
