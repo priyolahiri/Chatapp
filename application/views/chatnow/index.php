@@ -53,28 +53,7 @@
 							});
 						}
 				})
-				$.ajax({
-						url: '/getchatmod/<?php echo($chat->chatslug) ?>',
-						type: 'GET',
-						dataType: 'json',
-						success: function(data) {
-							_.each(data, function(oldmsg) {
-								console.log(oldmsg);
-								var oldobj = jQuery.parseJSON(oldmsg);
-								console.log(oldobj);
-								c = c + 1;
-								var chattime = oldobj.timenow;
-								var chatmsg = oldobj.msg;
-								var memid = oldobj.key;
-								var output = '<li class=" modchat_element" data-key="'+c+'">At '+chattime+':</li>';
-								var output2 = '<li class="modchat_element" data-key="'+c+'">'+chatmsg+'</li>';
-								$('#moderate_list').remove('li.mod_other');
-								$('#moderate_list').append(output+output2);
-								var elem = document.getElementById('moderate_window');
-  								elem.scrollTop = elem.scrollHeight;
-							});
-						}
-				})
+				setInterval(refreshmod(),millisec);
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
@@ -141,6 +120,31 @@
 				var elem = document.getElementById('main_window');
   				elem.scrollTop = elem.scrollHeight;
 			});
+			function refreshmod() {
+				$.ajax({
+						url: '/getchatmod/<?php echo($chat->chatslug) ?>',
+						type: 'GET',
+						dataType: 'json',
+						success: function(data) {
+							_.each(data, function(oldmsg) {
+								console.log(oldmsg);
+								var oldobj = jQuery.parseJSON(oldmsg);
+								console.log(oldobj);
+								c = c + 1;
+								var chattime = oldobj.timenow;
+								var chatmsg = oldobj.msg;
+								var memid = oldobj.key;
+								var output = '<li class="modchat_element" data-key="'+c+'">At '+chattime+':</li>';
+								var output2 = '<li class="modchat_element" data-key="'+c+'">'+chatmsg+'</li>';
+								var output3 = '<li class="modchat_approve"><span class="button small green app_comment" data-id="'+c+'">approve</span>
+								$('#moderate_list').remove('li.modchat_element');
+								$('#moderate_list').append(output+output2);
+								var elem = document.getElementById('moderate_window');
+  								elem.scrollTop = elem.scrollHeight;
+							});
+						}
+				})
+			}
 			c = 0;
 		</script>
 	</head>
