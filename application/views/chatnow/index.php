@@ -30,6 +30,13 @@
 				$('#main_window').wijsuperpanel();
 				$('#contact_window').wijsuperpanel();
 				$('#moderate_window').wijsuperpanel();
+				$.ajax({
+						url: '/getchat/<?php echo($chat->chatslug) ?>',
+						type: 'GET',
+						success: function(data) {
+							console.log(data);
+						}
+				})
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
@@ -38,12 +45,7 @@
 						type: 'POST',
 						data: postdata,
 						success: function(data) {
-							if (data.success) {
-								alert ('success!');
-							}
-							if (data.error) {
-								alert ('error: ' + data.error);
-							}
+							console.log(data);
 						}
 					})
 				})

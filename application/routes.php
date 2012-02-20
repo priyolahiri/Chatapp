@@ -114,9 +114,29 @@ return array(
 			$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
 		}
 		if ($postvidsrc=='youtube') {
-			$msg.="<iframe width='560' height='315' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
+			$msg.="<iframe width='320' height='240' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
 		$redischat->addMsg($msg);
 		return json_encode(array('success' => true));
+	},
+	'POST /getchat/(:any)' => function($chatslug) {
+		$socialauth = new Socialauth();
+		if (!$socialauth->user_id) {
+			header('', true, 403);
+  			echo( "Not authorized" );
+		}
+		$chatsearch = Chat::where('chatslug', '=', $chatslug)->first();
+		if (!$chatsearch) {
+			header('', true, 403);
+  			echo( "Chat not found" );
+		}
+		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmin) {
+			$admin = true;
+		} else {
+			$admin = false;
+		}
+		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+		return json_encode($redischat->getChat());
 	} 
 );
