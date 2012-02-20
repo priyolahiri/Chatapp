@@ -37,10 +37,14 @@
 			channel.bind('pusher:subscription_succeeded', function(members) {
 				//console.log(members.count);
 				var onlinetext = members.count + ' user(s) online';
-				console.log(onlinetext);
+				//console.log(onlinetext);
 				$('#member_count').html(onlinetext);
 				members.each(function(member) {
-    					console.log(member);
+    					//console.log(member);
+    					var name = member.info.name;
+    					var img = member.info.imgUrl;
+    					var memberinsert = '<li class="window_element">'+'<img src='+img+'"> '+name+'</li>';
+    					$("#contact_list").append(memberinsert);
  				});
 			});
 		</script>
@@ -92,7 +96,7 @@
 					</div>
 					<div class="col_3 chat_main" id="contact_window">
 						<div class="elements">
-             				<ul>
+             				<ul id="contact_list">
                					<li class="window_block" id="member_count"></li>
              				</ul>
        					</div>
