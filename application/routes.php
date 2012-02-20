@@ -94,7 +94,7 @@ return array(
 		$postvidsrc = Input::get('vid_source');
 		$postvidcode = Input::get('vid_code');
 		if (!$posttext and !$postimgcode and !$postvidcode) {
-			return json_encode(array('error' => 'Please enter something. You cannot send a blank chat'));
+			return json_encode(array('msgerror' => 'Please enter something. You cannot send a blank chat'));
 		}
 		if (!$postimgsrc=="NA" and !$postimgcode) {
 			return json_encode(array('msgerror' => 'Please enter valid image code.'));
