@@ -33,7 +33,7 @@ Class Redischat {
 	public function getChat() {
 		return $this->chatset->toArray(true);
 	}
-	public function getChatMod() {
+	public function getModChat() {
 		return $this->modchatset->toArray(true);
 	}
 	public function getScore() {
