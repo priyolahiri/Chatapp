@@ -132,6 +132,8 @@ left:0;
 	max-height: 250px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	background-color: #DDDDDD;
+	border: 1px dashed #DDDDDD;
 }
 .elements ul {
 	padding: 0px;
