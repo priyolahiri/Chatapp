@@ -80,7 +80,7 @@ return array(
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {
 			header('', true, 403);
-  			echo( "Not authorized" );
+  			echo( "Chat not found" );
 		}
 		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
 		if ($chatadmin) {
