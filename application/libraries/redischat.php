@@ -2,6 +2,8 @@
 Class Redischat {
 	public function __construct($chatid, $score) {
 		$this->rediska = new Rediska();
+		$this->pusher = Pusher('bcc01e8ba13fef13ba43', '7d96c3c187a49ed7f0ee', '15575');
+		$this->pusherChannel = "presence-".$chatid;
 		$this->chatset = new Rediska_Key_List($chatid."_chat");
 		if ($score) {
 			$this->chatscore = new Rediska_Key_List($chatid."_score");

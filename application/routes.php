@@ -54,6 +54,7 @@ return array(
 		} else {
 			$admin = false;
 		}
-		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin);
+		$redichat =new Redischat($chatsearch->chatslug, $chatsearch->score);
+		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redichat);
 	},
 );

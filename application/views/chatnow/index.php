@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.wijmo-open.all.2.0.0.min.js"></script>
+		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script type="text/javascript" src="/js/prettify.js"></script>                                   <!-- PRETTIFY -->
 		<script type="text/javascript" src="/js/kickstart.js"></script>                                  <!-- KICKSTART -->
@@ -30,6 +31,8 @@
 				$('#contact_window').wijsuperpanel();
 				$('#moderate_window').wijsuperpanel();
 			})
+			var pusher = new Pusher('bcc01e8ba13fef13ba43');
+			var presenceChannel = pusher.subscribe(presenceChannelName);
 		</script>		
 	</head>
 	<!-- END HEAD -->
