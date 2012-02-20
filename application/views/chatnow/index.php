@@ -46,6 +46,16 @@
 						data: postdata,
 						success: function(data) {
 							console.log(data);
+							if (data.success) {
+								$('#chatsuccess').html('');
+								$('#chaterror').html('');
+								$('#chatsuccess').html('Send Success!');
+							}
+							if (data.error) {
+								$('#chatsuccess').html('');
+								$('#chaterror').html('');
+								$('#chaterror').html(data.error);
+							}
 						}
 					})
 				})
@@ -163,6 +173,9 @@
 							<input type="text" id="vid_code" name="vid_code">
 							<button class="small green">Send</button>
 						</form>
+						<div class="clear"></div>
+						<div class="notice success" id="chatsuccess"></div>
+						<div class="notice error" id="chaterror"></div>
 					</div>
 					<div class="col_6 chat_main" id="moderate_window">
 						<div class="elements">
