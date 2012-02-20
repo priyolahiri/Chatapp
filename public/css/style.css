@@ -151,4 +151,8 @@ li.window_block {
 li.contact_element {
 	font-size: 12px;
 	font-weight: normal;
+	background-color: #DDDDDD;
+	border: 1px solid #888888;
+	padding: 2px;
+	margin: 2px;
 }
