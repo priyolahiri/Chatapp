@@ -31,9 +31,15 @@
 				$('#contact_window').wijsuperpanel();
 				$('#moderate_window').wijsuperpanel();
 			})
-			var pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
+			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
 			Pusher.channel_auth_endpoint = '/chatauth';
-			var presenceChannel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
+			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
+			channel.bind('pusher:subscription_succeeded', function(members) {
+				console.log(members.count);
+				members.each(function(member) {
+    					console.log(member);
+ 				});
+			});
 		</script>
 	</head>
 	<!-- END HEAD -->
