@@ -131,7 +131,7 @@
 								console.log(oldmsg);
 								var oldobj = jQuery.parseJSON(oldmsg);
 								console.log(oldobj);
-								c = c + 1;
+								co = co + 1;
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var memid = oldobj.key;
