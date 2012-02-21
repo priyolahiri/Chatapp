@@ -50,7 +50,6 @@
 						type: 'POST',
 						data: postdata,
 						success: function(data) {
-							console.log(data);
 							var msg = data;
 							if (msg.msgsuccess) {
 								$('#chatsuccess').html('');
@@ -73,12 +72,9 @@
 			Pusher.channel_auth_endpoint = '/chatauth';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 			channel.bind('pusher:subscription_succeeded', function(members) {
-				//console.log(members.count);
 				var onlinetext = members.count + ' user(s) online';
-				//console.log(onlinetext);
 				$('#member_count').html(onlinetext);
 				members.each(function(member) {
-    					//console.log(member);
     					var name = member.info.name;
     					var img = member.info.imgURL;
     					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
@@ -97,7 +93,6 @@
   				elem.scrollTop = elem.scrollHeight;
 			});
 			channel.bind('pusher:member_removed', function(member) {
-				console.log('member removed');
   				var id = '#member_' + member.id;
   				$(id).remove();
 			});
@@ -121,9 +116,7 @@
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
-							console.log(data);
 							_.each(data, function(oldmsg) {
-								console.log(oldmsg);
 								var oldobj = jQuery.parseJSON(oldmsg);
 								console.log(oldobj);
 								var chattime = oldobj.timenow;
