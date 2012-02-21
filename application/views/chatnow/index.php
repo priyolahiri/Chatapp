@@ -147,7 +147,7 @@
 			}
 			function approve(id) {
 					$.ajax({
-						url: '/chatapprove/'+id,
+						url: '/chatapprove/<?php echo($chat->chatslug) ?>'+id,
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
