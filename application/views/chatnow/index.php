@@ -56,6 +56,9 @@
 								$('#chatsuccess').html('');
 								$('#chaterror').html('');
 								$('#chatsuccess').html('Send Success!');
+								$('#submit_chat').each (function(){
+  									this.reset();
+								});
 							}
 							if (msg.msgerror) {
 								$('#chatsuccess').html('');
