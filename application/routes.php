@@ -124,7 +124,16 @@ return array(
 		return json_encode(array('msgsuccess' => true));
 	},
 	'GET /embed/(:any)' => function($vidid) {
-		return Redirect::to("http://www.youtube.com/embed/$vidid");
+		$url = "http://www.youtube.com/embed/$vidid";
+		$crl = curl_init();
+        $timeout = 5;
+        curl_setopt ($crl, CURLOPT_URL,$url);
+        curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
+        $ret = curl_exec($crl);
+        curl_close($crl);
+        return $ret;
+		//return Redirect::to("http://www.youtube.com/embed/$vidid");
 	},
 	'GET /getchat/(:any)' => function($chatslug) {
 		$socialauth = new Socialauth();
