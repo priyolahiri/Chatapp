@@ -102,7 +102,7 @@
 				var chattime = data.timenow;
 				var chatmsg = data.msg;
 				var output = '<li class="chat_element">At '+chattime+':</li>';
-				var output2 = '<li class="chat_element">'+chatmsg+'</li>';
+				var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
 				$('#chat_list').append(output+output2);
 				var elem = document.getElementById('main_window');
   				elem.scrollTop = elem.scrollHeight;
@@ -126,7 +126,7 @@
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var output = '<li class="chat_element">At '+chattime+':</li>';
-								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
+								var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
 								$('#chat_list').append(output+output2);
 								var elem = document.getElementById('main_window');
   								elem.scrollTop = elem.scrollHeight;
@@ -152,7 +152,7 @@
 								var memid = oldobj.key;
 								var output = '<li class="modchat_element" data-key="'+co+'">At '+chattime+':</li>';
 								var output2 = '<li class="modchat_element" data-key="'+co+'">'+chatmsg+'</li>';
-								var output3 = '<li class="modchat_element"><button class="small green app_comment" onclick="approve('+co+')">approve</span></li>';
+								var output3 = '<li class="modchat_element"><button class="small green app_comment" onclick="approve('+co+')">approve</span><hr/></li>';
 								$('#moderate_list').append(output+output2+output3);
 								var elem = document.getElementById('moderate_window');
   								elem.scrollTop = elem.scrollHeight;
