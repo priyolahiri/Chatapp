@@ -33,7 +33,7 @@ Class Redischat {
 	public function approve($id) {
 		$transport = json_decode($this->chatset[$id-1]);
 		$timenow = date('d/m/Y H:i', time());
-		$newtransport = json_encode(array('timenow' => $timenow, 'msg' => $transport['msg']));
+		$newtransport = json_encode(array('timenow' => $timenow, 'msg' => $transport->msg));
 		$this->chatset[] = $newtransport;
 		$this->modchatset->remove(json_encode($transport));
 		return json_encode(array("msgsuccess" => "approved!"));
