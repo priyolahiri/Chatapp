@@ -114,7 +114,7 @@ return array(
 			$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
 		}
 		if ($postvidsrc=='youtube') {
-			$msg.="<iframe width='320' height='240' src='http://www.youtube.com/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
+			$msg.="<iframe width='320' height='240' src='http://chatapp.priyolahiri.co.cc/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
 		if ($socialauth->user_role == "normal") {
 			$redischat->addMsgMod($msg);
@@ -122,6 +122,9 @@ return array(
 			$redischat->addMsg($msg);
 		}
 		return json_encode(array('msgsuccess' => true));
+	},
+	'GET /embed/(:any)' => function($vidid) {
+		return Redirect::to("http://www.youtube.com/embed/$vidid");
 	},
 	'GET /getchat/(:any)' => function($chatslug) {
 		$socialauth = new Socialauth();
