@@ -118,7 +118,6 @@
 						success: function(data) {
 							_.each(data, function(oldmsg) {
 								var oldobj = jQuery.parseJSON(oldmsg);
-								console.log(oldobj);
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var output = '<li class="chat_element">At '+chattime+':</li>';
@@ -139,9 +138,7 @@
 						success: function(data) {
 							$('#moderate_list li.modchat_element').empty().end();
 							_.each(data, function(oldmsg) {
-								console.log(oldmsg);
 								var oldobj = jQuery.parseJSON(oldmsg);
-								console.log(oldobj);
 								co = co + 1;
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
