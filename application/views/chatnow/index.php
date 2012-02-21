@@ -152,7 +152,7 @@
 								var memid = oldobj.key;
 								var output = '<li class="modchat_element" data-key="'+co+'">At '+chattime+':</li>';
 								var output2 = '<li class="modchat_element" data-key="'+co+'">'+chatmsg+'</li>';
-								var output3 = '<li class="modchat_element"><button class="small green app_comment" onclick="approve('+co+')">approve</span><hr/></li>';
+								var output3 = '<li class="modchat_element"><button class="small green app_comment" onclick="approve('+co+')">approve</span></button><hr/></li>';
 								$('#moderate_list').append(output+output2+output3);
 								var elem = document.getElementById('moderate_window');
   								elem.scrollTop = elem.scrollHeight;
