@@ -71,7 +71,7 @@
 					<table cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th>Chat Name</th><th>Started Date</th>
+								<th>Chat Name</th><th>Started Date</th><th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,7 +79,8 @@
 						foreach ($chats as $chat) {
 							echo ('<tr>');
 							echo('<td>'.$chat->chatname.'</td>');
-							echo('<td>'.date('d/M/Y', $chat->createdon).'</td>');
+							echo('<td>'.date('d M Y', $chat->createdon).'</td>');
+							echo('<td><a class="button small green" href="/chatnow/'.$chat->chatslug.'">'.Join.'</a></td>');
 							echo('</tr>');
 						}
 					?>
