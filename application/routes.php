@@ -163,7 +163,7 @@ return array(
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		return json_encode($redischat->getModChat());
 	} ,
-	'GET /chatapprove/(:numeric)' => function($id) {
+	'GET /chatapprove/(:any)' => function($id) {
 		$socialauth = new Socialauth();
 		if (!$socialauth->user_id) {
 			header('', true, 403);
