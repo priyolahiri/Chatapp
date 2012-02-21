@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
-		<script type="text/javascript" src="/js/jquery.wijmo-open.all.2.0.0.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
 		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script type="text/javascript" src="/js/prettify.js"></script>                                   <!-- PRETTIFY -->
@@ -23,12 +23,12 @@
 		<!-- BEGIN STYLES -->
 		<link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />                  <!-- KICKSTART -->
 		<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="/css/jquery.wijmo-open.2.0.0.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="/css/aristo/jquery-wijmo.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/prettyLoader.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />                          <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
 		<script type="text/javascript">
 			$(function() {
+				$.prettyLoader();
 				//$('#main_window').wijsuperpanel();
 				//$('#contact_window').wijsuperpanel();
 				//$('#moderate_window').wijsuperpanel();
