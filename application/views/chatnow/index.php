@@ -109,7 +109,7 @@
 			});
 			function setrefresh() {
 				setInterval('refreshmod()',20000);
-				$('#moderate_windows').show();
+				$('#moderate_window').show();
 				refreshmod();
 			}
 			function getoldchat() {
@@ -253,7 +253,7 @@
 						<div class="notice success" id="chatsuccess"></div>
 						<div class="notice error" id="chaterror"></div>
 					</div>
-					<div class="col_6 chat_main" id="moderate_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true" style="display; none;">
+					<div class="col_6 chat_main" id="moderate_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true" style="display: none;">
 						<div class="elements">
              				<ul id="moderate_list">
                					<li class="window_block">Moderation</li>
