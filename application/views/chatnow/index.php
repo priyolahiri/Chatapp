@@ -146,10 +146,8 @@
 				})
 			}
 			function approve(id) {
-					var msgid = id;
-					console.log('msg'+msgid);
 					$.ajax({
-						url: '/chatapprove/'+msgid,
+						url: '/chatapprove/'+id,
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
