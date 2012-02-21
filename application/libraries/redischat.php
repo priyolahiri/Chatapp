@@ -41,6 +41,7 @@ Class Redischat {
 				$timenow = date('d/m/Y H:i', time());
 				$newtransport = json_encode(array('timenow' => $timenow, 'msg' => $transport['msg']));
 				$this->chatset[] = $newtransport;
+				$this->pusher->trigger($this->pusherChannel, 'chat', $newtransport, null, false, true);
 				$this->modchatset->remove(json_encode($transport));
 			}
 		}
