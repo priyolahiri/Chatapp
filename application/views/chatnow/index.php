@@ -33,27 +33,14 @@
 				//$('#contact_window').wijsuperpanel();
 				//$('#moderate_window').wijsuperpanel();
 				c=0;
-				$.ajax({
-						url: '/getchat/<?php echo($chat->chatslug) ?>',
-						type: 'GET',
-						dataType: 'json',
-						success: function(data) {
-							console.log(data);
-							_.each(data, function(oldmsg) {
-								console.log(oldmsg);
-								var oldobj = jQuery.parseJSON(oldmsg);
-								console.log(oldobj);
-								var chattime = oldobj.timenow;
-								var chatmsg = oldobj.msg;
-								var output = '<li class="chat_element">At '+chattime+':</li>';
-								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
-								$('#chat_list').append(output+output2);
-								var elem = document.getElementById('main_window');
-  								elem.scrollTop = elem.scrollHeight;
-							});
-						}
-				})
-				setInterval('refreshmod()',20000);
+				getoldchat();
+				<?php
+				if ($admin) {
+				?>
+				setrefresh();
+				<?php
+				}
+				?>
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
@@ -120,6 +107,33 @@
 				var elem = document.getElementById('main_window');
   				elem.scrollTop = elem.scrollHeight;
 			});
+			function setrefresh() {
+				setInterval('refreshmod()',20000);
+				$('#moderate_windows').show();
+				refreshmod();
+			}
+			function getoldchat() {
+				$.ajax({
+						url: '/getchat/<?php echo($chat->chatslug) ?>',
+						type: 'GET',
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							_.each(data, function(oldmsg) {
+								console.log(oldmsg);
+								var oldobj = jQuery.parseJSON(oldmsg);
+								console.log(oldobj);
+								var chattime = oldobj.timenow;
+								var chatmsg = oldobj.msg;
+								var output = '<li class="chat_element">At '+chattime+':</li>';
+								var output2 = '<li class="chat_element">'+chatmsg+'</li>';
+								$('#chat_list').append(output+output2);
+								var elem = document.getElementById('main_window');
+  								elem.scrollTop = elem.scrollHeight;
+							});
+						}
+				})
+			}
 			function refreshmod() {
 				var co = 0;
 				$.ajax({
@@ -239,7 +253,7 @@
 						<div class="notice success" id="chatsuccess"></div>
 						<div class="notice error" id="chaterror"></div>
 					</div>
-					<div class="col_6 chat_main" id="moderate_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true">
+					<div class="col_6 chat_main" id="moderate_window" scrollMode="scrollbar" scrollBarVisibility="visible" autoRefresh="true" style="display; none;">
 						<div class="elements">
              				<ul id="moderate_list">
                					<li class="window_block">Moderation</li>
