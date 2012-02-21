@@ -53,8 +53,9 @@ Class Chats_Controller extends Controller {
 		$error = Session::get('error');
 		$socialauth= new Socialauth();
 		$error = Session::get('error');
+		$chats = Chat::where('status', '=', 'active')->get();
 		if ($socialauth->user_id) {
-			return View::make('chats.active')->with('error', $error)->with('socialauth', $socialauth);
+			return View::make('chats.active')->with('error', $error)->with('socialauth', $socialauth)->with('chats', $chats);
 		} else {
 			return Redirect::to('/');
 		}
