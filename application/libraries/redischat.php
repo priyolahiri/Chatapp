@@ -37,6 +37,7 @@ Class Redischat {
 			$c++;
 			if ($c==$id) {
 				$transport = json_decode($modchat);
+				error_log($transport);
 				$timenow = date('d/m/Y H:i', time());
 				$newtransport = json_encode(array('timenow' => $timenow, 'msg' => $transport['msg']));
 				$this->chatset[] = $newtransport;
