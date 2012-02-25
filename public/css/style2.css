@@ -13,6 +13,8 @@
 	border: 1px solid #DDDDDD;
 	margin: 10px;
 	width: 600px;
+	min-height: 270px;
+	max-height: 270px;
 }
 div.sendchat_main {
 	background-color: #FFFFFF;
