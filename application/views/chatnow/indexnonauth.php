@@ -138,7 +138,7 @@
 								var oldobj = jQuery.parseJSON(oldmsg);
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
-								var output = '<tr><td>At '+chattime+':</td>';
+								var output = '<tr><td class="col-gray">At '+chattime+':</td>';
 								var output2 = '<td>'+chatmsg+'</td></tr>';
 								$('#chat_main_inner table tbody').append(output+output2);
 							});

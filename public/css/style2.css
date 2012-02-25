@@ -47,3 +47,11 @@ div.contact_main {
 .none {
 	display: none;
 }
+.col-gray {
+	background-color: #AAAAAA;
+}
+table.striped{}
+table.striped tr.alt{background:#f5f5f5;}
+table.striped thead th{background:#DDDDDD;}
+table.striped tbody th{background:#f5f5f5;text-align:right;padding-right:15px;border-right:1px dotted #e5e5e5;}
+table.striped tbody tr.alt th{background:#efefef;}
