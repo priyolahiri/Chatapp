@@ -74,7 +74,7 @@
     				});
     				$('#contact_main_inner').slimScroll({
        				 height: '250px',
-       				 width: '600px'
+       				 width: '200px'
     				});
 				c=0;
 				getoldchat();
