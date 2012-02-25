@@ -69,11 +69,7 @@
 			Pusher.channel_auth_endpoint = '/chatauth';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 			function init() {
-				$('#chat_main_inner').slimScroll({
-       				 height: '250px',
-       				 width: '600px',
-       				 start: 'bottom'
-    				});
+				
     				$('#contact_main_inner').slimScroll({
        				 height: '250px',
        				 width: '285px',
@@ -149,6 +145,11 @@
   							elem.scrollTop = elem.scrollHeight;
 						}
 				})
+				$('#chat_main_inner').slimScroll({
+       				 height: '250px',
+       				 width: '600px',
+       				 start: 'bottom'
+    				});
 			}
 			function refreshmod() {
 				var co = 0;
