@@ -14,9 +14,9 @@
 	border: 1px dashed #DDDDDD;
 	margin: 10px;
 	width: 200px;
+	clear: right;
 }
 #contact_main_inner {
 	min-height: 250px;
 	max-height: 250px;
-	clear: right;
 }
