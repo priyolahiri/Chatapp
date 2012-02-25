@@ -88,7 +88,10 @@
   					elem.scrollTop = elem.scrollHeight;
 				});
 			}
-			function userauth() {
+			function auth() {
+				
+			}
+			function admin() {
 				channel.bind('pusher:subscription_succeeded', function(members) {
 					var onlinetext = members.count + ' user(s) online';
 					$('#member_count').html(onlinetext);
@@ -183,9 +186,17 @@
 			
 			</div>
 		</div>
-		<div class="contact_main">
-			<div id="contact_main_inner">
+		<div class="clear"></div>
+		<div class="auth_main">
+			<div class="sendchat_main">
+				<div class="sendchat_inner">
+					
+				</div>
+			</div>
+			<div class="contact_main">
+				<div id="contact_main_inner">
 				
+				</div>
 			</div>
 		</div>
 	</body>

@@ -3,10 +3,27 @@
 	border: 1px dashed #DDDDDD;
 	margin: 10px;
 	width: 600px;
-	clear: left;
-	display: inline-block;
 }
 #chat_main_inner {
+	min-height: 250px;
+	max-height: 250px;
+}
+.auth_main {
+	background-color: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	margin: 10px;
+	width: 600px;
+}
+.sendchat_main {
+	background-color: #FFFFFF;
+	border: 1px dashed #DDDDDD;
+	margin: 10px;
+	width: 280px;
+	clear: right;
+	display: inline-block;
+	margin: 10px;
+}
+#sendchat_main_inner {
 	min-height: 250px;
 	max-height: 250px;
 }
@@ -14,9 +31,10 @@
 	background-color: #FFFFFF;
 	border: 1px dashed #DDDDDD;
 	margin: 10px;
-	width: 200px;
+	width: 280px;
 	clear: right;
 	display: inline-block;
+	margin: 10px;
 }
 #contact_main_inner {
 	min-height: 250px;
