@@ -1,0 +1,10 @@
+.chat_main {
+	background-color: #FFFFFF;
+	border: 1px dashed #DDDDDD;
+	margin: 10px;
+}
+#chat_main_inner {
+	min-height: 250px;
+	max-height: 250px;
+	width: 600px;
+}

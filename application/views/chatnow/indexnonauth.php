@@ -24,7 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />                  <!-- KICKSTART -->
 		<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/prettyLoader.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />                          <!-- CUSTOM STYLES -->
+		<link rel="stylesheet" type="text/css" href="/css/style2.css" media="all" />                          <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
 		<script type="text/javascript">
 			$(function() {
