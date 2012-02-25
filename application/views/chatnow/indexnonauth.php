@@ -75,11 +75,11 @@
     				});
     				$('#contact_main_inner').slimScroll({
        				 height: '250px',
-       				 width: '280px'
+       				 width: '285px'
     				});
     				$('#sendchat_main_inner').slimScroll({
        				 height: '250px',
-       				 width: '280px'
+       				 width: '285px'
     				});
 				c=0;
 				getoldchat();
