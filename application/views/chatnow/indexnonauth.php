@@ -125,9 +125,8 @@
 								var oldobj = jQuery.parseJSON(oldmsg);
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
-								var output = '<li class="chat_element">At '+chattime+':</li>';
-								var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
-								$('#chat_main_inner').append(output+output2);
+								var output = '<li class="chat_element">'+chatmsg+'<hr/></li>';
+								$('#chat_main_inner').append(output);
 								var elem = document.getElementById('chat_main_inner');
   								elem.scrollTop = elem.scrollHeight;
 							});
