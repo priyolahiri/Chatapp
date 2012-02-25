@@ -19,7 +19,6 @@ div.sendchat_main {
 	border: 1px dashed #DDDDDD;
 	margin: 5px;
 	width: 280px;
-	margin: 10px;
 	float: left;
 }
 #sendchat_main_inner {
@@ -31,7 +30,6 @@ div.contact_main {
 	border: 1px dashed #DDDDDD;
 	margin: 5px;
 	width: 280px;
-	margin: 10px;
 	float: right;
 }
 #contact_main_inner {
