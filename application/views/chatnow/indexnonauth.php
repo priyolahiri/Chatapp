@@ -14,7 +14,6 @@
 		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
-		<script type="text/javascript" src="/js/tinyscroll.js"></script>
 		<script type="text/javascript" src="/js/slimscroll.js"></script>
 		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -70,24 +69,6 @@
 			Pusher.channel_auth_endpoint = '/chatauth';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 			function init() {
-				var chat_inner = $('#chat_main_inner');
-				chat_inner.tinyscrollbar();
-				chat_inner.tinyscrollbar_update('relative'); 
-				//$('#chat_main_inner').slimScroll({
-       				// height: '250px',
-       				 //width: '600px',
-       				 //start: 'bottom'
-    				//});
-    				$('#contact_main_inner').slimScroll({
-       				 height: '250px',
-       				 width: '285px',
-       				 start: 'bottom'
-    				});
-    				$('#sendchat_main_inner').slimScroll({
-       				 height: '250px',
-       				 width: '285px',
-       				 start: 'bottom'
-    				});
 				c=0;
 				getoldchat();
 				channel.bind('chat', function(data){
