@@ -2,9 +2,21 @@
 	background-color: #FFFFFF;
 	border: 1px dashed #DDDDDD;
 	margin: 10px;
+	width: 600px;
+	clear: left;
 }
 #chat_main_inner {
 	min-height: 250px;
 	max-height: 250px;
-	width: 600px;
+}
+.contact_main {
+	background-color: #FFFFFF;
+	border: 1px dashed #DDDDDD;
+	margin: 10px;
+	width: 200px;
+}
+#contact_main_inner {
+	min-height: 250px;
+	max-height: 250px;
+	clear: right;
 }

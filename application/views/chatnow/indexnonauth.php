@@ -29,15 +29,7 @@
 		<script type="text/javascript">
 			$(function() {
 				$.prettyLoader();
-				$('#chat_main_inner').slimScroll({
-       				 height: '250px',
-       				 width: '600px'
-    				});
-				//$('#main_window').wijsuperpanel();
-				//$('#contact_window').wijsuperpanel();
-				//$('#moderate_window').wijsuperpanel();
-				c=0;
-				getoldchat();
+				init();
 				<?php
 				if ($admin) {
 				?>
@@ -75,41 +67,49 @@
 			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
 			Pusher.channel_auth_endpoint = '/chatauth';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
-			channel.bind('chat', function(data){
-				var chattime = data.timenow;
-				var chatmsg = data.msg;
-				var output = '<li class="chat_element">At '+chattime+':</li>';
-				var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
-				$('#chat_list').append(output+output2);
-				var elem = document.getElementById('chat_main_inner');
-  				elem.scrollTop = elem.scrollHeight;
-			});
+			function init() {
+				$('#chat_main_inner').slimScroll({
+       				 height: '250px',
+       				 width: '600px'
+    				});
+				c=0;
+				getoldchat();
+				channel.bind('chat', function(data){
+					var chattime = data.timenow;
+					var chatmsg = data.msg;
+					var output = '<li class="chat_element">At '+chattime+':</li>';
+					var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
+					$('#chat_main_inner').append(output+output2);
+					var elem = document.getElementById('chat_main_inner');
+  					elem.scrollTop = elem.scrollHeight;
+				});
+			}
 			function userauth() {
 				channel.bind('pusher:subscription_succeeded', function(members) {
-				var onlinetext = members.count + ' user(s) online';
-				$('#member_count').html(onlinetext);
-				members.each(function(member) {
-    					var name = member.info.name;
+					var onlinetext = members.count + ' user(s) online';
+					$('#member_count').html(onlinetext);
+					members.each(function(member) {
+    						var name = member.info.name;
+    						var img = member.info.imgURL;
+    						var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    						$("#contact_list").append(memberinsert);
+    						var elem = document.getElementById('contact_window');
+  						elem.scrollTop = elem.scrollHeight;
+ 					});
+				});
+				channel.bind('pusher:member_added', function(member) {
+  				// for example:
+  					var name = member.info.name;
     					var img = member.info.imgURL;
     					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
     					$("#contact_list").append(memberinsert);
     					var elem = document.getElementById('contact_window');
   					elem.scrollTop = elem.scrollHeight;
- 				});
-			});
-			channel.bind('pusher:member_added', function(member) {
-  			// for example:
-  				var name = member.info.name;
-    				var img = member.info.imgURL;
-    				var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
-    				$("#contact_list").append(memberinsert);
-    				var elem = document.getElementById('contact_window');
-  				elem.scrollTop = elem.scrollHeight;
-			});
-			channel.bind('pusher:member_removed', function(member) {
-  				var id = '#member_' + member.id;
-  				$(id).remove();
-			});
+				});
+				channel.bind('pusher:member_removed', function(member) {
+  					var id = '#member_' + member.id;
+  					$(id).remove();
+				});
 			}
 			function setrefresh() {
 				setInterval('refreshmod()',20000);
@@ -177,6 +177,11 @@
 		<div class="chat_main">
 			<div id="chat_main_inner">
 			
+			</div>
+		</div>
+		<div class="contact_main">
+			<div id="contact_main_inner">
+				
 			</div>
 		</div>
 	</body>
