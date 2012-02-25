@@ -71,15 +71,18 @@
 			function init() {
 				$('#chat_main_inner').slimScroll({
        				 height: '250px',
-       				 width: '600px'
+       				 width: '600px',
+       				 start: 'bottom'
     				});
     				$('#contact_main_inner').slimScroll({
        				 height: '250px',
-       				 width: '285px'
+       				 width: '285px',
+       				 start: 'bottom
     				});
     				$('#sendchat_main_inner').slimScroll({
        				 height: '250px',
-       				 width: '285px'
+       				 width: '285px',
+       				 start: 'bottom
     				});
 				c=0;
 				getoldchat();
