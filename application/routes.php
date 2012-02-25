@@ -40,14 +40,11 @@ return array(
 	//},
 	'GET /chatnow/(:any)' => function($slug)
 	{
-		$socialauth = new Socialauth();
-		if (!$socialauth->user_id) {
-			return Redirect::to('/');
-		}
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {
 			return Redirect::to('/');
 		}
+		$socialauth = new Socialauth();
 		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
 		if ($chatadmin) {
 			$admin = true;
@@ -55,20 +52,31 @@ return array(
 			$admin = false;
 		}
 		$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
+		if (!$socialauth->user_id) {
+			return View::make('chatnow.indexnonauth')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
+		}
 		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
 	'POST /chatauth' => function() {
-		$socialauth = new Socialauth();
+		$socialauth = new Socialauth();		
 		if (!$socialauth->user_id) {
-			header('', true, 403);
-  			echo( "Not authorized" );
+			if (Session::get('anonid')) {
+				$user_id = Session::get('anonid');
+			} else {
+				$user_id = uniq();
+				Session::set('anodid', $user_id);
+			}
+			$role = "anonymous";
+			$name = "anonymous";
+			$imurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
+		} else {
+			$user_id = $socialauth->user_id;
+			$role = $socialauth->user_role;
+			$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+			$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 		}
 		$pusher = new Pusher('bcc01e8ba13fef13ba43', '7d96c3c187a49ed7f0ee', '15575');
-		$user_id = $socialauth->user_id;
-		$role = $socialauth->user_role;
-		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
-		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
-		$presence_data = array('name' => $name, 'imgURL' => $imgurl);
+		$presence_data = array('name' => $name, 'imgURL' => $imgurl, 'role' => $role, 'user_id' => $user_id);
 		echo $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $presence_data);
 	},
 	'POST /sendchat/(:any)' => function($chatslug) {
@@ -137,20 +145,10 @@ return array(
 	},
 	'GET /getchat/(:any)' => function($chatslug) {
 		$socialauth = new Socialauth();
-		if (!$socialauth->user_id) {
-			header('', true, 403);
-  			echo( "Not authorized" );
-		}
 		$chatsearch = Chat::where('chatslug', '=', $chatslug)->first();
 		if (!$chatsearch) {
 			header('', true, 403);
   			echo( "Chat not found" );
-		}
-		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmin) {
-			$admin = true;
-		} else {
-			$admin = false;
 		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		return json_encode($redischat->getChat());
