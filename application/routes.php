@@ -56,7 +56,7 @@ return array(
 				$user_id = Session::get('anonid');
 			} else {
 				$user_id = uniqid();
-				Session::set('anodid', $user_id);
+				Session::put('anodid', $user_id);
 			}
 		if (!$socialauth->user_id) {
 			return View::make('chatnow.indexnonauth')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
@@ -70,7 +70,7 @@ return array(
 				$user_id = Session::get('anonid');
 			} else {
 				$user_id = uniqid();
-				Session::set('anodid', $user_id);
+				Session::put('anodid', $user_id);
 			}
 			$role = "anonymous";
 			$name = "anonymous";
