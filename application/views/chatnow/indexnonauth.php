@@ -72,6 +72,10 @@
        				 height: '250px',
        				 width: '600px'
     				});
+    				$('#contact_main_inner').slimScroll({
+       				 height: '250px',
+       				 width: '600px'
+    				});
 				c=0;
 				getoldchat();
 				channel.bind('chat', function(data){
