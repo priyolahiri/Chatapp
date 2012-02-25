@@ -193,7 +193,7 @@
 		<div class="clear"></div>
 		<div class="auth_main">
 			<div class="sendchat_main">
-				<div class="sendchat_main_inner">
+				<div id="sendchat_main_inner">
 					
 				</div>
 			</div>
