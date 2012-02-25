@@ -189,8 +189,8 @@
 	<body>
 		<div class="chat_main">
 			<div id="chat_main_inner">
-				<table>
-					<thead><tr colspan="2"><?php echo $chat->chatname ?></tr></thead>
+				<table class="striped">
+					<thead><tr><th colspan="2"><?php echo $chat->chatname ?></th></tr></thead>
 					<tbody></tbody>
 				</table>
 			</div>
