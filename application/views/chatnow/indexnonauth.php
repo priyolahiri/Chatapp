@@ -141,9 +141,9 @@
 								var output = '<tr><td>At '+chattime+':</td>';
 								var output2 = '<td>'+chatmsg+'</td></tr>';
 								$('#chat_main_inner table tbody').append(output+output2);
-								var elem = document.getElementById('chat_main_inner');
-  								elem.scrollTop = elem.scrollHeight;
 							});
+							var elem = document.getElementById('chat_main_inner');
+  							elem.scrollTop = elem.scrollHeight;
 						}
 				})
 			}
