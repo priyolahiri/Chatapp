@@ -30,7 +30,8 @@
 			$(function() {
 				$.prettyLoader();
 				$('#chat_main_inner').slimScroll({
-       				 height: '250px'
+       				 height: '250px',
+       				 width: '600px'
     				});
 				//$('#main_window').wijsuperpanel();
 				//$('#contact_window').wijsuperpanel();
