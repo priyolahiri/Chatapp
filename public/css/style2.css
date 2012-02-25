@@ -17,10 +17,10 @@
 .sendchat_main {
 	background-color: #FFFFFF;
 	border: 1px dashed #DDDDDD;
-	margin: 8px;
+	margin: 5px;
 	width: 280px;
-	display: inline-block;
 	margin: 10px;
+	float: left;
 }
 #sendchat_main_inner {
 	min-height: 250px;
@@ -29,10 +29,10 @@
 .contact_main {
 	background-color: #FFFFFF;
 	border: 1px dashed #DDDDDD;
-	margin: 8px;
+	margin: 5px;
 	width: 280px;
-	display: inline-block;
 	margin: 10px;
+	float: right;
 }
 #contact_main_inner {
 	min-height: 250px;
