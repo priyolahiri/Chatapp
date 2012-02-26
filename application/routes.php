@@ -58,10 +58,10 @@ return array(
 				$user_id = uniqid();
 				Session::put('anodid', $user_id);
 			}
-		if (!$socialauth->user_id) {
-			return View::make('chatnow.indexnonauth')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
-		}
-		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
+		//if (!$socialauth->user_id) {
+		return View::make('chatnow.indexnonauth')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
+		//}
+		//return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
 	'GET /chatinfo/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
