@@ -117,6 +117,18 @@ button, a.btn, a.btn:visited, a.button, a.button:visited, input[type="submit"], 
 textarea {
 	height: auto;
 }
+li.head_li {
+	background-color: #DDDDDD;
+	color: #000000;
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+ul.chat {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
 table.striped{}
 table.striped tr.alt{background:#f5f5f5;}
 table.striped thead th{background:#DDDDDD;}

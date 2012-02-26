@@ -221,13 +221,17 @@
 			</div>
 			<div class="moderate_main">
 				<div id="moderate_main_inner">
-					<ul></ul>
+					<ul>
+						<li class="head_li">Moderation</li>
+					</ul>
 				</div>
 			</div>
 			<div class="clear"></div>
 			<div class="contact_main">
 				<div id="contact_main_inner">
-					<ul></ul>
+					<ul>
+						<li class="head_li">Contacts Online</li>
+					</ul>
 				</div>
 			</div>
 			<div class="clear"></div>
