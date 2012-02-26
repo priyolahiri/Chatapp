@@ -87,12 +87,25 @@
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
-							var chatobj = jQuery.parseJSON(data);
-							console.log(data);
-							console.log(chatobj);
+							if (!data.error) {
+								channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
+								channel.bind('chat', function(data){
+									var chattime = data.timenow;
+									var chatmsg = data.msg;
+									var output = '<li class="chat_element">At '+chattime+':</li>';
+									var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
+									$('#chat_main_inner ul').append(output+output2);
+									var elem = document.getElementById('chat_main_inner');
+  									elem.scrollTop = elem.scrollHeight;
+								});
+							}
 						}
 				});
-				channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
+			}
+			function initsend() {
+				
+			}
+			function initadmin() {
 				channel.bind('pusher:subscription_succeeded', function(members) {
 					var onlinetext = members.count + ' user(s) online';
 					$('#member_count').html(onlinetext);
@@ -104,22 +117,7 @@
     						var elem = document.getElementById('contact_window');
   						elem.scrollTop = elem.scrollHeight;
  					});
-				});	
-				channel.bind('chat', function(data){
-					var chattime = data.timenow;
-					var chatmsg = data.msg;
-					var output = '<li class="chat_element">At '+chattime+':</li>';
-					var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
-					$('#chat_main_inner ul').append(output+output2);
-					var elem = document.getElementById('chat_main_inner');
-  					elem.scrollTop = elem.scrollHeight;
 				});
-				
-			}
-			function initsend() {
-				
-			}
-			function initadmin() {
 				channel.bind('pusher:member_added', function(member) {
   				// for example:
   					var name = member.info.name;
