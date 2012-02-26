@@ -119,8 +119,8 @@
     						console.log(chatadmin);
     						console.log(member.info.chatadmin);
     						console.log(member.info.name);
-    						if (chatadmin==true && member.info.chatadmin==false && member.info.name != 'anoymous') {
-    							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">';
+    						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
+    							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     						}
     						memberinsert = memberinsert + '</li>';
     						$("#contact_main_inner ul").append(memberinsert);
@@ -133,8 +133,8 @@
   					var name = member.info.name;
     					var img = member.info.imgURL;
     					var memberinsert = '<li class="sub_li" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
-    					if (chatadmin && !member.info.chatadmin && !member.info.name == 'anoymous') {
-    							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">';
+    					if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
+    						memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     					}
     					memberinsert = memberinsert + '</li>';
     					$("#contact_main_inner ul").append(memberinsert);
