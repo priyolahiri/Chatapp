@@ -95,7 +95,11 @@ return array(
 		}
 		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error));
 	},
-	'POST /chatauth' => function() {
+	'POST /chatauth/(:any)' => function($slug) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return "error!";
+		}
 		$socialauth = new Socialauth();		
 		if (!$socialauth->user_id) {
 			if (Session::get('anonid')) {
@@ -107,14 +111,21 @@ return array(
 			$role = "anonymous";
 			$name = "anonymous";
 			$imgurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
+			$chatadmin = false;
 		} else {
+			$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+			if ($chatadmin or $role == "admin") {
+				$chatadmin = true;
+			} else {
+				$chatadmin = false;
+			}
 			$user_id = $socialauth->user_id;
 			$role = $socialauth->user_role;
 			$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 			$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 		}
 		$pusher = new Pusher('bcc01e8ba13fef13ba43', '7d96c3c187a49ed7f0ee', '15575');
-		$presence_data = array('name' => $name, 'imgURL' => $imgurl, 'role' => $role, 'user_id' => $user_id);
+		$presence_data = array('name' => $name, 'imgURL' => $imgurl, 'role' => $role, 'user_id' => $user_id, 'chatadmin' => $chatadmin);
 		echo $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $presence_data);
 	},
 	'POST /sendchat/(:any)' => function($chatslug) {
