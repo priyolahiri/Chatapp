@@ -129,6 +129,12 @@ li.sub_li {
 	margin: 2px;
 	padding: 2px;
 	border: 1px dashed #DDDDDD;
+	float: left;
+	height: auto;
+}
+li.sub_li img {
+	width: 20px;
+	height: 20px;
 }
 ul.chat {
 	padding: 0px;

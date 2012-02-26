@@ -76,7 +76,7 @@ return array(
 				}
 				$role = "anonymous";
 				$name = "anonymous";
-				$imurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
+				$imgurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
 				$chatadmin = false;
 			} else {
 				$user_id = $socialauth->user_id;
@@ -106,7 +106,7 @@ return array(
 			}
 			$role = "anonymous";
 			$name = "anonymous";
-			$imurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
+			$imgurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
 		} else {
 			$user_id = $socialauth->user_id;
 			$role = $socialauth->user_role;
