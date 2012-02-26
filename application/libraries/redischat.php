@@ -14,13 +14,13 @@ Class Redischat {
 		}
 	}
 	public function addMsg($msg) {
-		$timenow = date('d/m/Y H:i', time());
+		$timenow = date('H:i', time());
 		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));
 		$this->chatset[] = $transport;
 		$this->pusher->trigger($this->pusherChannel, 'chat', $transport, null, false, true);
 	}
 	public function addMsgMod($msg) {
-		$timenow = date('d/m/Y H:i', time());
+		$timenow = date('H:i', time());
 		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));
 		$this->modchatset[] = $transport;
 		//$this->pusher->trigger($this->pusherModChannel, 'chat', $transport, null, false, true);

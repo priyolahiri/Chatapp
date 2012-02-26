@@ -30,14 +30,8 @@
 		<script type="text/javascript">
 			$(function() {
 				$.prettyLoader();
-				init();
-				<?php
-				if ($admin) {
-				?>
-				setrefresh();
-				<?php
-				}
-				?>
+				getoldchat();
+				initchat();
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
@@ -67,55 +61,7 @@
 			})
 			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
 			Pusher.channel_auth_endpoint = '/chatauth';
-			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
-			function init() {
-				c=0;
-				getoldchat();
-				channel.bind('chat', function(data){
-					var chattime = data.timenow;
-					var chatmsg = data.msg;
-					var output = '<li class="chat_element">At '+chattime+':</li>';
-					var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
-					$('#chat_main_inner ul').append(output+output2);
-					var elem = document.getElementById('chat_main_inner');
-  					elem.scrollTop = elem.scrollHeight;
-				});
-			}
-			function auth() {
-				
-			}
-			function admin() {
-				channel.bind('pusher:subscription_succeeded', function(members) {
-					var onlinetext = members.count + ' user(s) online';
-					$('#member_count').html(onlinetext);
-					members.each(function(member) {
-    						var name = member.info.name;
-    						var img = member.info.imgURL;
-    						var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
-    						$("#contact_list").append(memberinsert);
-    						var elem = document.getElementById('contact_window');
-  						elem.scrollTop = elem.scrollHeight;
- 					});
-				});
-				channel.bind('pusher:member_added', function(member) {
-  				// for example:
-  					var name = member.info.name;
-    					var img = member.info.imgURL;
-    					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
-    					$("#contact_list").append(memberinsert);
-    					var elem = document.getElementById('contact_window');
-  					elem.scrollTop = elem.scrollHeight;
-				});
-				channel.bind('pusher:member_removed', function(member) {
-  					var id = '#member_' + member.id;
-  					$(id).remove();
-				});
-			}
-			function setrefresh() {
-				setInterval('refreshmod()',20000);
-				$('#moderate_window').show();
-				refreshmod();
-			}
+			channel = '';
 			function getoldchat() {
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
@@ -134,6 +80,52 @@
   							elem.scrollTop = elem.scrollHeight;
 						}
 				})
+			}
+			function initchat() {
+				channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
+				channel.bind('pusher:subscription_succeeded', function(members) {
+					var onlinetext = members.count + ' user(s) online';
+					$('#member_count').html(onlinetext);
+					members.each(function(member) {
+    						var name = member.info.name;
+    						var img = member.info.imgURL;
+    						var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    						$("#contact_list").append(memberinsert);
+    						var elem = document.getElementById('contact_window');
+  						elem.scrollTop = elem.scrollHeight;
+ 					});
+				});	
+				channel.bind('chat', function(data){
+					var chattime = data.timenow;
+					var chatmsg = data.msg;
+					var output = '<li class="chat_element">At '+chattime+':</li>';
+					var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
+					$('#chat_main_inner ul').append(output+output2);
+					var elem = document.getElementById('chat_main_inner');
+  					elem.scrollTop = elem.scrollHeight;
+				});
+				
+			}
+			function initsend() {
+				
+			}
+			function initadmin() {
+				channel.bind('pusher:member_added', function(member) {
+  				// for example:
+  					var name = member.info.name;
+    					var img = member.info.imgURL;
+    					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    					$("#contact_list").append(memberinsert);
+    					var elem = document.getElementById('contact_window');
+  					elem.scrollTop = elem.scrollHeight;
+				});
+				channel.bind('pusher:member_removed', function(member) {
+  					var id = '#member_' + member.id;
+  					$(id).remove();
+				});
+				setInterval('refreshmod()',20000);
+				$('#moderate_window').show();
+				refreshmod();
 			}
 			function refreshmod() {
 				var co = 0;
@@ -169,7 +161,6 @@
 						}
 					});
 			}
-			c = 0;
 		</script>
 	</head>
 	<!-- END HEAD -->
@@ -187,7 +178,29 @@
 		<div class="auth_main">
 			<div class="sendchat_main">
 				<div id="sendchat_main_inner">
-					
+					<form id="submit_chat" class="vertical">
+						<label for="chat_text">Text</label>
+						<input type="text" id="chat_text" name="chat_text">
+						<label for="img_source">Image Source</label>
+						<select id="img_source" name="img_source">
+							<option value="NA">None</option>
+							<option value="twitpic">Twitpic</option>
+							<option value="yfrog">YFrog</option>
+						</select>
+						<label for="img_code">Image Code</label>
+						<input type="text" id="img_code" name="img_code">
+						<label for="vid_source">Video Source</label>
+						<select id="vid_source" name="vid_source">
+							<option value="NA">None</option>
+							<option value="youtube">Youtube</option>
+						</select>
+						<label for="vid_code">Video Code</label>
+						<input type="text" id="vid_code" name="vid_code">
+						<button class="small green">Send</button>
+						</form>
+						<div class="clear"></div>
+						<div class="notice success" id="chatsuccess"></div>
+						<div class="notice error" id="chaterror"></div>
 				</div>
 			</div>
 			<div class="contact_main">
