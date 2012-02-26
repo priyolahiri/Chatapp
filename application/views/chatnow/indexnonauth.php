@@ -85,7 +85,8 @@
 						dataType: 'json',
 						success: function(data) {
 							if (!data.error) {
-								channel.bind('chat', function(data){
+									channel.bind('chat', function(data){
+									console.log(data);
 									var chattime = data.timenow;
 									var chatmsg = data.msg;
 									var output = '<li class="chat_element">At '+chattime+':</li>';
