@@ -163,11 +163,11 @@
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
 								var memid = oldobj.key;
-								var output = '<li class="modchat_element" data-key="'+co+'">At '+chattime+':</li>';
-								var output2 = '<li class="modchat_element" data-key="'+co+'">'+chatmsg+'</li>';
-								var output3 = '<li class="modchat_element"><button class="small green app_comment" onclick="approve('+co+')">approve</span></button><hr/></li>';
-								$('#moderate_list').append(output+output2+output3);
-								var elem = document.getElementById('moderate_window');
+								var output = '<tr>';
+								var output2 = '<td>'+chatmsg+'<br/><button class="small green app_comment" onclick="approve('+co+')">approve</button></td></tr>';
+								$('#moderate_main_inner table tbody').append(output+output2);
+								var elem = document.getElementById('moderate_main_inner');
+								
   								elem.scrollTop = elem.scrollHeight;
 							});
 						}
@@ -238,6 +238,9 @@
 					<ul class="chat">
 						<li class="head_li">Moderation</li>
 					</ul>
+					<table class="striped">
+						<tbody></tbody>
+					</table>
 				</div>
 			</div>
 			<div class="clear"></div>
