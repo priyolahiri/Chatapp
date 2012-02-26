@@ -194,6 +194,9 @@
 		<div class="auth_main">
 			<div class="sendchat_main">
 				<div id="sendchat_main_inner">
+					<ul class="chat">
+						<li class="head_li">Comment</li>
+					</ul>
 					<form id="submit_chat">
 						<label for="chat_text">Text</label><br/>
 						<textarea id="chat_text" name="chat_text"></textarea>
@@ -221,7 +224,7 @@
 			</div>
 			<div class="moderate_main">
 				<div id="moderate_main_inner">
-					<ul>
+					<ul class="chat">
 						<li class="head_li">Moderation</li>
 					</ul>
 				</div>
@@ -229,7 +232,7 @@
 			<div class="clear"></div>
 			<div class="contact_main">
 				<div id="contact_main_inner">
-					<ul>
+					<ul class="chat">
 						<li class="head_li">Contacts Online</li>
 					</ul>
 				</div>
