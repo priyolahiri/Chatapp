@@ -119,7 +119,7 @@
     						console.log(chatadmin);
     						console.log(member.info.chatadmin);
     						console.log(member.info.name);
-    						if (chatadmin && !member.info.chatadmin && !member.info.name == 'anoymous') {
+    						if (chatadmin==true && member.info.chatadmin==false && member.info.name != 'anoymous') {
     							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">';
     						}
     						memberinsert = memberinsert + '</li>';
