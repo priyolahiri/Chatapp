@@ -86,9 +86,10 @@
 						url: '/chatinfo/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
 						dataType: 'json',
-						success: function(chatget) {
-							var chatinfo = jQuery.parseJSON(chatget);
-							console.log(chatinfo);
+						success: function(data) {
+							var chatobj = jQuery.parseJSON(data);
+							console.log(data);
+							console.log(chatobj);
 						}
 				});
 				channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
