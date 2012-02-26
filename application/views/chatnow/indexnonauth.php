@@ -98,6 +98,8 @@
 									var elem = document.getElementById('chat_main_inner');
   									elem.scrollTop = elem.scrollHeight;
 								});
+								role = data.role;
+								chatadmin = data.chatadmin;
 							}
 						}
 				});
@@ -169,6 +171,8 @@
 						}
 					});
 			}
+			role = '';
+			chatadmin = '';
 		</script>
 	</head>
 	<!-- END HEAD -->
