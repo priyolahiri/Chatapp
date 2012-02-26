@@ -178,10 +178,11 @@
 		<div class="auth_main">
 			<div class="sendchat_main">
 				<div id="sendchat_main_inner">
-					<form id="submit_chat" class="vertical">
-						<label for="chat_text">Text</label>
-						<input type="text" id="chat_text" name="chat_text">
-						<label for="img_source">Image Source</label>
+					<form id="submit_chat">
+						<label for="chat_text">Text</label><br/>
+						<textarea id="chat_text" name="chat_text"></textarea>
+						<button type="submit" class="small green">Send</button>
+						<label for="img_source">Image Source</label><br/>
 						<select id="img_source" name="img_source">
 							<option value="NA">None</option>
 							<option value="twitpic">Twitpic</option>
@@ -196,7 +197,6 @@
 						</select>
 						<label for="vid_code">Video Code</label>
 						<input type="text" id="vid_code" name="vid_code">
-						<button class="small green">Send</button>
 						</form>
 						<div class="clear"></div>
 						<div class="notice success" id="chatsuccess"></div>

@@ -7,6 +7,8 @@
 #chat_main_inner {
 	min-height: 250px;
 	max-height: 250px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .auth_main {
 	background-color: #FFFFFF;
@@ -26,6 +28,8 @@
 #sendchat_main_inner {
 	min-height: 250px;
 	max-height: 250px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .contact_main {
 	background-color: #FFFFFF;
@@ -37,6 +41,8 @@
 #contact_main_inner {
 	min-height: 250px;
 	max-height: 250px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .inline {
 	display: inline-block;
@@ -49,6 +55,12 @@
 }
 .col-gray {
 	background-color: #AAAAAA;
+}
+button, a.btn, a.btn:visited, a.button, a.button:visited, input[type="submit"], input[type="reset"], input[type="button"] {
+	vertical-align: top;
+}
+textarea {
+	height: auto;
 }
 table.striped{}
 table.striped tr.alt{background:#f5f5f5;}
