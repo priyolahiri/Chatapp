@@ -230,6 +230,7 @@
 					<ul></ul>
 				</div>
 			</div>
+			<div class="clear"></div>
 		</div>
 	</body>
 	<!-- END BODY -->
