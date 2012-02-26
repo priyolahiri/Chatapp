@@ -183,7 +183,7 @@
 			role = '';
 			chatadmin = '';
 			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
-			Pusher.channel_auth_endpoint = '/chatauth';
+			Pusher.channel_auth_endpoint = '/chatauth/<?php echo($chat->chatslug) ?>';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 		</script>
 	</head>
