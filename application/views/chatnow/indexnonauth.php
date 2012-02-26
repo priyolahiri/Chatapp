@@ -221,7 +221,7 @@
 			</div>
 			<div class="contact_main">
 				<div id="contact_main_inner">
-				
+					<ul></ul>
 				</div>
 			</div>
 		</div>
