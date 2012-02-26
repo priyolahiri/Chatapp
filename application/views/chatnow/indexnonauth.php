@@ -82,6 +82,15 @@
 				})
 			}
 			function initchat() {
+				$.ajax({
+						url: '/chatinfo/<?php echo($chat->chatslug) ?>',
+						type: 'GET',
+						dataType: 'json',
+						success: function(chatget) {
+							var chatinfo = jQuery.parseJSON(chatget);
+							console.log(chatinfo);
+						}
+				});
 				channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 				channel.bind('pusher:subscription_succeeded', function(members) {
 					var onlinetext = members.count + ' user(s) online';

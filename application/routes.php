@@ -63,6 +63,38 @@ return array(
 		}
 		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
+	'GET /chatinfo/(:any)' => function($chatslug) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if ($chatsearch) {
+			$socialauth = new Socialauth();
+			if (!$socialauth->user_id) {
+				if (Session::get('anonid')) {
+					$user_id = Session::get('anonid');
+				} else {
+					$user_id = uniqid();
+					Session::put('anodid', $user_id);
+				}
+				$role = "anonymous";
+				$name = "anonymous";
+				$imurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
+				$chatadmin = false;
+			} else {
+				$user_id = $socialauth->user_id;
+				$role = $socialauth->user_role;
+				$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+				$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
+				$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+				if ($chatadmin or $role == "admin") {
+					$chatadmin = true;
+				} else {
+					$chatadmin = false;
+				}
+			} 
+		} else {
+			$error = "chat not found";
+		}
+		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error));
+	},
 	'POST /chatauth' => function() {
 		$socialauth = new Socialauth();		
 		if (!$socialauth->user_id) {
@@ -117,9 +149,9 @@ return array(
 			return json_encode(array('msgerror' => 'Please enter valid video code.'));
 		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
-		$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
+		//$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
-		$msg = "<img src='$imgurl' width='20' height='20' /> ".$name . " says :<br/>";
+		$msg = "<b>".$name . " :</b><br/>";
 		$msg .= $posttext ? $posttext.'<br/>' : '';
 		if ($postimgsrc=='twitpic') {
 			$msg.="<a href='http://twitpic.com/$postimgcode' target='_blank'><img src='http://twitpic.com/show/thumb/$postimgcode' /></a><br/>";
