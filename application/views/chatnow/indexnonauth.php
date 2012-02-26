@@ -69,7 +69,7 @@
 								var oldobj = jQuery.parseJSON(oldmsg);
 								var chattime = oldobj.timenow;
 								var chatmsg = oldobj.msg;
-								var output = '<tr><td class="col-gray">At '+chattime+':</td>';
+								var output = '<tr><td class="col-gray">'+chattime+'</td>';
 								var output2 = '<td>'+chatmsg+'</td></tr>';
 								$('#chat_main_inner table tbody').append(output+output2);
 							});
@@ -90,9 +90,9 @@
 									console.log(data);
 									var chattime = data.timenow;
 									var chatmsg = data.msg;
-									var output = '<li class="chat_element">At '+chattime+':</li>';
-									var output2 = '<li class="chat_element">'+chatmsg+'<hr/></li>';
-									$('#chat_main_inner ul').append(output+output2);
+									var output = '<tr><td class="col-gray">'+chattime+'</td>';
+									var output2 = '<td>'+chatmsg+'</td></tr>';
+									$('#chat_main_inner table tbody').append(output+output2);
 									var elem = document.getElementById('chat_main_inner');
   									elem.scrollTop = elem.scrollHeight;
 								});
