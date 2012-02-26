@@ -63,7 +63,7 @@ return array(
 		}
 		return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
-	'GET /chatinfo/(:any)' => function($chatslug) {
+	'GET /chatinfo/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if ($chatsearch) {
 			$socialauth = new Socialauth();
