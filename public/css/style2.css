@@ -56,8 +56,6 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	border: 1px solid #DDDDDD;
 	margin: 10px;
 	width: 600px;
-	min-height: 260px;
-	max-height: 260px;
 }
 .sendchat_main {
 	background-color: #FFFFFF;
@@ -65,21 +63,9 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	margin: 5px;
 	width: 285px;
 	float: left;
+	clear: left;
 }
 #sendchat_main_inner {
-	min-height: 250px;
-	max-height: 250px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-.contact_main {
-	background-color: #FFFFFF;
-	border: 1px dashed #DDDDDD;
-	margin: 5px;
-	width: 580px;
-	float: right;
-}
-#contact_main_inner {
 	min-height: 250px;
 	max-height: 250px;
 	overflow-y: scroll;
@@ -91,8 +77,23 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	margin: 5px;
 	width: 285px;
 	float: left;
+	clear: right;
 }
 #moderate_main_inner {
+	min-height: 250px;
+	max-height: 250px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.contact_main {
+	background-color: #FFFFFF;
+	border: 1px dashed #DDDDDD;
+	margin: 5px;
+	width: 580px;
+	float: left;
+	clear: both;
+}
+#contact_main_inner {
 	min-height: 250px;
 	max-height: 250px;
 	overflow-y: scroll;
