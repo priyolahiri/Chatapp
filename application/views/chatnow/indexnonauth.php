@@ -187,15 +187,15 @@
 							<option value="NA">None</option>
 							<option value="twitpic">Twitpic</option>
 							<option value="yfrog">YFrog</option>
-						</select>
-						<label for="img_code">Image Code</label>
-						<input type="text" id="img_code" name="img_code">
-						<label for="vid_source">Video Source</label>
+						</select><br/>
+						<label for="img_code">Image Code</label><br/>
+						<input type="text" id="img_code" name="img_code"><br/>
+						<label for="vid_source">Video Source</label><br/>
 						<select id="vid_source" name="vid_source">
 							<option value="NA">None</option>
 							<option value="youtube">Youtube</option>
-						</select>
-						<label for="vid_code">Video Code</label>
+						</select><br/>
+						<label for="vid_code">Video Code</label><br/>
 						<input type="text" id="vid_code" name="vid_code">
 						</form>
 						<div class="clear"></div>
