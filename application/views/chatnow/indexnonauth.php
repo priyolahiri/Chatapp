@@ -156,7 +156,7 @@
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
-							$('#moderate_list li.modchat_element').empty().end();
+							$('#moderate_main_inner table tbody tr').empty().end();
 							_.each(data, function(oldmsg) {
 								var oldobj = jQuery.parseJSON(oldmsg);
 								co = co + 1;
