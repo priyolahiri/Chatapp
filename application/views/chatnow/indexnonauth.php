@@ -100,6 +100,9 @@
 								});
 								role = data.role;
 								chatadmin = data.chatadmin;
+								if (chatadmin) {
+									initadmin();
+								}
 							}
 						}
 				});
@@ -115,8 +118,8 @@
     						var name = member.info.name;
     						var img = member.info.imgURL;
     						var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
-    						$("#contact_list").append(memberinsert);
-    						var elem = document.getElementById('contact_window');
+    						$("#contact_main_inner ul").append(memberinsert);
+    						var elem = document.getElementById('contact_main_inner');
   						elem.scrollTop = elem.scrollHeight;
  					});
 				});
@@ -125,8 +128,8 @@
   					var name = member.info.name;
     					var img = member.info.imgURL;
     					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
-    					$("#contact_list").append(memberinsert);
-    					var elem = document.getElementById('contact_window');
+    					$("#contact_main_inner ul").append(memberinsert);
+    					var elem = document.getElementById('contact_main_inner');
   					elem.scrollTop = elem.scrollHeight;
 				});
 				channel.bind('pusher:member_removed', function(member) {
