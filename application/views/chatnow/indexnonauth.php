@@ -59,9 +59,6 @@
 					})
 				})
 			})
-			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
-			Pusher.channel_auth_endpoint = '/chatauth';
-			channel = '';
 			function getoldchat() {
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
@@ -88,7 +85,6 @@
 						dataType: 'json',
 						success: function(data) {
 							if (!data.error) {
-								channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 								channel.bind('chat', function(data){
 									var chattime = data.timenow;
 									var chatmsg = data.msg;
@@ -176,6 +172,9 @@
 			}
 			role = '';
 			chatadmin = '';
+			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
+			Pusher.channel_auth_endpoint = '/chatauth';
+			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');
 		</script>
 	</head>
 	<!-- END HEAD -->
