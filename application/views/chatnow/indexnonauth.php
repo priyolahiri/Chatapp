@@ -115,7 +115,7 @@
 					members.each(function(member) {
     						var name = member.info.name;
     						var img = member.info.imgURL;
-    						var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    						var memberinsert = '<li class="sub_li" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
     						$("#contact_main_inner ul").append(memberinsert);
     						var elem = document.getElementById('contact_main_inner');
   						elem.scrollTop = elem.scrollHeight;
@@ -125,7 +125,7 @@
   				// for example:
   					var name = member.info.name;
     					var img = member.info.imgURL;
-    					var memberinsert = '<li class="contact_element" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
+    					var memberinsert = '<li class="sub_li" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name+'</li>';
     					$("#contact_main_inner ul").append(memberinsert);
     					var elem = document.getElementById('contact_main_inner');
   					elem.scrollTop = elem.scrollHeight;

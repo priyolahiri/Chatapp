@@ -120,9 +120,15 @@ textarea {
 li.head_li {
 	background-color: #DDDDDD;
 	color: #000000;
-	padding: 0px;
+	padding: 2px;
 	margin: 0px;
 	list-style: none;
+}
+li.sub_li {
+	clear: none;
+	margin: 2px;
+	padding: 2px;
+	border: 1px dashed #DDDDDD;
 }
 ul.chat {
 	padding: 0px;
