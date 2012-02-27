@@ -32,7 +32,7 @@
 				initchat();
 				$('button.makeadmin').on('click', function(e) {
 					e.preventDefault();
-					var makeadmin_id = $(this).attr('data-userid') {
+					var makeadmin_id = $(this).attr('data-userid');
 						$.ajax({
 							url: '/makeadmin/<?php echo($chat->chatslug) ?>',
 							data: '?userid='+makeadmin_id,
