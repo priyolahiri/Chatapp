@@ -101,8 +101,10 @@
 								if (data.name != "anonymous") {
 									$('div.auth_main').addClass("block");
 									$('div.sendchat_main').addClass('block');
+									$('div.sendchat_main').addClass('block-fullwidth');
 								}
 								if (chatadmin) {
+									$('div.sendchat_main').removeClass('block-fullwidth');
 									$('div.moderate_main').addClass("block");
 									$('div.')
 									initadmin();

@@ -108,6 +108,9 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 .block {
 	display: block;
 }
+.block-fullwidth {
+	width: 100%;
+}
 .none {
 	display: none;
 }
