@@ -56,14 +56,15 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	border: 1px solid #DDDDDD;
 	margin: 10px;
 	width: 600px;
+	display: none;
 }
 .sendchat_main {
 	background-color: #FFFFFF;
 	border: 1px dashed #DDDDDD;
 	margin: 5px;
-	width: 285px;
 	float: left;
 	clear: left;
+	display: none;
 }
 #sendchat_main_inner {
 	min-height: 250px;
@@ -78,6 +79,7 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	width: 285px;
 	float: left;
 	clear: right;
+	display: none;
 }
 #moderate_main_inner {
 	min-height: 250px;

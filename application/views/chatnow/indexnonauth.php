@@ -98,7 +98,12 @@
 								});
 								role = data.role;
 								chatadmin = data.chatadmin;
+								if (data.name != "anonymous") {
+									$('div.auth_main').addClass("block");
+									$('div.sendchat_main').addClass('block');
+								}
 								if (chatadmin) {
+									$('div.moderate_main').addClass("block");
 									initadmin();
 								}
 							}
@@ -211,7 +216,7 @@
 					<form id="submit_chat">
 						<label for="chat_text">Text</label><br/>
 						<textarea id="chat_text" name="chat_text"></textarea>
-						<button type="submit" class="small green">Send</button>
+						<button type="submit" class="small green">Send</button><br/>
 						<label for="img_source">Image Source</label><br/>
 						<select id="img_source" name="img_source">
 							<option value="NA">None</option>
