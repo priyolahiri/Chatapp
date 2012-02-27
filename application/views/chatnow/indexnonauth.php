@@ -8,13 +8,11 @@
 		<!-- BEGIN SCRIPTS -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="/js/underscore.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
-		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
 		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
-		<script type="text/javascript" src="/js/slimscroll.js"></script>
+		<script type="text/javascript" src="/js/jquery.noty.js"></script>
 		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script type="text/javascript" src="/js/prettify.js"></script>                                   <!-- PRETTIFY -->
@@ -23,8 +21,8 @@
 		<!-- BEGIN STYLES -->
 		<link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />                  <!-- KICKSTART -->
 		<link rel="stylesheet" type="text/css" href="/css/style2.css" media="all" />    
-		<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/prettyLoader.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
 		                      <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
 		<script type="text/javascript">
@@ -32,6 +30,23 @@
 				$.prettyLoader();
 				getoldchat();
 				initchat();
+				$('button.makeadmin').on('click', function(e) {
+					e.preventDefault();
+					var makeadmin_id = $(this).attr('data-userid') {
+						$.ajax({
+							url: '/makeadmin/<?php echo($chat->chatslug) ?>',
+							data: '?userid='+makeadmin_id,
+							type: 'POST',
+							success: function(data) {
+								if (data.success) {
+									noty({"text":"User granted admin.","layout":"topRight","type":"alert","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+								} else {
+									
+								}
+							}
+						})
+					}
+				})
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
@@ -43,17 +58,13 @@
 						success: function(data) {
 							var msg = data;
 							if (msg.msgsuccess) {
-								$('#chatsuccess').html('');
-								$('#chaterror').html('');
-								$('#chatsuccess').html('Send Success!');
+								noty({"text":"Coment posted!","layout":"topRight","type":"alert","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 								$('#submit_chat').each (function(){
   									this.reset();
 								});
 							}
 							if (msg.msgerror) {
-								$('#chatsuccess').html('');
-								$('#chaterror').html('');
-								$('#chaterror').html(msg.msgerror);
+								noty({"text":"Error Occured!","layout":"topRight","type":"alert","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 							}
 						}
 					})
@@ -122,9 +133,6 @@
 							}
 						}
 				});
-			}
-			function initsend() {
-				
 			}
 			function initadmin() {
 				channel.bind('pusher:subscription_succeeded', function(members) {
@@ -248,8 +256,6 @@
 						<input type="text" id="vid_code" name="vid_code">
 						</form>
 						<div class="clear"></div>
-						<div class="notice success" id="chatsuccess"></div>
-						<div class="notice error" id="chaterror"></div>
 				</div>
 			</div>
 			<div class="moderate_main">
