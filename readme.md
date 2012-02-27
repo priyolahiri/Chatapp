@@ -1,7 +1,7 @@
-#CHATAPP - LIVE CHATWALL AND SCORE
+#CHATAPP - LIVE CHATWALL
 
 This project is based on PHP, Redis, and Pusher API. 
-This application provides an embeddable live chatwall with social login.
+This application provides an live chatwall with social login. The target is to make it embeddable on your own website/wordpress blog/other cms.
 Pusher is used for pub/sub and redis is used for maintaining history of closed chats and for providing chat history to users joining in late to the conversation since Pusher does not have a History API. The PHP framework in use is Laravel (stable 2.x release). On the UI front it uses Jquery, Jquery UI, Jquery Noty and 99lime.com's fantastic HTML Kickstart.
 
 This project is under construction and not ready for production use yet.
