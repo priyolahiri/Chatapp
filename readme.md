@@ -16,6 +16,7 @@ This project is under construction and not ready for production use yet.
 6. Twitter and Facebook app
 
 ##SETUP INSTRUCTIONS
+
 1. Sign-up for a [Pusher](http://www.pusherapp.com) account account if you don't have one and create an app.
 2. Install redis-server. On Ubuntu add [chris-lea's redis repository](https://launchpad.net/~chris-lea/+archive/redis-server) from Launchpad and then do apt-get update and apt-get install redis-server
 3. Dowload and instlall the [Rediska](http://rediska.geometria-lab.net) library using PEAR by 'pear channel-discover pear.geometria-lab.net' and then 'pear install geometria-lab/Rediska-beta'
@@ -31,5 +32,12 @@ This project is under construction and not ready for production use yet.
 12. Open public/hybridauth/config.php and disable all adapters except Facebook and Twitter. Fill in your API values for Facebook and Twitter. Refer [HybridAuth Docs](http://hybridauth.sourceforge.net) for more info.
 13. Open http://yourvhost.com and login using Facebook or Twitter. Once successfully logged in, open the mysql db and change the role of the user to "admin"
 14. You are now the admin and ready to rock!
+
+##SCREENSHOTS
+
+Login Page
+<a href="http://www.upload3r.net/viewer.php?file=60236297395442054749.jpg"><img src="http://www.upload3r.net/images/60236297395442054749_thumb.jpg" border="0" alt="60236297395442054749.jpg" /></a>
+
+
 
 This project is in active development and sponsored by [SportsKeeda.com](http://www.sportskeeda.com)
