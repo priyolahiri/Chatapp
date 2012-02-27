@@ -35,7 +35,7 @@
 					var makeadmin_id = $(this).attr('data-userid');
 					$.ajax({
 						url: '/makeadmin/<?php echo($chat->chatslug) ?>',
-						data: '?userid='+makeadmin_id,
+						data: 'userid='+makeadmin_id,
 						type: 'POST',
 						success: function(data) {
 							if (data.success) {
