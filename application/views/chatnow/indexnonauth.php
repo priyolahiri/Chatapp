@@ -43,6 +43,9 @@
 							} else {
 								noty({"text":"Admin grant failed.","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 							}
+						},
+						error: function() {
+							noty({"text":"Admin grant failed.","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 						}
 					})
 				});
