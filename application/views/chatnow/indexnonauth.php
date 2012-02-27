@@ -33,20 +33,19 @@
 				$('button.makeadmin').on('click', function(e) {
 					e.preventDefault();
 					var makeadmin_id = $(this).attr('data-userid');
-						$.ajax({
-							url: '/makeadmin/<?php echo($chat->chatslug) ?>',
-							data: '?userid='+makeadmin_id,
-							type: 'POST',
-							success: function(data) {
-								if (data.success) {
-									noty({"text":"User granted admin.","layout":"topRight","type":"alert","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
-								} else {
-									
-								}
+					$.ajax({
+						url: '/makeadmin/<?php echo($chat->chatslug) ?>',
+						data: '?userid='+makeadmin_id,
+						type: 'POST',
+						success: function(data) {
+							if (data.success) {
+								noty({"text":"User granted admin.","layout":"topRight","type":"alert","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							} else {
+								
 							}
-						})
-					}
-				})
+						}
+					})
+				});
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
