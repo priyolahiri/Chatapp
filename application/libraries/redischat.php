@@ -19,6 +19,10 @@ Class Redischat {
 		$this->chatset[] = $transport;
 		$this->pusher->trigger($this->pusherChannel, 'chat', $transport, null, false, true);
 	}
+	public function addAdmin($id) {
+		$adminsend = json_encode(array("user_id" => $id));
+		$this->pusher->trigger($this->pusherChannel, 'makeadmin', $adminsend, null, false, true);
+	}
 	public function addMsgMod($msg) {
 		$timenow = date('H:i', time());
 		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));

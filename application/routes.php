@@ -116,7 +116,13 @@ return array(
 				$chatadmin = false;
 		}
 		if ($chatadmin) {
-			
+			$insert = new Chatadmin;
+			$insert->chat_id = $chatsearch->id;
+			$insert->user_id = $adminid;
+			$insert->save();
+			$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+			$redischat->addAdmin($adminid);
+			return json_encode(array("success" => true));
 		} else {
 			return json_encode(array("success" => false));
 		}
