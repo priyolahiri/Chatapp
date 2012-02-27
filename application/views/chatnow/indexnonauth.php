@@ -108,6 +108,7 @@
 									$('div.sendchat_main').removeClass('block-fullwidth');
 									$('#chat_text').removeClass('large');
 									$('div.moderate_main').addClass("block");
+									$('div.contact_main').addClass('block');
 									initadmin();
 								}
 							}
