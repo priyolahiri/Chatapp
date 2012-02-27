@@ -24,6 +24,7 @@ This project is under construction and not ready for production use yet.
 6. Create an apache virtualhost configuration and set the document root to the public directory
 7. Create a mysql db
 8. Import the application/config/db.sql file into the newly created database
+9. Open application/config/database.php and change the host, username, password, db name.
 9. Open public/index.php and change the pusher values with what you get from your Pusher.com account
 10. Open application/config/application.php and change the url element to point to your virtualhost address and define a random 32 character key in the key element
 11. Open application/config/cache.php and application/config/session.php and make necessary changes. By default, it's set to memcache running on 127.0.0.1
