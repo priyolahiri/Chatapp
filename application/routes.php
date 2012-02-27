@@ -100,6 +100,27 @@ return array(
 		}
 		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin));
 	},
+	'POST /makeadmin/(:any)/(:any)' => function($slug, $adminid) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return json_encode(array("success" => false));
+		}
+		$socialauth = new Socialauth();	
+		if (!$socialauth->user_id) {
+			return json_encode(array("success" => false));
+		} 
+		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmins or $role == "admin") {
+				$chatadmin = true;
+		} else {
+				$chatadmin = false;
+		}
+		if ($chatadmin) {
+			
+		} else {
+			return json_encode(array("success" => false));
+		}
+	},
 	'POST /chatauth/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {
