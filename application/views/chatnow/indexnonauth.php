@@ -34,9 +34,9 @@
 					e.preventDefault();
 					var makeadmin_id = $(this).attr('data-userid');
 					$.ajax({
-						url: '/makeadmin/<?php echo($chat->chatslug) ?>',
-						data: 'userid='+makeadmin_id,
-						type: 'POST',
+						url: '/makeadmin/<?php echo($chat->chatslug) ?>/'+makeadmin_id,
+						type: 'GET',
+						dataType: 'json',
 						success: function(data) {
 							if (data.success) {
 								noty({"text":"User granted admin.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});

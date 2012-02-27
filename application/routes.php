@@ -100,7 +100,7 @@ return array(
 		}
 		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin));
 	},
-	'POST /makeadmin/(:any)/(:any)' => function($slug, $adminid) {
+	'GET /makeadmin/(:any)/(:any)' => function($slug, $adminid) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {
 			return json_encode(array("success" => false));
