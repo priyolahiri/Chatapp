@@ -106,7 +106,6 @@
 								if (chatadmin) {
 									$('div.sendchat_main').removeClass('block-fullwidth');
 									$('div.moderate_main').addClass("block");
-									$('div.')
 									initadmin();
 								}
 							}
