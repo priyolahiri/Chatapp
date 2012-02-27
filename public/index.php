@@ -17,7 +17,7 @@ define('APPROOT', "/var/www/Chatapp");
 define('LIBRARIES', DOCROOT.'/../application/libraries');
 define ('HYBRID_CONFIG', APPROOT."/public/hybridauth/config.php");
 define ('PUSHERKEY', '');
-define ('PUSHERAPI', '');
+define ('PUSHERSECRET', '');
 define ('PUSHERAPPID', '');
 // --------------------------------------------------------------
 // The path to the application directory.
