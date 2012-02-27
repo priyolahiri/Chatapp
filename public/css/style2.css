@@ -64,6 +64,7 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	margin: 5px;
 	float: left;
 	clear: left;
+	width: 285px;
 	display: none;
 }
 #sendchat_main_inner {
@@ -109,7 +110,7 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	display: block;
 }
 .block-fullwidth {
-	width: 100%;
+	width: 580px;
 }
 .none {
 	display: none;
