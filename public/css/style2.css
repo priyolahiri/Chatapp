@@ -90,7 +90,7 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 }
 .contact_main {
 	background-color: #FFFFFF;
-	border: 1px dashed #DDDDDD;
+	border: 1px dashed #DDDDDD;	
 	margin: 5px;
 	width: 580px;
 	float: left;
