@@ -99,17 +99,25 @@
 								role = data.role;
 								chatadmin = data.chatadmin;
 								if (data.name != "anonymous") {
+									user_id = data.user_id;
+									siteadmin = data.siteadmin;
 									$('div.auth_main').addClass("block");
 									$('div.sendchat_main').addClass('block');
 									$('div.sendchat_main').addClass('block-fullwidth');
 									$('#chat_text').addClass('large');
-								}
-								if (chatadmin) {
-									$('div.sendchat_main').removeClass('block-fullwidth');
-									$('#chat_text').removeClass('large');
-									$('div.moderate_main').addClass("block");
-									$('div.contact_main').addClass('block');
-									initadmin();
+									if (chatadmin) {
+										$('div.sendchat_main').removeClass('block-fullwidth');
+										$('#chat_text').removeClass('large');
+										$('div.moderate_main').addClass("block");
+										$('div.contact_main').addClass('block');
+										initadmin();
+									} else {
+										channel.bind('makeadmin', function(data){
+											if (data.user_id == user_id) {
+												window.location.reload();
+											}
+										});
+									}
 								}
 							}
 						}
@@ -177,7 +185,6 @@
 								var output2 = '<td>'+chatmsg+'<br/><button class="small green app_comment" onclick="approve('+co+')">approve</button></td></tr>';
 								$('#moderate_main_inner table tbody').append(output+output2);
 								var elem = document.getElementById('moderate_main_inner');
-								
   								elem.scrollTop = elem.scrollHeight;
 							});
 						}
@@ -193,6 +200,8 @@
 						}
 					});
 			}
+			user_id = '';
+			siteadmin = '';
 			role = '';
 			chatadmin = '';
 			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');

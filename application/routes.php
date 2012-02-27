@@ -86,6 +86,11 @@ return array(
 				$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
 				if ($chatadmin or $role == "admin") {
 					$chatadmin = true;
+					if ($role == "admin") {
+						$siteadmin = true;
+					} else {
+						$siteadmin = false;
+					}
 				} else {
 					$chatadmin = false;
 				}
@@ -93,7 +98,7 @@ return array(
 		} else {
 			$error = "chat not found";
 		}
-		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error));
+		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin));
 	},
 	'POST /chatauth/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
