@@ -12,13 +12,13 @@ This project is under construction and not ready for production use yet.
 2. MySQL or any other fork with native php mysql support
 3. Redis server and Rediska library
 4. Memcached server and memcached php library
-5. [Pusher.com](http://www.pusher.com) account
+5. [Pusher](http://www.pusherapp.com) account
 6. Twitter and Facebook app
 
 ##SETUP INSTRUCTIONS
-1. Sign-up for a Pusher.com account if you don't have one
-2. Install redis-server. On Ubuntu add chris-lea's redis repository from Launchpad and then do apt-get update and apt-get install redis-server
-3. Dowload and instlall the rediska library using PEAR
+1. Sign-up for a [Pusher](http://www.pusherapp.com) account account if you don't have one and create an app.
+2. Install redis-server. On Ubuntu add [chris-lea's redis repository](https://launchpad.net/~chris-lea/+archive/redis-server) from Launchpad and then do apt-get update and apt-get install redis-server
+3. Dowload and instlall the [Rediska](http://rediska.geometria-lab.net) library using PEAR by 'pear channel-discover pear.geometria-lab.net' and then 'pear install geometria-lab/Rediska-beta'
 4. Make sure you have memcached and the memcached php library installed and running.
 5. Git clone the project
 6. Create an apache virtualhost configuration and set the document root to the public directory
@@ -32,4 +32,4 @@ This project is under construction and not ready for production use yet.
 13. Open http://yourvhost.com and login using Facebook or Twitter. Once successfully logged in, open the mysql db and change the role of the user to "admin"
 14. You are now the admin and ready to rock!
 
-This project is in active development and evaluation at [SportsKeeda.com](http://www.sportskeeda.com)
+This project is in active development and sponsored by [SportsKeeda.com](http://www.sportskeeda.com)
