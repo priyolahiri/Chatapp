@@ -104,6 +104,7 @@
 								}
 								if (chatadmin) {
 									$('div.moderate_main').addClass("block");
+									$('div.')
 									initadmin();
 								}
 							}

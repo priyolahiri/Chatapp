@@ -94,6 +94,7 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 	width: 580px;
 	float: left;
 	clear: both;
+	display: none;
 }
 #contact_main_inner {
 	min-height: 250px;
