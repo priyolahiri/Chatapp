@@ -122,7 +122,12 @@ button, a.btn, a.btn:visited, a.button, a.button:visited, input[type="submit"], 
 	vertical-align: top;
 }
 textarea {
-	height: auto;
+	width: 200px;
+	height: 80px;
+}
+textarea.large {
+	width: 500px;
+	height: 60px;
 }
 li.head_li {
 	background-color: #DDDDDD;

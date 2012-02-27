@@ -102,9 +102,11 @@
 									$('div.auth_main').addClass("block");
 									$('div.sendchat_main').addClass('block');
 									$('div.sendchat_main').addClass('block-fullwidth');
+									$('#chat_text').addClass('large');
 								}
 								if (chatadmin) {
 									$('div.sendchat_main').removeClass('block-fullwidth');
+									$('#chat_text').removeClass('large');
 									$('div.moderate_main').addClass("block");
 									initadmin();
 								}
