@@ -30,7 +30,7 @@
 				$.prettyLoader();
 				getoldchat();
 				initchat();
-				$('button.makeadmin').on('click', function(e) {
+				$('.makeadmin').click(function(e) {
 					e.preventDefault();
 					var makeadmin_id = $(this).attr('data-userid');
 					$.ajax({
