@@ -50,7 +50,7 @@
 					})
 				});
 				$('span.social').click(function(e) {
-					eArray.preventDefault;
+					e.preventDefault;
 					var social = $(this).attr('data-icon');
 					if (social == 'F') {
 						var provider = 'facebook';
@@ -98,20 +98,6 @@
 					})
 				})
 			})
-			function doauth(provider) {
-				<?php
-				if ($_SERVER['HTTP_REFERER']) {
-					$origurl = 'http://'.$_SERVER['HTTP_REFERER'];
-				} else {
-					$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-				}
-				?>
-				var origurl = '<?php echo ($origurl) ?>';
-				var finalurl = '<?php echo($_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
-				$('<form action="'+finalurl+'" method="POST">' + 
-    				'<input type="hidden" name="directurl" value="' + origurl + '">' +
-    				'</form>').submit();
-			}
  			function getoldchat() {
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
