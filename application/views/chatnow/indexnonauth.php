@@ -65,8 +65,8 @@
 							$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 						}
 					?>
-					var origurl = '<?php echo ($origurl) ?>';
-					var finalurl = '<?php echo($_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
+					var origurl = '<?php echo ('http://'.$origurl) ?>';
+					var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
 					$('<form action="'+finalurl+'" method="POST">' + 
     					'<input type="hidden" name="directurl" value="' + origurl + '">' +
     					'</form>').submit();
