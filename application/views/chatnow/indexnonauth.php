@@ -88,7 +88,7 @@
 					?>
 					if (isInIFrame) {
 						var origurl = '<?php echo ($origurlenc) ?>';
-						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchati/<?php ech($chat->chatslug); ?>'+provider+'/'+user_id+'/'+origurl;
+						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchati/<?php echo($chat->chatslug); ?>'+provider+'/'+user_id+'/'+origurl;
 						window.open(finalurl,'_newtab');
 						channel.bind('newauth', function(data){
 									console.log(data);
