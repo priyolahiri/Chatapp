@@ -88,8 +88,12 @@
 					?>
 					if (isInIFrame) {
 						var origurl = '<?php echo ($origurlenc) ?>';
-						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchati/'+provider+'/'+origurl;
+						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchati/'+provider+'/'+user_id+'/'+origurl;
 						window.open(finalurl,'_newtab');
+						channel.bind('newauth', function(data){
+									console.log(data);
+									
+						});
 					} else {
 						var origurl = '<?php echo ($origurl) ?>';
 						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;
@@ -184,6 +188,7 @@
 									}
 								} else {
 									$('div.login_main').addClass('block');
+									user_id = data.user_id;
 								}
 							}
 						}
