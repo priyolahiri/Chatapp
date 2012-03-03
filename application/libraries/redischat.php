@@ -56,12 +56,12 @@ Class Redischat {
 		return json_encode(array("msgsuccess" => "approved!"));
 	}
 	public function setScore($score) {
+		$newtransport = json_encode(array('score' => $score));
 		if (!$this->chatscore[0]) {
-			$this->chatscore[] = $score;
+			$this->chatscore[] = $newtransport;
 		} else {
-			$this->chatscore[0] = $score;
+			$this->chatscore[0] = $newtransport;
 		}
-		$newtransport = array('score' => $score);
 		$this->pusher->trigger($this->pusherChannel, 'score', $newtransport, null, false, true);
 	}
 	public function getChat() {
