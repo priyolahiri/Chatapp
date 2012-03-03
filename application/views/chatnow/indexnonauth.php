@@ -78,7 +78,6 @@
 			})
 			function doauth(provider) {
 				<?php
-				//error_log ('referrer: '.$_SERVER['HTTP_REFERER']);
 				if ($_SERVER['HTTP_REFERER']) {
 					$origurl = 'http://'.$_SERVER['HTTP_REFERER'];
 				} else {
@@ -269,8 +268,8 @@
 			<div id="login_main_inner">
 				<p align='center'>Login with:</p>
 				<p align="center" class="zerom">
-					<button onclick='doauth("facebook");'><span class="icon social large blue" data-icon="F" ></span></button>	
-					<button  onclick='doauth("twitter");'><span class="icon social large blue" data-icon="t"></span></button>
+					<button onClick='doauth("facebook");'><span class="icon social large blue" data-icon="F" ></span></button>	
+					<button  onClick='doauth("twitter");'><span class="icon social large blue" data-icon="t"></span></button>
 				</p>
 			</div>
 		</div>
