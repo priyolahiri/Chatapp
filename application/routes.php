@@ -55,7 +55,7 @@ return array(
 		if (Session::get('directurl')) {
 			return Redirect::to(Session::get('directurl'));
 		} else {
-			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
+			return Response::make(View::make('error.500')->with('error', 'url not in session'), 500);
 		}
 	},
 	'GET /chatnow/(:any)' => function($slug)
