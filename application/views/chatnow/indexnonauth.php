@@ -80,7 +80,7 @@
 				<?php
 				//error_log ('referrer: '.$_SERVER['HTTP_REFERER']);
 				if ($_SERVER['HTTP_REFERER']) {
-					$origurl = $_SERVER['HTTP_REFERER'];
+					$origurl = 'http://'.$_SERVER['HTTP_REFERER'];
 				} else {
 					$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 				}
