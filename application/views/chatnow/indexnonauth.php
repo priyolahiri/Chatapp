@@ -90,7 +90,7 @@
 					?>
 					var origurl = '<?php echo ('http://'.$origurl) ?>';
 					var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
-					$.postGo(finalurl, {'direcurl' : origurl });
+					$.postGo(finalurl, {'directurl' : origurl });
 					});
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
