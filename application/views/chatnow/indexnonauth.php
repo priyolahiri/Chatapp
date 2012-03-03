@@ -26,6 +26,28 @@
 		                      <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
 		<script type="text/javascript">
+		(function($) {
+    			$.extend({
+        			getGo: function(url, params) {
+            		document.location = url + '?' + $.param(params);
+        		},
+        		postGo: function(url, params) {
+            		var $form = $("<form>")
+               		.attr("method", "post")
+               		.attr("action", url);
+            		$.each(params, function(name, value) {
+                $("<input type='hidden'>")
+                    .attr("name", name)
+                    .attr("value", value)
+                    .appendTo($form);
+            		});
+            		$form.appendTo("body");
+            		$form.submit();
+        		}
+    			});
+		})(jQuery);
+		</script>
+		<script type="text/javascript">
 			$(function() {
 				$.prettyLoader();
 				getoldchat();
@@ -52,6 +74,7 @@
 				$('span.social').click(function(e) {
 					e.preventDefault;
 					var social = $(this).attr('data-icon');
+					console.log(social);
 					if (social == 'F') {
 						var provider = 'facebook';
 					}
@@ -67,9 +90,7 @@
 					?>
 					var origurl = '<?php echo ('http://'.$origurl) ?>';
 					var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
-					$('<form action="'+finalurl+'" method="POST">' + 
-    					'<input type="hidden" name="directurl" value="' + origurl + '">' +
-    					'</form>').submit();
+					$.postGo(finalurl, {'direcurl' : origurl });
 					});
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
