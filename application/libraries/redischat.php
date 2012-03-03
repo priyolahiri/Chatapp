@@ -23,6 +23,10 @@ Class Redischat {
 		$adminsend = json_encode(array("user_id" => $id));
 		$this->pusher->trigger($this->pusherChannel, 'makeadmin', $adminsend, null, false, true);
 	}
+	public function newAuth($id) {
+		$adminsend = json_encode(array("user_id" => $id));
+		$this->pusher->trigger($this->pusherChannel, 'newauth', $adminsend, null, false, true);
+	}
 	public function addMsgMod($msg) {
 		$timenow = date('H:i', time());
 		$transport = json_encode(array('timenow' => $timenow, 'msg' => $msg));

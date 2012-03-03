@@ -38,6 +38,24 @@ return array(
 	//{
 	//	return View::make('home.index');
 	//},
+	'GET /authforchati/(:any)/(:any)/(:any)/(:any)' => function($slug, $service, $user_id, $url) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return Redirect::to('/');
+		}
+		$socialauth = new Socialauth();
+		$socialauth->authenticate($service);
+		if ($socialauth->error) {
+			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
+		}
+		if ($socialauth->user_id) {
+			$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
+			$redischat->newAuth($user_id);
+			return 'You can now close this window.';
+		} else {
+			return Redirect::to('/')->with('error', 'authentication failed');
+		}
+	},
 	'POST /authforchat/(:any)' => function($service) {
 		$directurl = Input::get('directurl');
 		setcookie('gotoUrl', $directurl);
