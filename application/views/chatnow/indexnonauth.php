@@ -137,7 +137,6 @@
 					type: 'GET',
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
 						$('tbody#score_update td').html('Score: '+data.score);
 					}
 				})
@@ -257,6 +256,9 @@
 				setInterval('refreshmod()',20000);
 				$('#moderate_window').show();
 				refreshmod();
+				if (score!="no") {
+					$('div.sendscore_main').addClass('block');
+				}
 			}
 			function refreshmod() {
 				var co = 0;
@@ -326,6 +328,14 @@
 			</div>
 		</div>
 		<div class="clear"></div>
+		<div class="sendscore_main">
+			<div id="sendscore_inner">
+				<form method="post" action="/sendscore/<?php echo($chat->chatslug) ?>" id="sendscore_form">
+					<label for="score">Score</label>
+					<input type="text" name="score">&nbsp; &nbsp;<button type-"sumit" class="green small">Update</button>
+				</form>
+			</div>
+		</div>
 		<div class="login_main">
 			<div id="login_main_inner">
 				<p align='center'>Login with:</p>
