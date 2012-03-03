@@ -30,9 +30,9 @@ Class Redischat {
 		//$this->pusher->trigger($this->pusherModChannel, 'chat', $transport, null, false, true);
 	}
 	public function addScore($score) {
-		$timestamp = time();
-		$transport = json_encode(array($timestamp, $score, $userinfo));
-		$this->chatset[] = $transport;
+		$transport = json_encode(array('score' => $score));
+		$this->chatset[0] = $transport;
+		$this->pusher->trigger($this->pusherModChannel, 'score', $transport, null, false, true);
 	}
 	public function approve($id) {
 		$modchats = $this->modchatset->toArray(true);
@@ -58,7 +58,7 @@ Class Redischat {
 		return $this->modchatset->toArray(true);
 	}
 	public function getScore() {
-		return $this->chatscore->toArray(true);
+		return $this->chatscore[0];
 	}
 	public function getChatTotal($user = NULL) {
 		

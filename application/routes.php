@@ -38,6 +38,19 @@ return array(
 	//{
 	//	return View::make('home.index');
 	//},
+	'POST /authforchat/(:any)' => function($service) {
+		$socialauth = new SocialAuth;
+		$loc = Input::get('directurl');
+		$socialauth->authenticate($service);
+		if ($socialauth->error) {
+			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
+		}
+		if ($socialauth->user_id) {
+			return Redirect::to($loc);
+		} else {
+			return Redirect::to('/')->with('error', 'authentication failed');
+		}
+	},
 	'GET /chatnow/(:any)' => function($slug)
 	{
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
@@ -194,7 +207,7 @@ return array(
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		//$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
-		$msg = "<b>".$name . " :</b><br/>";
+		$msg = "<b>".$name . " :</b> ";
 		$msg .= $posttext ? $posttext.'<br/>' : '';
 		if ($postimgsrc=='twitpic') {
 			$msg.="<a href='http://twitpic.com/$postimgcode' target='_blank'><img src='http://twitpic.com/show/thumb/$postimgcode' /></a><br/>";

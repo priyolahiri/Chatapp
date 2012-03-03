@@ -76,7 +76,21 @@
 					})
 				})
 			})
-			function getoldchat() {
+			function doauth(provider) {
+				<?php
+				if (!stripos($_SERVER['HTTP_REFERRER'], $_SERVER['HTTP_HOST'])) {
+					$origurl = $_SERVER['HTTP_REFERRER'];
+				} else {
+					$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+				}
+				?>
+				var origurl = '<?php echo ($origurl) ?>';
+				var finalurl = '<?php echo($_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
+				$('<form action="'+finalurl+'" method="POST">' + 
+    				'<input type="hidden" name="directurl" value="' + origurl + '">' +
+    				'</form>').submit();
+			}
+ 			function getoldchat() {
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
 						type: 'GET',
@@ -227,10 +241,17 @@
 	<!-- END HEAD -->
 	<!-- BEGIN BODY -->
 	<body>
+		<div class="head_main">
+			<div id="head_main_inner">
+				<table class="striped">
+					<thead><tr><th><?php echo $chat->chatname ?></th></tr></thead>
+					<tbody><tr><td id="score_update">&nbsp;</td></tr></tbody>
+				</table>
+			</div>
+		</div>
 		<div class="chat_main">
 			<div id="chat_main_inner">
 				<table class="striped">
-					<thead><tr><th colspan="2"><?php echo $chat->chatname ?></th></tr></thead>
 					<tbody></tbody>
 				</table>
 			</div>
@@ -249,11 +270,14 @@
 						<label for="img_source">Image Source</label><br/>
 						<select id="img_source" name="img_source">
 							<option value="NA">None</option>
+							<option value="upload">Upload</option>
 							<option value="twitpic">Twitpic</option>
 							<option value="yfrog">YFrog</option>
 						</select><br/>
 						<label for="img_code">Image Code</label><br/>
 						<input type="text" id="img_code" name="img_code"><br/>
+						<label for="img_upload">Image Upload</label><br/>
+						<input type="text" id="img_upload" name="img_upload"><br/>
 						<label for="vid_source">Video Source</label><br/>
 						<select id="vid_source" name="vid_source">
 							<option value="NA">None</option>
