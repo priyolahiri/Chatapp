@@ -40,13 +40,13 @@ return array(
 	//},
 	'POST /authforchat/(:any)' => function($service) {
 		$socialauth = new SocialAuth;
-		$loc = Input::get('directurl');
+		Session::set('directurl', Input::get('directurl'));
 		$socialauth->authenticate($service);
 		if ($socialauth->error) {
 			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
 		}
 		if ($socialauth->user_id) {
-			return Redirect::to($loc);
+			return Redirect::to(Session::get('directurl'));
 		} else {
 			return Redirect::to('/')->with('error', 'authentication failed');
 		}
