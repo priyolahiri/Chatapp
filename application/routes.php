@@ -40,22 +40,22 @@ return array(
 	//},
 	'POST /authforchat/(:any)' => function($service) {
 		$directurl = Input::get('directurl');
-		Session::put('directurl', $directurl);
+		setcookie('gotoUrl', $directurl);
 		$socialauth = new SocialAuth;
 		$socialauth->authenticate($service);
 		if ($socialauth->error) {
 			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
 		}
 		if ($socialauth->user_id) {
-			header("Location: ".Session::get('direcurl'));
+			return Redirect::to($_COOKIE['gotoUrl']);
 		} else {
 			return Redirect::to('/')->with('error', 'authentication failed');
 		}
 	},
 	'GET /authforchat/(:any)' => function($service) {
-		if (Session::has('directurl'))
+		if ($_COOKIE['gotoUrl'])
 		{
-     		return Redirect::to(Session::get('directurl'));
+     		return Redirect::to($_COOKIE['gotoUrl']);
 		} else {
 			return Response::make(View::make('error.500')->with('error', 'url not in session'), 500);
 		}
