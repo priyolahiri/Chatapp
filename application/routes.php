@@ -116,6 +116,27 @@ return array(
 			return 'Error';
 		}
 	},
+	'POST /sendscore/(:any)' => function($slug) {
+		$score = Input::get('score');
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return json_encode(array("success" => false));
+		}
+		$socialauth = new Socialauth();	
+		if (!$socialauth->user_id) {
+			return json_encode(array("success" => false));
+		} 
+		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmins or $role == "admin") {
+				$chatadmin = true;
+				$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
+				$redischat->setScore($score);
+				return json_encode(array("success" => true));
+		} else {
+				$chatadmin = false;
+				return json_encode(array("error" => 'access denied'));
+		}
+	},
 	'GET /chatinfo/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if ($chatsearch) {

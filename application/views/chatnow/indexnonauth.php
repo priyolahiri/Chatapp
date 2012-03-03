@@ -130,6 +130,23 @@
 						}
 					})
 				})
+				$('#sendscore_form').submit(function(e) {
+					e.preventDefault();
+					var postdata = $('#sendscore_form').serialize();
+					$.ajax({
+						url: '/sendscore/<?php echo($chat->chatslug) ?>',
+						dataType: 'json',
+						type: 'POST',
+						data: postdata,
+						success: function(data) {
+							if (data.success) {
+								noty({"text":"Score updated!","layout":"topRight","type":"success","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							} else {
+								noty({"text":"Error updating score","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							}
+						}
+					})
+				})
 			})
 			function initscore() {
 				$.ajax({
@@ -332,7 +349,7 @@
 			<div id="sendscore_inner">
 				<form method="post" action="/sendscore/<?php echo($chat->chatslug) ?>" id="sendscore_form">
 					<label for="score">Score</label>
-					<input type="text" name="score">&nbsp; &nbsp;<button type-"sumit" class="green small">Update</button>
+					<input type="text" name="score" size="65">&nbsp; &nbsp;<button type-"sumit" class="green small">Update</button>
 				</form>
 			</div>
 		</div>
