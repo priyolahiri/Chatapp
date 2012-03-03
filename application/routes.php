@@ -51,6 +51,13 @@ return array(
 			return Redirect::to('/')->with('error', 'authentication failed');
 		}
 	},
+	'GET /authforchat/(:any)' => function($service) {
+		if (Session::get('directurl')) {
+			return Redirect::to(Session::get('directurl'));
+		} else {
+			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
+		}
+	},
 	'GET /chatnow/(:any)' => function($slug)
 	{
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
