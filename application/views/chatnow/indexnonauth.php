@@ -246,7 +246,11 @@
 			<div id="head_main_inner">
 				<table class="striped">
 					<thead><tr><th><?php echo $chat->chatname ?></th></tr></thead>
-					<tbody><tr><td id="score_update">&nbsp;</td></tr></tbody>
+					<?php
+					if ($chat->score!='no') {
+					 echo('<tbody id="score_update"><tr><td>&nbsp;</td></tr></tbody>');
+					}
+					?>
 				</table>
 			</div>
 		</div>
