@@ -267,9 +267,10 @@
 		<div class="clear"></div>
 		<div class="login_main">
 			<div id="login_main_inner">
+				<p align='center'>Login with:</p>
 				<p align="center" class="zerom">
 					<a href="/login/social/facebook"><span class="icon social x-large blue" data-icon="F"></span></a>	
-					<a href="/login/social/twitter"><span class="icon social x-large blue" data-icon="t"></span></a><hr/>
+					<a href="/login/social/twitter"><span class="icon social x-large blue" data-icon="t"></span></a>
 				</p>
 			</div>
 		</div>
