@@ -46,7 +46,7 @@ return array(
 			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
 		}
 		if ($socialauth->user_id) {
-			return Redirect::to(Session::get('directurl'));
+			header("Location: ".Session::get('direcurl'));
 		} else {
 			return Redirect::to('/')->with('error', 'authentication failed');
 		}
