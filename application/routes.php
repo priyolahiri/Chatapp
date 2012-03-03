@@ -39,8 +39,8 @@ return array(
 	//	return View::make('home.index');
 	//},
 	'POST /authforchat/(:any)' => function($service) {
-		$socialauth = new SocialAuth;
 		Session::put('directurl', Input::get('directurl'));
+		$socialauth = new SocialAuth;
 		$socialauth->authenticate($service);
 		if ($socialauth->error) {
 			return Response::make(View::make('error.500')->with('error', $socialauth->error), 500);
