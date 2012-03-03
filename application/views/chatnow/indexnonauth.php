@@ -79,8 +79,7 @@
 			function doauth(provider) {
 				<?php
 				//error_log ('referrer: '.$_SERVER['HTTP_REFERER']);
-				
-				if (!stripos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST'])) {
+				if ($_SERVER['HTTP_REFERER']) {
 					$origurl = $_SERVER['HTTP_REFERER'];
 				} else {
 					$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
