@@ -249,6 +249,7 @@
 				</table>
 			</div>
 		</div>
+		<div class="clear"></div>
 		<div class="chat_main">
 			<div id="chat_main_inner">
 				<table class="striped">
@@ -257,6 +258,14 @@
 			</div>
 		</div>
 		<div class="clear"></div>
+		<div class="login_main">
+			<div id="login_main_inner">
+				<p align="center" class="zerom">
+					<a href="/login/social/facebook"><span class="icon social x-large blue" data-icon="F"></span></a>	
+					<a href="/login/social/twitter"><span class="icon social x-large blue" data-icon="t"></span></a><hr/>
+				</p>
+			</div>
+		</div>
 		<div class="auth_main">
 			<div class="sendchat_main">
 				<div id="sendchat_main_inner">
