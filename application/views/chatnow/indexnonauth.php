@@ -137,6 +137,7 @@
 					type: 'GET',
 					dataType: 'json',
 					success: function(data) {
+						console.log(data);
 						$('tbody#score_update td').html(data.score);
 					}
 				})

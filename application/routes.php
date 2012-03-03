@@ -108,7 +108,10 @@ return array(
 		if ($chatsearch) {
 			$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
 			$score = $redischat->getScore();
-			return json_encode(array('score' => $score));
+			if (!$score or $score == "") {
+				return json_encode(array('score' => 'None updated yet'));
+			}
+ 			return json_encode(array('score' => $score));
 		} else {
 			return 'Error';
 		}
