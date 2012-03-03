@@ -138,12 +138,12 @@
 					dataType: 'json',
 					success: function(data) {
 						console.log(data);
-						$('tbody#score_update td').html(data.score);
+						$('tbody#score_update td').html('Score: '+data.score);
 					}
 				})
 				channel.bind('score', function(data){
 					if (data.score) {
-						$('tbody#score_update td').html(data.score);
+						$('tbody#score_update td').html('Score: '+data.score);
 					}
 				});
 			}
