@@ -269,8 +269,8 @@
 			<div id="login_main_inner">
 				<p align='center'>Login with:</p>
 				<p align="center" class="zerom">
-					<span class="icon social x-large blue" data-icon="F" onclick="doauth('facebook')"></span>	
-					<span class="icon social x-large blue" data-icon="t" onclick="doauth('twitter')"></span>
+					<button onclick='doauth("facebook");'><span class="icon social large blue" data-icon="F" ></span></button>	
+					<button  onclick='doauth("twitter");'><span class="icon social large blue" data-icon="t"></span></button>
 				</p>
 			</div>
 		</div>
