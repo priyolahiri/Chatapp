@@ -39,8 +39,8 @@ return array(
 	//	return View::make('home.index');
 	//},
 	'POST /authforchat/(:any)' => function($service) {
-		error_log(Input::get('directurl'));
-		Session::put('directurl', Input::get('directurl'));
+		$directurl = Input::get('directurl');
+		Session::put('directurl', $directurl);
 		$socialauth = new SocialAuth;
 		$socialauth->authenticate($service);
 		if ($socialauth->error) {
@@ -53,8 +53,9 @@ return array(
 		}
 	},
 	'GET /authforchat/(:any)' => function($service) {
-		if (Session::get('directurl')) {
-			return Redirect::to(Session::get('directurl'));
+		if (Session::has('directurl'))
+		{
+     		return Redirect::to(Session::get('directurl'));
 		} else {
 			return Response::make(View::make('error.500')->with('error', 'url not in session'), 500);
 		}
