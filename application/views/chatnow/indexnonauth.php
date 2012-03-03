@@ -73,6 +73,7 @@
 				});
 				$('span.social').click(function(e) {
 					e.preventDefault;
+					var isInIFrame = (window.location != window.parent.location) ? true : false;
 					var social = $(this).attr('data-icon');
 					console.log(social);
 					if (social == 'F') {
@@ -82,13 +83,18 @@
 						var provider = 'twitter';
 					}
 					<?php
-					
-							$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-						
+					$origurl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+					$origurlenc = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 					?>
-					var origurl = '<?php echo ('http://'.$origurl) ?>';
-					var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
-					$.postGo(finalurl, {'directurl' : origurl });
+					if (isInIframe) {
+						var origurl = '<?php echo ($origurlenc) ?>';
+						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchati/'+provider+'/'+origurl;
+						window.open(finalurl,'_newtab');
+					} else {
+						var origurl = '<?php echo ($origurl) ?>';
+						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;
+						$.postGo(finalurl, {'directurl' : origurl });
+					}
 					});
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
