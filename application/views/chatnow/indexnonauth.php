@@ -49,6 +49,28 @@
 						}
 					})
 				});
+				$('span.social').click(function(e) {
+					eArray.preventDefault;
+					var social = $(this).attr('data-icon');
+					if (social == 'F') {
+						var provider = 'facebook';
+					}
+					if (social == 't') {
+						var provider = 'twitter';
+					}
+					<?php
+						if ($_SERVER['HTTP_REFERER']) {
+							$origurl = 'http://'.$_SERVER['HTTP_REFERER'];
+						} else {
+							$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+						}
+					?>
+					var origurl = '<?php echo ($origurl) ?>';
+					var finalurl = '<?php echo($_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
+					$('<form action="'+finalurl+'" method="POST">' + 
+    					'<input type="hidden" name="directurl" value="' + origurl + '">' +
+    					'</form>').submit();
+					});
 				$('#submit_chat').submit(function(e) {
 					e.preventDefault();
 					var postdata = $('#submit_chat').serialize();
@@ -268,8 +290,8 @@
 			<div id="login_main_inner">
 				<p align='center'>Login with:</p>
 				<p align="center" class="zerom">
-					<button onClick='doauth("facebook");'><span class="icon social large blue" data-icon="F" ></span></button>	
-					<button  onClick='doauth("twitter");'><span class="icon social large blue" data-icon="t"></span></button>
+					<span class="icon social large blue" data-icon="F"></span></button>	
+					<span class="icon social large blue" data-icon="t"></span></button>
 				</p>
 			</div>
 		</div>
