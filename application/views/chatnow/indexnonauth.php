@@ -82,11 +82,9 @@
 						var provider = 'twitter';
 					}
 					<?php
-						if ($_SERVER['HTTP_REFERER']) {
-							$origurl = $_SERVER['HTTP_REFERER'];
-						} else {
+					
 							$origurl = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-						}
+						
 					?>
 					var origurl = '<?php echo ('http://'.$origurl) ?>';
 					var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchat/'+provider;	
