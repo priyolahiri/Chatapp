@@ -7,10 +7,10 @@
 		<meta name="description" content="" />
 		<!-- BEGIN SCRIPTS -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
 		<script type="text/javascript" src="/js/underscore.min.js"></script>
-		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
-		<script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
+		<!-- <script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script> -->
+		<!-- <script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script> -->
 		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
 		<script type="text/javascript" src="/js/jquery.noty.js"></script>
 		<script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
@@ -52,6 +52,9 @@
 				$.prettyLoader();
 				getoldchat();
 				initchat();
+				if (score!="no") {
+					initscore();
+				}
 				$('#contact_main_inner').on('click', 'button.makeadmin', function(e) {
 					e.preventDefault();
 					var makeadmin_id = $(this).attr('data-userid');
@@ -92,10 +95,8 @@
 						window.open(finalurl,'_newtab');
 						channel.bind('newauth', function(data){
 									if (data.user_id == user_id ) {
-										console.log('match');
 										self.location.reload();
 									}
-									
 						});
 					} else {
 						var origurl = '<?php echo ($origurl) ?>';
@@ -130,6 +131,24 @@
 					})
 				})
 			})
+			function initscore() {
+				$.ajax({
+					url: '/getscore/<?php echo($chat->chatslug) ?>',
+					type: 'GET',
+					dataType: 'json',
+					success: function(data) {
+						$('tbody#score_update td').html(data.score);
+					}
+				})
+				channel.bind('score', function(data){
+					if (data.score) {
+						$('tbody#score_update td').html(data.score);
+					}
+				});
+			}
+			function initscoreadmin() {
+				
+			}
  			function getoldchat() {
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',
@@ -276,6 +295,7 @@
 			siteadmin = '';
 			role = '';
 			chatadmin = '';
+			score = "";
 			pusher = new Pusher('<?php echo($redischat->pusherKey); ?>');
 			Pusher.channel_auth_endpoint = '/chatauth/<?php echo($chat->chatslug) ?>';
 			channel = pusher.subscribe('<?php echo ($redischat->pusherChannel) ?>');

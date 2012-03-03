@@ -103,6 +103,16 @@ return array(
 		//}
 		//return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
+	'GET /getscore/(:any)' => function ($slug) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if ($chatsearch) {
+			$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
+			$score = $redischat->getScore();
+			return json_encode(array('score' => $score));
+		} else {
+			return 'Error';
+		}
+	},
 	'GET /chatinfo/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if ($chatsearch) {
