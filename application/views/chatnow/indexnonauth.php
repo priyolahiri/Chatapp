@@ -86,7 +86,7 @@
 					$origurl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 					$origurlenc = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 					?>
-					if (isInIframe) {
+					if (isInIFrame) {
 						var origurl = '<?php echo ($origurlenc) ?>';
 						var finalurl = '<?php echo('http://'.$_SERVER['HTTP_HOST']) ?>/authforchati/'+provider+'/'+origurl;
 						window.open(finalurl,'_newtab');
