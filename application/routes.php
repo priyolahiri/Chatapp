@@ -38,7 +38,7 @@ return array(
 	//{
 	//	return View::make('home.index');
 	//},
-	'GET /authforchati/(:any)/(:any)/(:any)/(:any)' => function($slug, $service, $user_id, $url) {
+	'GET /authforchati/(:any)/(:any)/(:any)' => function($slug, $service, $user_id) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {
 			return Redirect::to('/');
