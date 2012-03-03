@@ -150,6 +150,8 @@
 											}
 										});
 									}
+								} else {
+									$('div.login_main').addClass('block');
 								}
 							}
 						}

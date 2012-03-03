@@ -173,7 +173,9 @@ ul.chat {
 	margin: 0px;
 	list-style: none;
 }
-table.striped{}
+table.striped{
+	margin: 0px;
+}
 table.striped tr.alt{background:#f5f5f5;}
 table.striped thead th{background:#DDDDDD;}
 table.striped tbody th{background:#f5f5f5;text-align:right;padding-right:15px;border-right:1px dotted #e5e5e5;}
