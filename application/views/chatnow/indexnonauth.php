@@ -158,7 +158,8 @@
                 		secureuri:false,
                 		fileElementId: 'imgupload',
                 		dataType: 'json',
-                		success: function (data, status) {
+                		success: function (data) {
+                			console.log(data);
                     			if(data.error != '') {
                             		alert(data.error);
                         		} else {
