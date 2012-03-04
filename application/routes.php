@@ -54,7 +54,7 @@ return array(
 			$filename=uniqid().".".$imguploadext;
 			File::upload('imgupload', $_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$chatslug."/".$socialauth->user_id."/".$filename);
 			return json_encode(array(
-				'url' => $_SERVER['HTTP_HOST']."/uploads/".$chatslug."/".$socialauth->user_id."/".$filename,
+				'url' => 'http://'.$_SERVER['HTTP_HOST']."/uploads".$chatslug."/".$socialauth->user_id."/".$filename,
 				'success' => true
 			));
 		} else {
