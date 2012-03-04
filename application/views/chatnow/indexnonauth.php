@@ -166,9 +166,8 @@
                     			if(data.error != '') {
                             		alert(data.error);
                         		} else {
-                            		$('#imgupload').hide();
-                            		$('#img_link').attr('value') = data.url;
-                            		$('#img_link').show();
+                        			$.fancybox.close();
+                            		$('#img_code').attr('value', data.url);
                         		}
                     		
                 		},
