@@ -38,6 +38,29 @@ return array(
 	//{
 	//	return View::make('home.index');
 	//},
+	'POST /upload/(:any)' => function($slug) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return json_encode(array("error" => "invalid chat"));
+		}
+		$socialauth = new Socialauth();
+		if ($socialauth->user_id) {
+			$imgupload = Input::file('imgupload');
+			$imguploadname = Input::file('imgupload.name');
+			$imguploadext = File::extension($imguploadname);
+			if(!file_exists($_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$chatslug."/".$socialauth->user_id))  {
+				mkdir($_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$chatslug."/".$socialauth->user_id, 0777,true);
+			}
+			$filename=uniqid().".".$imguploadext;
+			File::upload('imgupload', $_SERVER{'DOCUMENT_ROOT'} ."/uploads/".$chatslug."/".$socialauth->user_id."/".$filename);
+			return json_encode(array(
+				'url' => $_SERVER['HTTP_HOST']."/uploads/".$chatslug."/".$socialauth->user_id."/".$filename,
+				'success' => true
+			));
+		} else {
+			
+		} 
+	},
 	'GET /authforchati/(:any)/(:any)/(:any)' => function($slug, $service, $user_id) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {

@@ -151,6 +151,29 @@
 					})
 				})
 			})
+			function ajaxFileUpload() {
+				$.ajaxFileUpload({
+                		url:'doajaxfileupload.php',
+                		secureuri:false,
+                		fileElementId: 'imgupload',
+                		dataType: 'json',
+                		success: function (data, status) {
+                    		if(typeof(data.error) != 'undefined') {
+                        		if(data.error != '') {
+                            		alert(data.error);
+                        		} else {
+                            		$('#imgupload').hide();
+                            		$('#imglink').attr('value') = data.url;
+                            		$('#imglink').show();
+                        		}
+                    		}
+                		},
+                		error: function (data, status, e) {
+                    		alert(e);
+                		}
+            		})
+        			return false;
+			}
 			function initscore() {
 				$.ajax({
 					url: '/getscore/<?php echo($chat->chatslug) ?>',
@@ -371,7 +394,7 @@
 					<ul class="chat">
 						<li class="head_li">Comment</li>
 					</ul>
-					<form id="submit_chat">
+					<form id="submit_chat"  enctype="multipart/form-data">
 						<label for="chat_text">Text</label><br/>
 						<textarea id="chat_text" name="chat_text"></textarea>
 						<button type="submit" class="small green">Send</button><br/>
@@ -384,8 +407,9 @@
 						</select><br/>
 						<label for="img_code">Image Code</label><br/>
 						<input type="text" id="img_code" name="img_code"><br/>
-						<label for="img_upload">Image Upload</label><br/>
-						<input type="text" id="img_upload" name="img_upload"><br/>
+						<label for="img_link">Image Upload</label><br/>
+						<input type="text" id="img_link" name="img_upload" style="display: none;">
+						<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
 						<label for="vid_source">Video Source</label><br/>
 						<select id="vid_source" name="vid_source">
 							<option value="NA">None</option>
