@@ -299,7 +299,7 @@ return array(
 		if ($postimgsrc=='yfrog') {
 			$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
 		}
-		if ($postimgsrc=='custom') {
+		if ($postimgsrc=='upload') {
 			$msg.="<a href='$postimgcode' target='_blank'><img class='custom_post' src='$postimgcode' /></a><br/>";
 		}
 		if ($postvidsrc=='youtube') {
