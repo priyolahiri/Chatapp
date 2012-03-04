@@ -71,7 +71,7 @@ Class Redischat {
 		return $this->modchatset->toArray(true);
 	}
 	public function getScore() {
-		return $this->chatscore[0];
+		return $this->chatscore->toArray(true);
 	}
 	public function getChatTotal($user = NULL) {
 		
