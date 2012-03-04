@@ -10,7 +10,7 @@
 		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
 		<script type="text/javascript" src="/js/underscore.min.js"></script>
 		<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
-		<!-- <script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script> -->
+		<script type="text/javascript" src="/js/jquery.easing-1.3.pack.js"></script>
 		<!-- <script type="text/javascript" src="/js/jquery.mousewheel-3.0.4.pack.js"></script> -->
 		<script type="text/javascript" src="/js/jquery.prettyLoader.js"></script>
 		<script type="text/javascript" src="/js/jquery.noty.js"></script>
@@ -18,11 +18,12 @@
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script type="text/javascript" src="/js/prettify.js"></script>                                   <!-- PRETTIFY -->
 		<script type="text/javascript" src="/js/kickstart.js"></script>                                  <!-- KICKSTART -->
-		<!-- END SCRIPTS -->
+		<script type="text/javascript" src="/js/jquery.fancybox-1.3.4.pack.js"></script>
 		<!-- BEGIN STYLES -->
 		<link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />                  <!-- KICKSTART -->
 		<link rel="stylesheet" type="text/css" href="/css/style2.css" media="all" />    
 		<link rel="stylesheet" type="text/css" href="/css/prettyLoader.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="/css/jquery.noty.css" media="all" />
 		                      <!-- CUSTOM STYLES -->
 		<!-- END STYLES -->
@@ -51,6 +52,8 @@
 		<script type="text/javascript">
 			$(function() {
 				$.prettyLoader();
+				$("a#upload_button").fancybox({
+				});
 				getoldchat();
 				initchat();
 				if (score!="no") {
@@ -408,10 +411,7 @@
 							<option value="yfrog">YFrog</option>
 						</select><br/>
 						<label for="img_code">Image Code</label><br/>
-						<input type="text" id="img_code" name="img_code"><br/>
-						<label for="img_link">Image Upload</label><br/>
-						<input type="text" id="img_link" name="img_upload" style="display: none;">
-						<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
+						<input type="text" id="img_code" name="img_code"><a class="button small" id="upload_button" href="#imgupload_div">Upload</a><br/>
 						<label for="vid_source">Video Source</label><br/>
 						<select id="vid_source" name="vid_source">
 							<option value="NA">None</option>
@@ -442,6 +442,13 @@
 				</div>
 			</div>
 			<div class="clear"></div>
+		</div>
+		<div class="clear">
+		</div>
+		<div id="imgupload_div" style="display: none;">
+			<form>
+			<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
+			</form>
 		</div>
 	</body>
 	<!-- END BODY -->
