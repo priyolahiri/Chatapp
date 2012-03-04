@@ -154,7 +154,7 @@
 			})
 			function ajaxFileUpload() {
 				$.ajaxFileUpload({
-                		url:'doajaxfileupload.php',
+                		url:'/upload/<?php echo($chat->chatslug); ?>',
                 		secureuri:false,
                 		fileElementId: 'imgupload',
                 		dataType: 'json',
