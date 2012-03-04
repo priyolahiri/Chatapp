@@ -175,7 +175,7 @@
                     		alert(e);
                 		}
             		})
-        			return false;
+        			return true;
 			}
 			function initscore() {
 				$.ajax({
