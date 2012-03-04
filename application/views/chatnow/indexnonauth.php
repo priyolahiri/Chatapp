@@ -445,7 +445,7 @@
 		</div>
 		<div class="clear">
 		</div>
-		<div id="imgupload_div" style="display: none;">
+		<div id="imgupload_div" style="widht:300px; height: 200px; display: none;">
 			<form>
 			<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
 			</form>
