@@ -299,6 +299,9 @@ return array(
 		if ($postimgsrc=='yfrog') {
 			$msg.="<a href='http://yfrog.com/$postimgcode' target='_blank'><img src='http://yfrog.com/$postimgcode:small' /></a><br/>";
 		}
+		if ($postimgsrc=='custom') {
+			$msg.="<a href='$postimgcode' target='_blank'><img class='custom_post' src='$postimgcode' /></a><br/>";
+		}
 		if ($postvidsrc=='youtube') {
 			$msg.="<iframe width='320' height='240' src='http://chatapp.priyolahiri.co.cc/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
