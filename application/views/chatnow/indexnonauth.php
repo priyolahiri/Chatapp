@@ -159,15 +159,14 @@
                 		fileElementId: 'imgupload',
                 		dataType: 'json',
                 		success: function (data, status) {
-                    		if(typeof(data.error) != 'undefined') {
-                        		if(data.error != '') {
+                    			if(data.error != '') {
                             		alert(data.error);
                         		} else {
                             		$('#imgupload').hide();
-                            		$('#imglink').attr('value') = data.url;
-                            		$('#imglink').show();
+                            		$('#img_link').attr('value') = data.url;
+                            		$('#img_link').show();
                         		}
-                    		}
+                    		
                 		},
                 		error: function (data, status, e) {
                     		alert(e);
