@@ -134,7 +134,7 @@ return array(
 			if (!$score or $score == "") {
 				return json_encode(array('score' => 'None updated yet'));
 			}
- 			return json_encode(array('score' => $score->score));
+ 			return json_encode(array('score' => $score['score']));
 		} else {
 			return 'Error';
 		}
