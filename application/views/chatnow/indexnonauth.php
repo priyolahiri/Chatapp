@@ -126,7 +126,7 @@
 								});
 							}
 							if (msg.msgerror) {
-								noty({"text":"Error Occured!","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+								noty({"text":"Error Occured Posting Comment!","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 							}
 						}
 					})
@@ -169,7 +169,7 @@
                         		}
                     		
                 		},
-                		error: function (data, status, e) {
+                		error: function (data) {
                     		alert(e);
                 		}
             		})
