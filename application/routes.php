@@ -131,7 +131,7 @@ return array(
 		if ($chatsearch) {
 			$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
 			$score = $redischat->getScore();
-			if (!$score or $score == "") {
+			if (!$score) {
 				return json_encode(array('score' => 'None updated yet'));
 			}
  			return json_encode(array('score' => $score[0]['score']));
