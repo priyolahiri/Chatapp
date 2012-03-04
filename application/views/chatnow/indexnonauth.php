@@ -163,7 +163,7 @@
                 		dataType: 'json',
                 		success: function (data) {
                 			console.log(data);
-                    			if(data.error != '') {
+                    			if(data.error) {
                             		alert(data.error);
                         		} else {
                         			$.fancybox.close();
