@@ -305,10 +305,10 @@ return array(
 		if ($postvidsrc=='youtube') {
 			$msg.="<iframe width='320' height='240' src='http://chatapp.priyolahiri.co.cc/embed/$postvidcode' frameborder='0' allowfullscreen></iframe>";
 		}
-		if ($socialauth->user_role == "normal") {
-			$redischat->addMsgMod($msg);
-		} else {
+		if ($socialauth->user_role == "admin" or $admin) {
 			$redischat->addMsg($msg);
+		} else {
+			$redischat->addMsgMod($msg);
 		}
 		return json_encode(array('msgsuccess' => true));
 	},
