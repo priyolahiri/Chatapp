@@ -4,7 +4,7 @@ Class Redischat {
 		include 'Rediska.php';
 		$this->rediska = new Rediska();
 		$this->pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
-		$this->pusherKey = 'bcc01e8ba13fef13ba43';
+		$this->pusherKey = PUSHERKEY;
 		$this->pusherChannel = "presence-".$chatid;
 		$this->pusherModChannel = "presence-".$chatid."-moderate";
 		$this->chatset = new Rediska_Key_List($chatid."_chat");
