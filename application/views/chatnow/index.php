@@ -261,7 +261,7 @@
 			<div class="clear"></div>
 			<!-- BEGIN FOOTER -->
 			<div id="footer">
-				&copy; Copyright Priyadarshi Lahiri 2011–2012 All Rights Reserved.
+				<a href="http://pusher.com?utm_source=badge"><img src="http://pusher.com/images/badges/pusher_badge_light_2.png"></a><br/>&copy; Copyright Priyadarshi Lahiri 2011–2012 All Rights Reserved.
 				<a id="link-top" href="#top-of-page">Top</a>
 			</div>
 			<!-- END FOOTER -->
