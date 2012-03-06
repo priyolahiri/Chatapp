@@ -82,11 +82,13 @@
 					console.log('searching');
 					var searchstring = $(this).val();
 					if (searchstring=='') {
+						$('#contact_main_inner li.sub_li').removeClass('none');
 						$('#contact_main_inner li.sub_li').addClass('block');
 					} else {
 						var rg = new RegExp(searchstring,'i');
 						$('#contact_main_inner li.sub_li').each(function() {
 							if($.trim($(this).attr('data-name')).search(rg) == -1) {
+								$(this).removeClass('bock');
 								$(this).addClass('none');
 							}
 						});
@@ -95,6 +97,7 @@
 				$('button#search_clear').click(function() {
 					console.log('clearing');
 					$('input#member_search').val('');
+					$('#contact_main_inner li.sub_li').removeClass('none');
 					$('#contact_main_inner li.sub_li').addClass('block');
 				})
 				$('span.social').click(function(e) {
