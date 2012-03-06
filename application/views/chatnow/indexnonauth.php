@@ -79,6 +79,7 @@
 					})
 				});
 				$('#contact_main_inner').on('keyup,change','input#member_search', function(e) {
+					console.log('searching');
 					var searchstring = $(this).val();
 					if (searchstring=='') {
 						$('#contact_main_inner li.sub_li').addClass('block');
@@ -92,6 +93,7 @@
 					}
 				});
 				$('button#search_clear').click(function() {
+					console.log('clearing');
 					$('input#member_search').val('');
 					$('input#member_search').trigger('change');
 				})
