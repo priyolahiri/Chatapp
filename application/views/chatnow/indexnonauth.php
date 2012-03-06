@@ -79,7 +79,6 @@
 					})
 				});
 				$('input#member_search').keyup(function(e) {
-					console.log('searching');
 					var searchstring = $(this).val();
 					if (searchstring=='') {
 						$('#contact_main_inner li.sub_li').removeClass('none');
@@ -95,7 +94,6 @@
 					}
 				});
 				$('button#search_clear').click(function() {
-					console.log('clearing');
 					$('input#member_search').val('');
 					$('#contact_main_inner li.sub_li').removeClass('none');
 					$('#contact_main_inner li.sub_li').addClass('block');
@@ -104,7 +102,6 @@
 					e.preventDefault;
 					var isInIFrame = (window.location != window.parent.location) ? true : false;
 					var social = $(this).attr('data-icon');
-					console.log(social);
 					if (social == 'F') {
 						var provider = 'facebook';
 					}
@@ -184,7 +181,6 @@
                 		fileElementId: 'imgupload',
                 		dataType: 'json',
                 		success: function (data) {
-                			console.log(data);
                     			if(data.error) {
                             		alert(data.error);
                         		} else {
@@ -205,7 +201,6 @@
 					type: 'GET',
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
 						$('tbody#score_update td').html('Score: '+data.score);
 					}
 				})
@@ -244,9 +239,7 @@
 						dataType: 'json',
 						success: function(data) {
 							if (!data.error) {
-								console.log('event chat sub');
 								channel.bind('chat', function(data){
-									console.log(data);
 									var chattime = data.timenow;
 									var chatmsg = data.msg;
 									var output = '<tr><td class="col-gray" width="8%">'+chattime+'</td>';
@@ -293,9 +286,6 @@
     						var name = member.info.name;
     						var img = member.info.imgURL;
     						var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
-    						console.log(chatadmin);
-    						console.log(member.info.chatadmin);
-    						console.log(member.info.name);
     						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
     							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     						}
