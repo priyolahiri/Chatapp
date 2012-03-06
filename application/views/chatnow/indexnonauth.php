@@ -95,7 +95,7 @@
 				$('button#search_clear').click(function() {
 					console.log('clearing');
 					$('input#member_search').val('');
-					$('input#member_search').trigger('keyup');
+					$('#contact_main_inner li.sub_li').addClass('block');
 				})
 				$('span.social').click(function(e) {
 					e.preventDefault;
