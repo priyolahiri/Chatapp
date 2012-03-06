@@ -11,7 +11,7 @@ This project is under construction and not ready for production use yet.
 1. PHP 5.3x
 2. MySQL or any other fork with native php mysql support
 3. Redis server and Rediska library
-4. Memcached server and memcached php library
+4. ~~Memcached server and memcached php library~~ Session handling now with Redis
 5. [Pusher](http://www.pusherapp.com) account
 6. Twitter and Facebook app
 
@@ -20,18 +20,18 @@ This project is under construction and not ready for production use yet.
 1. Sign-up for a [Pusher](http://www.pusherapp.com) account account if you don't have one and create an app.
 2. Install redis-server. On Ubuntu add [chris-lea's redis repository](https://launchpad.net/~chris-lea/+archive/redis-server) from Launchpad and then do apt-get update and apt-get install redis-server
 3. Dowload and instlall the [Rediska](http://rediska.geometria-lab.net) library using PEAR by 'pear channel-discover pear.geometria-lab.net' and then 'pear install geometria-lab/Rediska-beta'
-4. Make sure you have memcached and the memcached php library installed and running.
+4. ~~Make sure you have memcached and the memcached php library installed and running.~~ Make sure redis server is running
 5. Git clone the project
 6. Create an apache virtualhost configuration and set the document root to the public directory
 7. Create a mysql db
 8. Import the application/config/db.sql file into the newly created database
 9. Open application/config/database.php and change the host, username, password, db name.
-9. Open public/index.php and change the pusher values with what you get from your Pusher.com account
-10. Open application/config/application.php and change the url element to point to your virtualhost address and define a random 32 character key in the key element
-11. Open application/config/cache.php and application/config/session.php and make necessary changes. By default, it's set to memcache running on 127.0.0.1
-12. Open public/hybridauth/config.php and disable all adapters except Facebook and Twitter. Fill in your API values for Facebook and Twitter. Refer [HybridAuth Docs](http://hybridauth.sourceforge.net) for more info.
-13. Open http://yourvhost.com and login using Facebook or Twitter. Once successfully logged in, open the mysql db and change the role of the user to "admin"
-14. You are now the admin and ready to rock!
+10. Open public/index.php and change the pusher values with what you get from your Pusher.com account
+11. Open application/config/application.php and change the url element to point to your virtualhost address and define a random 32 character key in the key element
+12. Open application/config/cache.php and application/config/session.php and make necessary changes. By default, it's set to ~~memcache~~ Redis running on 127.0.0.1
+13. Open public/hybridauth/config.php and disable all adapters except Facebook and Twitter. Fill in your API values for Facebook and Twitter. Refer [HybridAuth Docs](http://hybridauth.sourceforge.net) for more info.
+14. Open http://yourvhost.com and login using Facebook or Twitter. Once successfully logged in, open the mysql db and change the role of the user to "admin"
+15. You are now the admin and ready to rock!
 
 ##SCREENSHOTS
 
