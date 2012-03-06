@@ -78,6 +78,23 @@
 						}
 					})
 				});
+				$('#contact_main_inner').on('keyup,change','input#member_search', function(e) {
+					var searchstring = $(this).val();
+					if (searchstring=='') {
+						$('#contact_main_inner li.sub_li').addClass('block');
+					} else {
+						var rg = new RegExp(searchstring,'i');
+						$('#contact_main_inner li.sub_li').each(function() {
+							if($.trim($(this).attr('data-name')).search(rg) == -1) {
+								$(this).addClass('none');
+							}
+						});
+					}
+				});
+				$('button#search_clear').click(function() {
+					$('input#member_search').val('');
+					$('input#member_search').trigger('change');
+				})
 				$('span.social').click(function(e) {
 					e.preventDefault;
 					var isInIFrame = (window.location != window.parent.location) ? true : false;
@@ -270,7 +287,7 @@
 					members.each(function(member) {
     						var name = member.info.name;
     						var img = member.info.imgURL;
-    						var memberinsert = '<li class="sub_li" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
+    						var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
     						console.log(chatadmin);
     						console.log(member.info.chatadmin);
     						console.log(member.info.name);
@@ -287,7 +304,7 @@
   				// for example:
   					var name = member.info.name;
     					var img = member.info.imgURL;
-    					var memberinsert = '<li class="sub_li" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
+    					var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
     					if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
     						memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     					}
@@ -437,6 +454,7 @@
 				<div id="contact_main_inner">
 					<ul class="chat">
 						<li class="head_li">Contacts Online</li>
+						<li class="head_li"><input type="text" name="member_search" id="member_search"><button id="search_clear" class="small blue">Clear</button></li>
 					</ul>
 				</div>
 			</div>

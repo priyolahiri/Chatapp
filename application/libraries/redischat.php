@@ -33,11 +33,6 @@ Class Redischat {
 		$this->modchatset[] = $transport;
 		//$this->pusher->trigger($this->pusherModChannel, 'chat', $transport, null, false, true);
 	}
-	public function addScore($score) {
-		$transport = json_encode(array('score' => $score));
-		$this->chatset[0] = $transport;
-		$this->pusher->trigger($this->pusherModChannel, 'score', $transport, null, false, true);
-	}
 	public function approve($id) {
 		$modchats = $this->modchatset->toArray(true);
 		$c = 0;
