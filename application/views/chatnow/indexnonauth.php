@@ -78,7 +78,7 @@
 						}
 					})
 				});
-				$('#contact_main_inner').on('keyup,change','input#member_search', function(e) {
+				$('input#member_search').keyup(function(e) {
 					console.log('searching');
 					var searchstring = $(this).val();
 					if (searchstring=='') {
@@ -95,7 +95,7 @@
 				$('button#search_clear').click(function() {
 					console.log('clearing');
 					$('input#member_search').val('');
-					$('input#member_search').trigger('change');
+					$('input#member_search').trigger('keyup');
 				})
 				$('span.social').click(function(e) {
 					e.preventDefault;
