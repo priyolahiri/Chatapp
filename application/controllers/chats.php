@@ -43,7 +43,7 @@ Class Chats_Controller extends Controller {
 						$success = "<p>Created chat '$chat_name' with slug '$chat_slug' and id: ".$newchat->id.". You have been added as chat admin for the chat.</p>";
 						$success .= '<p><a href="/chatnow/'.$chat_slug.'" class="button small green">Chat Now!</a></p>';
 						$success .="<p><code>".htmlentities(
-						'<iframe id="chatframe" src="http://chatapp.priyolahiri.co.cc/chatnow/'.$chat_slug.'" marginheight="0" frameborder="0" width="630px" height="500px"></iframe>'
+						'<iframe id="chatframe" src="http://'.$_SERVER['HTTP_HOST'].'/'.$chat_slug.'" marginheight="0" frameborder="0" width="630px" height="500px"></iframe>'
 						)."</code></p>";
  				}
 				return View::make('chats.add')->with('error', $error)->with('socialauth', $socialauth)->with('success', $success);
