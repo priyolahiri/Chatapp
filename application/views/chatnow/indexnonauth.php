@@ -315,7 +315,7 @@
 			function initadmin() {
 				$('button#endchat_now').click(function (e) {
 					$.ajax({
-						url: '/endchat/$chat->chatslug',
+						url: '/endchat/<?php echo($chat->chatslug) ?>',
 						type: 'POST'
 					});
 				})
