@@ -316,7 +316,7 @@
 				$('button#endchat_now').click(function (e) {
 					$.ajax({
 						url: '/endchat/<?php echo($chat->chatslug) ?>',
-						type: 'POST'
+						type: 'GET'
 					});
 				})
 				channel.bind('pusher:subscription_succeeded', function(members) {
