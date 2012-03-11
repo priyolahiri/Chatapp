@@ -224,6 +224,31 @@ return array(
 			return json_encode(array("success" => false));
 		}
 	},
+	'GET /revokeadmin/(:any)/(:any)' => function($slug, $adminid) {
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if (!$chatsearch) {
+			return json_encode(array("success" => false));
+		}
+		$socialauth = new Socialauth();	
+		if (!$socialauth->user_id) {
+			return json_encode(array("success" => false));
+		} 
+		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmins or $role == "admin") {
+				$chatadmin = true;
+		} else {
+				$chatadmin = false;
+		}
+		if ($chatadmin) {
+			$delete = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id','=',$adminid)->first();
+			$delete->delete();
+			$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+			$redischat->revokeAdmin($adminid);
+			return json_encode(array("success" => true));
+		} else {
+			return json_encode(array("success" => false));
+		}
+	},
 	'POST /chatauth/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {

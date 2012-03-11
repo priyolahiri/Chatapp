@@ -78,6 +78,25 @@
 						}
 					})
 				});
+				$('#contact_main_inner').on('click', 'button.revokeadmin', function(e) {
+					e.preventDefault();
+					var makeadmin_id = $(this).attr('data-userid');
+					$.ajax({
+						url: '/revokeadmin/<?php echo($chat->chatslug) ?>/'+makeadmin_id,
+						type: 'GET',
+						dataType: 'json',
+						success: function(data) {
+							if (data.success) {
+								noty({"text":"User granted admin.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							} else {
+								noty({"text":"Admin grant failed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							}
+						},
+						error: function() {
+							noty({"text":"Admin grant failed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+						}
+					})
+				});
 				$('input#member_search').keyup(function(e) {
 					var searchstring = $(this).val();
 					if (searchstring=='') {
@@ -262,6 +281,11 @@
 										$('#chat_text').removeClass('large');
 										$('div.moderate_main').addClass("block");
 										$('div.contact_main').addClass('block');
+										channel.bind('revokeadmin', function(data){
+											if (data.user_id == user_id) {
+												window.location.reload();
+											}
+										});
 										initadmin();
 									} else {
 										channel.bind('makeadmin', function(data){
@@ -289,6 +313,9 @@
     						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
     							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     						}
+    						if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous") {
+    							memberinsert = memberinsert + '<br/><button class="small revokeadmin" data-userid="'+member.info.user_id+'">Revoke Admin</button>';
+    						}
     						memberinsert = memberinsert + '</li>';
     						$("#contact_main_inner ul").append(memberinsert);
     						var elem = document.getElementById('contact_main_inner');
@@ -302,6 +329,9 @@
     					var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
     					if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
     						memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
+    					}
+    					if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous") {
+    							memberinsert = memberinsert + '<br/><button class="small revokeadmin" data-userid="'+member.info.user_id+'">Revoke Admin</button>';
     					}
     					memberinsert = memberinsert + '</li>';
     					$("#contact_main_inner ul").append(memberinsert);
