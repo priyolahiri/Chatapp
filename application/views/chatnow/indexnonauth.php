@@ -314,10 +314,10 @@
 			}
 			function initadmin() {
 				$('button#endchat_now').click(function (e) {
-					$.ajax{(
+					$.ajax({
 						url: '/endchat/$chat->chatslug',
 						type: 'POST'
-					)};
+					});
 				})
 				channel.bind('pusher:subscription_succeeded', function(members) {
 					var onlinetext = members.count + ' user(s) online';
