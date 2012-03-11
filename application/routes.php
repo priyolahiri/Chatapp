@@ -226,7 +226,7 @@ return array(
 	},
 	'GET /endchat/(:any)' =>function($slug) {
 		$socialauth = new Socialauth();
-		if ($socialauth->role == 'admin') {
+		if ($socialauth->user_role == 'admin') {
 			$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 			if ($chatsearch) {
 				$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
@@ -286,7 +286,6 @@ return array(
 			$chatadmin = false;
 		} else {
 			$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-			$role = $socialauth->role;
 			if ($chatadmin or $role == "admin") {
 				$chatadmin = true;
 			} else {
