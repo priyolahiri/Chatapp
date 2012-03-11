@@ -313,7 +313,7 @@
     						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
     							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     						}
-    						if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous" && member.info.user_id && != user_id  && member.info.superadmin != true) {
+    						if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous" && member.info.user_id && != user_id && member.info.superadmin != true) {
     							memberinsert = memberinsert + '<br/><button class="small revokeadmin" data-userid="'+member.info.user_id+'">Revoke Admin</button>';
     						}
     						memberinsert = memberinsert + '</li>';
