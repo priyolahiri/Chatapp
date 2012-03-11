@@ -268,6 +268,9 @@
   									elem.scrollTop = elem.scrollHeight;
 								});
 								role = data.role;
+								if (role == 'admin') {
+									$('li.endchat').show();
+								}
 								chatadmin = data.chatadmin;
 								if (data.name != "anonymous") {
 									user_id = data.user_id;
@@ -469,6 +472,7 @@
 				<div id="moderate_main_inner">
 					<ul class="chat">
 						<li class="head_li">Moderation</li>
+						<li class="head_li" id="endchat" style="display: none;"><button id="endchat_now" data-id="<?php echo($chat->chatslug); ?>">Finish Chat</button></li>
 					</ul>
 					<table class="striped">
 						<tbody></tbody>
