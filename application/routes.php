@@ -273,13 +273,18 @@ return array(
 			} else {
 				$chatadmin = false;
 			}
+			if ($role == admin) {
+				$superadmin = true;
+			} else {
+				$superadmin = false;
+			}
 			$user_id = $socialauth->user_id;
 			$role = $socialauth->user_role;
 			$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 			$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
 		}
 		$pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
-		$presence_data = array('name' => $name, 'imgURL' => $imgurl, 'role' => $role, 'user_id' => $user_id, 'chatadmin' => $chatadmin);
+		$presence_data = array('name' => $name, 'imgURL' => $imgurl, 'role' => $role, 'user_id' => $user_id, 'chatadmin' => $chatadmin, 'superadmin' => $superadmin);
 		echo $pusher->presence_auth($_POST['channel_name'], $_POST['socket_id'], $user_id, $presence_data);
 	},
 	'POST /sendchat/(:any)' => function($chatslug) {
