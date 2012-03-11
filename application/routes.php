@@ -235,11 +235,11 @@ return array(
 				$chatsearch->save();
 				$redischat->endchat();
 			} else {
-				return (json_encode(array("success" => false)));
+				return (json_encode(array("success" => false, "error" => 'chat not found')));
 			}
 			return (json_encode(array("success" => true)));
 		} else {
-			return (json_encode(array("success" => false)));
+			return (json_encode(array("success" => false, "error" => 'not admin')));
 		}
 	},
 	'GET /revokeadmin/(:any)/(:any)' => function($slug, $adminid) {
