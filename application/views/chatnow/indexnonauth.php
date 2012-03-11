@@ -363,7 +363,7 @@
   					var id = '#member_' + member.id;
   					$(id).remove();
 				});
-				setInterval('refreshmod()',20000);
+				setInterval('refreshmod()',5000);
 				$('#moderate_window').show();
 				refreshmod();
 				if (score!="no") {
