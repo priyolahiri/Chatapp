@@ -71,7 +71,7 @@
 					<table cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th>Chat Name</th><th>Started Date</th><th>Finished Date</th>
+								<th>Chat Name</th><th>Started Date</th><th>Finished Date</th><th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -81,6 +81,7 @@
 							echo('<td>'.$chat->chatname.'<br/>'.'<p><code>'.htmlentities('<iframe id="chatframe" src="http://'.$_SERVER['HTTP_HOST'].'/chatnow/'.$chat->chatslug.'" marginheight="0" frameborder="0" width="630px" height="500px"></iframe>')."</code></p>".	'</td>');
 							echo('<td>'.date('d M Y', $chat->createdon).'</td>');
 							echo('<td>'.date('d M Y', $chat->finishedon).'</td>');
+							echo('<td><a class="button small green" href="/chatnow/'.$chat->chatslug.'">'.View.'</a></td>');
 							echo('</tr>');
 						}
 					?>
