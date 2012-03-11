@@ -314,11 +314,13 @@
     						var name = member.info.name;
     						var img = member.info.imgURL;
     						var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
-    						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
-    							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
-    						}
-    						if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous" && member.info.user_id != user_id && member.info.role != 'admin') {
-    							memberinsert = memberinsert + '<br/><button class="small revokeadmin" data-userid="'+member.info.user_id+'">Revoke Admin</button>';
+    						if (role =='admin') {
+    							if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
+    								memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
+    							}
+    							if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous" && member.info.user_id != user_id && member.info.role != 'admin') {
+    								memberinsert = memberinsert + '<br/><button class="small revokeadmin" data-userid="'+member.info.user_id+'">Revoke Admin</button>';
+    							}
     						}
     						memberinsert = memberinsert + '</li>';
     						$("#contact_main_inner ul").append(memberinsert);
@@ -331,11 +333,13 @@
   					var name = member.info.name;
     					var img = member.info.imgURL;
     					var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
-    					if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
-    						memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
-    					}
-    					if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous" && member.info.user_id != user_id && member.info.role != 'admin') {
+    					if (role == 'admin') {
+    						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
+    							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
+    						}
+    						if (chatadmin==true && member.info.chatadmin==true && member.info.name != "anonymous" && member.info.user_id != user_id && member.info.role != 'admin') {
     							memberinsert = memberinsert + '<br/><button class="small revokeadmin" data-userid="'+member.info.user_id+'">Revoke Admin</button>';
+    						}
     					}
     					memberinsert = memberinsert + '</li>';
     					$("#contact_main_inner ul").append(memberinsert);
