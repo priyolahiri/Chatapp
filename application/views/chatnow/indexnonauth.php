@@ -269,7 +269,7 @@
 								});
 								role = data.role;
 								if (role == 'admin') {
-									$('li.endchat').show();
+									$('li#endchat').show();
 								}
 								chatadmin = data.chatadmin;
 								if (data.name != "anonymous") {
