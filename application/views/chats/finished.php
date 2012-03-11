@@ -2,7 +2,7 @@
 <html>
 	<!-- BEGIN HEAD -->
 	<head>
-		<title>Chatapp | Active Chats</title>
+		<title>Chatapp | Finished Chats</title>
 		<meta charset="UTF-8">
 		<meta name="description" content="" />
 		<!-- BEGIN SCRIPTS -->
@@ -53,7 +53,7 @@
 			<div class="col_12" id="body_area">
 				<!-- BEGIN CONTENT AREA -->
 				<div class="col_12" id="content_area">
-					<h3>Active Chats</h3>
+					<h3>Finished Chats</h3>
 					<?php
 					if ($error) {
 					?>
