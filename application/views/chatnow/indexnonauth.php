@@ -258,6 +258,7 @@
 						dataType: 'json',
 						success: function(data) {
 							if (!data.error) {
+								if (data.status=='active') {
 								channel.bind('chat', function(data){
 									var chattime = data.timenow;
 									var chatmsg = data.msg;
@@ -266,6 +267,11 @@
 									$('#chat_main_inner table tbody').append(output+output2);
 									var elem = document.getElementById('chat_main_inner');
   									elem.scrollTop = elem.scrollHeight;
+								});
+								channel.bind('endchat', function(data){
+									if(data.finished) {
+										window.location.reload();
+									}
 								});
 								role = data.role;
 								if (role == 'admin') {
@@ -302,10 +308,17 @@
 									user_id = data.user_id;
 								}
 							}
+							}
 						}
 				});
 			}
 			function initadmin() {
+				$('button#endchat_now').click(function (e) {
+					$.ajax{(
+						url: '/endchat/$chat->chatslug',
+						type: 'POST'
+					)};
+				})
 				channel.bind('pusher:subscription_succeeded', function(members) {
 					var onlinetext = members.count + ' user(s) online';
 					$('#member_count').html(onlinetext);

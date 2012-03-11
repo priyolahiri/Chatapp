@@ -195,7 +195,7 @@ return array(
 		} else {
 			$error = "chat not found";
 		}
-		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin));
+		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin, 'status' => $chatsearch->status));
 	},
 	'GET /makeadmin/(:any)/(:any)' => function($slug, $adminid) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
@@ -222,6 +222,24 @@ return array(
 			return json_encode(array("success" => true));
 		} else {
 			return json_encode(array("success" => false));
+		}
+	},
+	'GET /endchat/(:any)' =>function($slug) {
+		$socialauth = new Socialauth();
+		if ($socialauth->role == 'admin') {
+			$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+			if ($chatsearch) {
+				$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+				$chatsearch->status = "finished";
+				$chatsearch->finishedon = time();
+				$chatsearch->save();
+				$redischat->endchat();
+			} else {
+				return (json_encode(array("success" => false)));
+			}
+			return (json_encode(array("success" => true)));
+		} else {
+			return (json_encode(array("success" => false)));
 		}
 	},
 	'GET /revokeadmin/(:any)/(:any)' => function($slug, $adminid) {

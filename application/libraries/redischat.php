@@ -23,6 +23,10 @@ Class Redischat {
 		$adminsend = json_encode(array("user_id" => $id));
 		$this->pusher->trigger($this->pusherChannel, 'makeadmin', $adminsend, null, false, true);
 	}
+	public function endChat() {
+		$send = json_encode(array("finished" => true));
+		$this->pusher->trigger($this->pusherChannel, 'endchat', $send, null, false, true);
+	}
 	public function revokeAdmin($id) {
 		$adminsend = json_encode(array("user_id" => $id));
 		$this->pusher->trigger($this->pusherChannel, 'revokeadmin', $adminsend, null, false, true);
