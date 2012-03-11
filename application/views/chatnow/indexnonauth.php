@@ -307,6 +307,7 @@
 					var onlinetext = members.count + ' user(s) online';
 					$('#member_count').html(onlinetext);
 					members.each(function(member) {
+						console.log(member);
     						var name = member.info.name;
     						var img = member.info.imgURL;
     						var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;

@@ -268,6 +268,7 @@ return array(
 			$chatadmin = false;
 		} else {
 			$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+			$role = $socialauth->role;
 			if ($chatadmin or $role == "admin") {
 				$chatadmin = true;
 			} else {
