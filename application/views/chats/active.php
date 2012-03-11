@@ -78,7 +78,7 @@
 					<?php
 						foreach ($chats as $chat) {
 							echo ('<tr>');
-							echo('<td>'.$chat->chatname.'<br/>'.'<iframe id="chatframe" src="http://chatapp.priyolahiri.co.cc/chatnow/'.$chat->chatslug.'" marginheight="0" frameborder="0" width="630px" height="500px"></iframe>'."</code></p>".	'</td>');
+							echo('<td>'.$chat->chatname.'<br/>'.'<code><p>'.htmlentities('<iframe id="chatframe" src="http://'.$_SERVER['HTTP_HOST'].'/chatnow/'.$chat->chatslug.'" marginheight="0" frameborder="0" width="630px" height="500px"></iframe>')."</code></p>".	'</td>');
 							echo('<td>'.date('d M Y', $chat->createdon).'</td>');
 							echo('<td><a class="button small green" href="/chatnow/'.$chat->chatslug.'">'.Join.'</a></td>');
 							echo('</tr>');
