@@ -191,6 +191,9 @@ return array(
 				} else {
 					$chatadmin = false;
 				}
+				if ($chatsearch->user_id == $user_id) {
+					$role == "admin";
+				}
 			} 
 		} else {
 			$error = "chat not found";
@@ -226,8 +229,8 @@ return array(
 	},
 	'GET /endchat/(:any)' =>function($slug) {
 		$socialauth = new Socialauth();
-		if ($socialauth->user_role == 'admin') {
-			$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
+		if ($socialauth->user_role == 'admin' or $chatsearch->user_id == $socialauth->user_id) {
 			if ($chatsearch) {
 				$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 				$chatsearch->status = "finished";
@@ -291,7 +294,7 @@ return array(
 			} else {
 				$chatadmin = false;
 			}
-			if ($role == admin) {
+			if ($role == admin or $chatsearch->user_id = $socialauth->user_id) {
 				$superadmin = true;
 			} else {
 				$superadmin = false;

@@ -15,9 +15,6 @@ Class Chats_Controller extends Controller {
 		$success = Session::get('success');
 		$socialauth= new Socialauth();
 		if ($socialauth->user_id) {
-			if ($socialauth->user_role!="admin") {
-				return Redirect::to('/chats')->with('error', 'You have to be an admin user to create a chat.');
-			} else {
 				if (Input::get('chatid')) {
 						$chat_name = Input::get('chatid');
 						$chat_slug = URL::slug($chat_name)	;
@@ -46,8 +43,7 @@ Class Chats_Controller extends Controller {
 						'<iframe id="chatframe" src="http://'.$_SERVER['HTTP_HOST'].'/chatnow/'.$chat_slug.'" marginheight="0" frameborder="0" width="630px" height="500px"></iframe>'
 						)."</code></p>";
  				}
-				return View::make('chats.add')->with('error', $error)->with('socialauth', $socialauth)->with('success', $success);
-			}
+				return View::make('chats.add')->with('error', $error)->with('socialauth', $socialauth)->with('success', $success);		
 		} else {
 			return Redirect::to('/');
 		}
