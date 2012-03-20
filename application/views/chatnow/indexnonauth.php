@@ -61,7 +61,7 @@
 				}
 				$('#setdispname_link').click(function(e) {
 					e.preventDefault();
-					$('#setdispname_div').show();
+					$('#setdispname_div').addClass('block');
 				});
 				$('#contact_main_inner').on('click', 'button.makeadmin', function(e) {
 					e.preventDefault();
@@ -470,6 +470,13 @@
 					<ul class="chat">
 						<li class="head_li">Comment</li>
 					</ul>
+					<div id="setdispname_div">
+						<form id="setdispname_form">
+							Display name<br/>
+							<input type="text" name="setdispname_field"><br/>
+							<button class="small" type="submit">Change</button><br/>
+						</form>
+					</div>
 					<form id="submit_chat"  enctype="multipart/form-data">
 						<label for="chat_text">Text</label><br/>
 						<textarea id="chat_text" name="chat_text"></textarea>
@@ -523,13 +530,6 @@
 		<div id="imgupload_div">
 			<form>
 			<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
-			</form>
-		</div>
-		<div id="setdispname_div">
-			<form id="setdispname_form">
-			Display name<br/>
-			<input type="text" name="setdispname_field"><br/>
-			<button class="small" type="submit">Change</button><br/>
 			</form>
 		</div>
 		</div>
