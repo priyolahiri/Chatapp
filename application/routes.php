@@ -192,6 +192,7 @@ return array(
 					$chatadmin = false;
 				}
 				if ($chatsearch->user_id == $user_id) {
+					$siteadmin = true;
 					$role = "admin";
 				}
 			} 
