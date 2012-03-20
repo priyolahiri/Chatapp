@@ -65,9 +65,11 @@
 				});
 				$('#setdispname_form').submit(function(e) {
 					e.preventDefault();
+					var namedata = $(this).serialize();
 					$.ajax({
 						url: '/changedisp',
 						type: 'POST',
+						data: namedata,
 						dataType: 'json',
 						success: function(data) {
 							if (data.success) {
