@@ -278,9 +278,9 @@
 									$('li#endchat').show();
 								}
 								if (data.score) {
-									chat = 'yes';
+									score = 'yes';
 								} else {
-									chat = 'no';
+									score = 'no';
 								}
 								chatadmin = data.chatadmin;
 								if (data.name != "anonymous") {
