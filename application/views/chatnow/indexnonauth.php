@@ -61,7 +61,7 @@
 				}
 				$('#setdispname_link').click(function(e) {
 					e.preventDefault();
-					$('#setdispname_div').addClass('block');
+					$('#setdispname_div').show();
 				});
 				$('#contact_main_inner').on('click', 'button.makeadmin', function(e) {
 					e.preventDefault();
