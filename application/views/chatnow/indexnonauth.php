@@ -63,6 +63,26 @@
 					e.preventDefault();
 					$('#setdispname_div').show();
 				});
+				$('#setdispname_form').submit(function(e) {
+					e.preventDefault();
+					$.ajax({
+						url: '/changedisp',
+						type: 'POST',
+						dataType: 'json',
+						success: function(data) {
+							if (data.success) {
+								$('#setdispname_div').hide();
+								noty({"text":"Display name changed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							} else {
+								$('#setdispname_div').hide();
+								noty({"text":"Dispay name change failed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+							}
+						},
+						error: function(data) {
+							noty({"text":"Display name change failed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+						}
+					})
+				});
 				$('#contact_main_inner').on('click', 'button.makeadmin', function(e) {
 					e.preventDefault();
 					var makeadmin_id = $(this).attr('data-userid');
@@ -91,9 +111,9 @@
 						dataType: 'json',
 						success: function(data) {
 							if (data.success) {
-								noty({"text":"User granted admin.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+								noty({"text":"User admin revoked.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 							} else {
-								noty({"text":"Admin grant failed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
+								noty({"text":"Admin revoke failed.","layout":"topRight","type":"error","textAlign":"center","easing":"swing","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":"500","timeout":"5000","closable":true,"closeOnSelfClick":true});
 							}
 						},
 						error: function() {

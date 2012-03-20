@@ -375,6 +375,14 @@ return array(
 		}
 		return json_encode(array('msgsuccess' => true));
 	},
+	'POST /changedisp' => function() {
+		$dispname = Input::get('setdispname_field');
+		if (!$dispname or $dispname == "") {
+			return json_encode(array("success" => false));
+		}
+		setcookie("chatapp_dispname", $dispname, time()+60*60*24*90);
+		return json_encode(array("success" => true));
+	},
 	'GET /embed/(:any)' => function($vidid) {
 		$url = "http://www.youtube.com/embed/$vidid";
 		$crl = curl_init();
