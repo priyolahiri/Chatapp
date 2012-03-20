@@ -195,11 +195,16 @@ return array(
 					$siteadmin = true;
 					$role = "admin";
 				}
-			} 
+			}
+			if ($chatsearch->score!='no') {
+				$score = true;
+			} else {
+				$score = false;
+			}
 		} else {
 			$error = "chat not found";
 		}
-		return json_encode(array('user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin, 'status' => $chatsearch->status));
+		return json_encode(array('score' => $score, 'user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin, 'status' => $chatsearch->status));
 	},
 	'GET /makeadmin/(:any)/(:any)' => function($slug, $adminid) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();

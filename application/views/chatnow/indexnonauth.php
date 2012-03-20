@@ -277,6 +277,11 @@
 								if (role == 'admin') {
 									$('li#endchat').show();
 								}
+								if (data.score) {
+									chat = 'yes';
+								} else {
+									chat = 'no';
+								}
 								chatadmin = data.chatadmin;
 								if (data.name != "anonymous") {
 									user_id = data.user_id;
