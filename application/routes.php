@@ -192,7 +192,7 @@ return array(
 					$chatadmin = false;
 				}
 				if ($chatsearch->user_id == $user_id) {
-					$role == "admin";
+					$role = "admin";
 				}
 			} 
 		} else {
