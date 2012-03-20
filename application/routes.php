@@ -349,7 +349,11 @@ return array(
 		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		//$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
-		$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
+		if (isset($_COOKIE['chatapp_dispname'])) {
+			$name = $_COOKIE['chatapp_dispname'];
+		} else {
+			$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
+		}
 		$msg = "<b>".$name . " :</b> ";
 		$msg .= $posttext ? $posttext.'<br/>' : '';
 		if ($postimgsrc=='twitpic') {

@@ -470,6 +470,7 @@
 						<label for="chat_text">Text</label><br/>
 						<textarea id="chat_text" name="chat_text"></textarea>
 						<button type="submit" class="small green">Send</button><br/>
+						<a id="setdispname_link" href="#">Set Display Name</a><br/>
 						<label for="img_source">Image Source</label><br/>
 						<select id="img_source" name="img_source">
 							<option value="NA">None</option>
