@@ -296,6 +296,7 @@ return array(
 				$chatadmin = false;
 			}
 			if ($role == admin or $chatsearch->user_id == $socialauth->user_id) {
+				$role = "admin";
 				$superadmin = true;
 			} else {
 				$superadmin = false;
