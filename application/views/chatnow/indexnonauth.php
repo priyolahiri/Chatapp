@@ -59,6 +59,10 @@
 				if (score!="no") {
 					initscore();
 				}
+				$('#setdispname_link').click(function(e) {
+					e.preventDefault();
+					$('#setdispname_div').show();
+				});
 				$('#contact_main_inner').on('click', 'button.makeadmin', function(e) {
 					e.preventDefault();
 					var makeadmin_id = $(this).attr('data-userid');
@@ -519,6 +523,13 @@
 		<div id="imgupload_div">
 			<form>
 			<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
+			</form>
+		</div>
+		<div id="setdispname_div">
+			<form id="setdispname_form">
+			Display name<br/>
+			<input type="text" name="setdispname_field"><br/>
+			<button class="small" type="submit">Change</button><br/>
 			</form>
 		</div>
 		</div>

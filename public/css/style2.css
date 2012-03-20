@@ -195,3 +195,6 @@ table.striped td {
 	padding: 4px;
 	vertical-align: top;
 }
+#setdispname_div {
+	display: none;
+}
