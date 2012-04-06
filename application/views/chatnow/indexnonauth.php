@@ -549,7 +549,7 @@
 		</div>
 		<div style="display:none;">
 		<div id="imgupload_div">
-			<form enctype="multipart/form-data">
+			<form>
 				<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
 			</form>
 		</div>
