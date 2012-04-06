@@ -216,7 +216,9 @@ return array(
 			return json_encode(array("success" => false));
 		} 
 		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmins or $role == "admin") {
+		$user_id = $socialauth->user_id;
+		$role = $socialauth->user_role;
+		if ($chatadmins or $role == "admin" or $chatsearch->user_id == $user_id) {
 				$chatadmin = true;
 		} else {
 				$chatadmin = false;
