@@ -1,43 +1,6 @@
 <?php
 
 return array(
-
-	/*
-	|--------------------------------------------------------------------------
-	| Application Routes
-	|--------------------------------------------------------------------------
-	|
-	| Simply tell Laravel the HTTP verbs and URIs it should respond to. It's a
-	| piece of cake to create beautiful applications using the elegant RESTful
-	| routing available in Laravel.
-	|
-	| Let's respond to a simple GET request to http://example.com/hello:
-	|
-	|		'GET /hello' => function()
-	|		{
-	|			return 'Hello World!';
-	|		}
-	|
-	| You can even respond to more than one URI:
-	|
-	|		'GET /hello, GET /world' => function()
-	|		{
-	|			return 'Hello World!';
-	|		}
-	|
-	| It's easy to allow URI wildcards using (:num) or (:any):
-	|
-	|		'GET /hello/(:any)' => function($name)
-	|		{
-	|			return "Welcome, $name.";
-	|		}
-	|
-	*/
-	//9886023241
-	//'GET /' => function()
-	//{
-	//	return View::make('home.index');
-	//},
 	'POST /upload/(:any)' => function($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
 		if (!$chatsearch) {
@@ -108,23 +71,22 @@ return array(
 			return Redirect::to('/');
 		}
 		$socialauth = new Socialauth();
+		$admin = false;
+		$role = $socialauth->user_role;
 		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmin) {
+		if ($chatadmin or $role == "admin") {
 			$admin = true;
-		} else {
-			$admin = false;
 		}
 		$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
-		if (Session::get('anonid')) {
+		if (!$socialauth->user_id) {
+			if (Session::get('anonid')) {
 				$user_id = Session::get('anonid');
 			} else {
 				$user_id = uniqid();
 				Session::put('anodid', $user_id);
 			}
-		//if (!$socialauth->user_id) {
+		}
 		return View::make('chatnow.indexnonauth')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
-		//}
-		//return View::make('chatnow.index')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
 	},
 	'GET /getscore/(:any)' => function ($slug) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
