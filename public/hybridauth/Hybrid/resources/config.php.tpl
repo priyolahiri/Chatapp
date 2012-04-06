@@ -36,7 +36,12 @@ return
 			"Facebook" => array ( 
 				"enabled" => #FACEBOOK_ADAPTER_STATUS#,
 				"keys"    => array ( "id" => "#FACEBOOK_APPLICATION_APP_ID#", "secret" => "#FACEBOOK_APPLICATION_SECRET#" ),
-				"scope"   => ""
+
+				// A comma-separated list of permissions you want to request from the user. See the Facebook docs for a full list of available permissions: http://developers.facebook.com/docs/reference/api/permissions.
+				"scope"   => "", 
+
+				// The display context to show the authentication page. Options are: page, popup, iframe, touch and wap. Read the Facebook docs for more details: http://developers.facebook.com/docs/reference/dialogs#display. Default: page
+				"display" => "" 
 			),
 
 			"Twitter" => array ( 
