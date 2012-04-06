@@ -549,8 +549,8 @@
 		</div>
 		<div style="display:none;">
 		<div id="imgupload_div">
-			<form method="POST" enctype="multipart/form-data">
-			<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
+			<form enctype="multipart/form-data">
+				<input type="file" id="imgupload" name="imgupload"><button class="small" onClick="ajaxFileUpload()">Upload</button><br/>
 			</form>
 		</div>
 		</div>
