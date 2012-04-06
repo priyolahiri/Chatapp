@@ -198,3 +198,6 @@ table.striped td {
 #setdispname_div {
 	display: none;
 }
+img.custom_post {
+	max-width: 500px;
+}
