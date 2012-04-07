@@ -72,11 +72,6 @@ return array(
 		}
 		$socialauth = new Socialauth();
 		$admin = false;
-		$role = $socialauth->user_role;
-		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmin or $role == "admin") {
-			$admin = true;
-		}
 		$redischat =new Redischat($chatsearch->chatslug, $chatsearch->score);
 		if (!$socialauth->user_id) {
 			if (Session::get('anonid')) {
@@ -84,6 +79,12 @@ return array(
 			} else {
 				$user_id = uniqid();
 				Session::put('anodid', $user_id);
+			}
+		} else {
+			$role = $socialauth->user_role;
+			$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+			if ($chatadmin or $role == "admin") {
+				$admin = true;
 			}
 		}
 		return View::make('chatnow.indexnonauth')->with('socialauth', $socialauth)->with('chat', $chatsearch)->with('admin', $admin)->with('redischat', $redischat);
@@ -142,20 +143,16 @@ return array(
 				$role = $socialauth->user_role;
 				$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 				$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
-				$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-				if ($chatadmin or $role == "admin") {
+				$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+				if ($chatadmins or $chatsearch->user_id == $user_id) {
 					$chatadmin = true;
-					if ($role == "admin") {
-						$siteadmin = true;
-					} else {
-						$siteadmin = false;
-					}
 				} else {
 					$chatadmin = false;
 				}
-				if ($chatsearch->user_id == $user_id) {
-					$siteadmin = true;
-					$role = "admin";
+				if ($role == "admin") {
+						$siteadmin = true;
+				} else {
+						$siteadmin = false;
 				}
 			}
 			if ($chatsearch->score!='no') {
@@ -177,30 +174,26 @@ return array(
 		if (!$socialauth->user_id) {
 			return json_encode(array("success" => false));
 		} 
-		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
 		$user_id = $socialauth->user_id;
 		$role = $socialauth->user_role;
-		if ($chatadmins or $role == "admin" or $chatsearch->user_id == $user_id) {
-				$chatadmin = true;
+		if ($role == "admin" or $chatsearch->user_id == $user_id) {
+				$insert = new Chatadmin;
+				$insert->chat_id = $chatsearch->id;
+				$insert->user_id = $adminid;
+				$insert->save();
+				$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
+				$redischat->addAdmin($adminid);
+				return json_encode(array("success" => true));
 		} else {
-				$chatadmin = false;
-		}
-		if ($chatadmin) {
-			$insert = new Chatadmin;
-			$insert->chat_id = $chatsearch->id;
-			$insert->user_id = $adminid;
-			$insert->save();
-			$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
-			$redischat->addAdmin($adminid);
-			return json_encode(array("success" => true));
-		} else {
-			return json_encode(array("success" => false));
+				return json_encode(array("success" => false));
 		}
 	},
 	'GET /endchat/(:any)' =>function($slug) {
 		$socialauth = new Socialauth();
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
-		if ($socialauth->user_role == 'admin' or $chatsearch->user_id == $socialauth->user_id) {
+		$user_id = $socialauth->user_id;
+		$role = $socialauth->user_role;
+		if ($role == "admin" or $chatsearch->user_id == $user_id) {
 			if ($chatsearch) {
 				$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 				$chatsearch->status = "finished";
@@ -224,20 +217,16 @@ return array(
 		if (!$socialauth->user_id) {
 			return json_encode(array("success" => false));
 		} 
-		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmins or $role == "admin") {
-				$chatadmin = true;
-		} else {
-				$chatadmin = false;
-		}
-		if ($chatadmin) {
+		$user_id = $socialauth->user_id;
+		$role = $socialauth->user_role;
+		if ($role == "admin" or $chatsearch->user_id == $user_id) {
 			$delete = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id','=',$adminid)->first();
 			$delete->delete();
 			$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 			$redischat->revokeAdmin($adminid);
 			return json_encode(array("success" => true));
 		} else {
-			return json_encode(array("success" => false));
+				return json_encode(array("success" => false));
 		}
 	},
 	'POST /chatauth/(:any)' => function($slug) {
@@ -258,23 +247,21 @@ return array(
 			$imgurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
 			$chatadmin = false;
 		} else {
-			$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-			$role = $socialauth->user_role;
-			if ($chatadmin or $role == "admin") {
-				$chatadmin = true;
-			} else {
-				$chatadmin = false;
-			}
-			if ($role == admin or $chatsearch->user_id == $socialauth->user_id) {
-				$role = "admin";
-				$superadmin = true;
-			} else {
-				$superadmin = false;
-			}
+			$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
 			$user_id = $socialauth->user_id;
 			$role = $socialauth->user_role;
 			$imgurl = $socialauth->facebook_photoURL == "NA" ? $socialauth->twitter_profile->photoURL : $socialauth->facebook_profile->photoURL;
 			$name =  $socialauth->facebook_status ? $socialauth->facebook_profile->firstName.' '.$socialauth->facebook_profile->lastName : $socialauth->twitter_profile->firstName;
+			if ($chatadmins or $chatsearch->user_id == $user_id) {
+				$chatadmin = true;
+			} else {
+				$chatadmin = false;
+			}
+			if ($role == "admin" or $chatsearch->user_id == $socialauth->user_id) {
+				$superadmin = true;
+			} else {
+				$superadmin = false;
+			}
 		}
 		$pusher = new Pusher(PUSHERKEY, PUSHERSECRET, PUSHERAPPID);
 		$presence_data = array('name' => $name, 'imgURL' => $imgurl, 'role' => $role, 'user_id' => $user_id, 'chatadmin' => $chatadmin, 'superadmin' => $superadmin);
@@ -291,8 +278,8 @@ return array(
 			header('', true, 403);
   			echo( "Chat not found" );
 		}
-		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmin) {
+		$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
+		if ($chatadmins or $chatsearch->user_id == $socialauth->user_id) {
 			$admin = true;
 		} else {
 			$admin = false;
