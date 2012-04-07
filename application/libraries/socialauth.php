@@ -44,12 +44,16 @@ Class Socialauth {
 					if  ($this->twitter_status) {
 						$usercreate->twitter_id = $this->twitter_id;
 					}
-					$usercreate->save();
-					$userquery = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id)->first();
-					if ($userquery) {
-						$this->user_id = $userquery->id;
-						$this->user_role = $userquery->role;
-					}
+					if ($this->facebook_status or $this->twitter_status) {
+						$usercreate->save();
+						$userquery = User::where('facebook_id', '=', $this->facebook_id)->or_where('twitter_id', '=', $this->twitter_id)->first();
+						if ($userquery) {
+							$this->user_id = $userquery->id;
+							$this->user_role = $userquery->role;
+						}
+					} else {
+						
+					} 
 				}
 		}
 	}
