@@ -367,12 +367,6 @@ return array(
 			header('', true, 403);
   			echo( "Chat not found" );
 		}
-		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmin) {
-			$admin = true;
-		} else {
-			$admin = false;
-		}
 		$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 		return json_encode($redischat->getModChat());
 	} ,
@@ -388,14 +382,12 @@ return array(
   			echo( "Chat not found" );
 		}
 		$chatadmin = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
-		if ($chatadmin) {
-			$admin = true;
+		if ($chatadmin or $chatsearch->user_id == $socialauth->user_id or $socialauth->user_role == "admin") {
 			$redischat = new Redischat($chatsearch->chatslug, $chatsearch->score);
 			return $redischat->approve($id);
 		} else {
 			header('', true, 403);
   			echo( "Not authorized" );
 		}
-		
 	}
 );
