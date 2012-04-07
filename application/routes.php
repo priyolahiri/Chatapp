@@ -150,6 +150,7 @@ return array(
 					$chatadmin = false;
 				}
 				if ($role == "admin" or $chatsearch->user_id == $user_id) {
+						$chatadmin = true;
 						$siteadmin = true;
 				} else {
 						$siteadmin = false;

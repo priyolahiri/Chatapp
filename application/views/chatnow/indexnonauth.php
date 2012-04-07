@@ -299,8 +299,8 @@
 										window.location.reload();
 									}
 								});
-								role = data.role;
-								if (role == 'admin') {
+								siteadmin = data.siteadmin;
+								if (superadmin) {
 									$('li#endchat').show();
 								}
 								if (data.score) {
@@ -311,7 +311,6 @@
 								chatadmin = data.chatadmin;
 								if (data.name != "anonymous") {
 									user_id = data.user_id;
-									siteadmin = data.siteadmin;
 									$('div.auth_main').addClass("block");
 									$('div.sendchat_main').addClass('block');
 									$('div.sendchat_main').addClass('block-fullwidth');
