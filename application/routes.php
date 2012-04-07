@@ -138,6 +138,7 @@ return array(
 				$name = "anonymous";
 				$imgurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
 				$chatadmin = false;
+				$superadmin = false;
 			} else {
 				$user_id = $socialauth->user_id;
 				$role = $socialauth->user_role;
@@ -151,9 +152,9 @@ return array(
 				}
 				if ($role == "admin" or $chatsearch->user_id == $user_id) {
 						$chatadmin = true;
-						$siteadmin = true;
+						$superadmin = true;
 				} else {
-						$siteadmin = false;
+						$superadmin = false;
 				}
 			}
 			if ($chatsearch->score!='no') {
@@ -164,7 +165,7 @@ return array(
 		} else {
 			$error = "chat not found";
 		}
-		return json_encode(array('score' => $score, 'user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'siteadmin' => $siteadmin, 'status' => $chatsearch->status));
+		return json_encode(array('score' => $score, 'user_id' => $user_id, 'role' => $role, 'imgurl' => $imgurl, 'name' => $name, 'chatadmin' => $chatadmin, 'error' => $error, 'superadmin' => $superadmin, 'status' => $chatsearch->status));
 	},
 	'GET /makeadmin/(:any)/(:any)' => function($slug, $adminid) {
 		$chatsearch = Chat::where('chatslug', '=', $slug)->first();
@@ -247,6 +248,7 @@ return array(
 			$name = "anonymous";
 			$imgurl = $_SERVER['HTTP_HOST'].'/img/anon.png';
 			$chatadmin = false;
+			$superadmin = false;
 		} else {
 			$chatadmins = Chatadmin::where('chat_id', '=', $chatsearch->id)->where('user_id', '=', $socialauth->user_id)->first();
 			$user_id = $socialauth->user_id;

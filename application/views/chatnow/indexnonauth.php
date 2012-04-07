@@ -299,8 +299,8 @@
 										window.location.reload();
 									}
 								});
-								siteadmin = data.siteadmin;
-								if (siteadmin) {
+								superadmin = data.superadmin;
+								if (superadmin) {
 									$('li#endchat').show();
 								}
 								if (data.score) {
@@ -434,7 +434,7 @@
 					});
 			}
 			user_id = '';
-			siteadmin = '';
+			superadmin = '';
 			role = '';
 			chatadmin = '';
 			score = "";
