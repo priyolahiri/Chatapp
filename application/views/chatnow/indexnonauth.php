@@ -255,9 +255,6 @@
 					}
 				});
 			}
-			function initscoreadmin() {
-				
-			}
  			function getoldchat() {
 				$.ajax({
 						url: '/getchat/<?php echo($chat->chatslug) ?>',

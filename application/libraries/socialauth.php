@@ -67,6 +67,7 @@ Class Socialauth {
 		}
 	}
 	public function errorhandle($e) {
+		error_log("Hybrid error ".$e->getCode());
 		switch($e->getCode()) {
 			case 0 : $msg = "Unspecified error."; break;
 			case 1 : $msg =  "Hybriauth configuration error."; break;
@@ -76,10 +77,10 @@ Class Socialauth {
 			case 5 : $msg = "Authentification failed. ". "The user has canceled the authentication or the provider refused the connection.";
 			break;
 			case 6 : $msg = "User profile request failed. Most likely the user is not connected ". "to the provider and he should authenticate again.";
-			$this->hybridauth->logoutAllProviders();
+			//$this->hybridauth->logoutAllProviders();
 			break;
 			case 7 : $msg = "User not connected to the provider.";
-			$this->hybridauth->logoutAllProviders();
+			//$this->hybridauth->logoutAllProviders();
 			break;
 			case 8 : $msg = "Provider does not support this feature."; break;
 		}
