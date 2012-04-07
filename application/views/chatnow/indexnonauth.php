@@ -356,7 +356,7 @@
     						var name = member.info.name;
     						var img = member.info.imgURL;
     						var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
-    						if (role =='admin') {
+    						if (superadmin) {
     							if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous" && member.info.superadmin != true) {
     								memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     							}
@@ -375,7 +375,7 @@
   					var name = member.info.name;
     					var img = member.info.imgURL;
     					var memberinsert = '<li class="sub_li" data-name="'+name+'" data-userid="'+member.info.user_id+'" id="member_'+member.id+'">'+'<img src="'+img+'" align="middle"> '+name;
-    					if (role == 'admin') {
+    					if (superadmin) {
     						if (chatadmin==true && member.info.chatadmin==false && member.info.name != "anonymous") {
     							memberinsert = memberinsert + '<br/><button class="small makeadmin" data-userid="'+member.info.user_id+'">Make Admin</button>';
     						}
