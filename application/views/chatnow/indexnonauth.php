@@ -300,7 +300,7 @@
 									}
 								});
 								siteadmin = data.siteadmin;
-								if (superadmin) {
+								if (siteadmin) {
 									$('li#endchat').show();
 								}
 								if (data.score) {
